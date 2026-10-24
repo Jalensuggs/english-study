@@ -3,6 +3,18 @@
 剑桥雅思阅读题库 + 点词查询（单词和短语都能离线查）+ 生词本 + 《English Phrasal Verbs in Use》短语学习。
 只在自己的电脑和手机上用，**不要放到公网**（书有版权）。
 
+## 第一次运行前：准备词典
+
+**运行前需要下载 ECDICT 并生成 `data/dict.db`**（130MB，太大不放进仓库）。换电脑或者 clone 下来后，在项目文件夹里执行一次：
+
+```bash
+mkdir -p data/raw/ecdict
+curl -L -o data/raw/ecdict/ecdict.csv https://raw.githubusercontent.com/skywind3000/ECDICT/master/ecdict.csv
+python3 scripts/build_dict.py
+```
+
+下载约 65MB，生成大约 10 秒。ECDICT 是开源英汉词典（MIT 协议），项目地址 https://github.com/skywind3000/ECDICT 。
+
 ## 怎么打开
 
 - **电脑**：双击 `启动英语学习.command`，浏览器会自动打开 http://localhost:8848
