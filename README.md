@@ -34,7 +34,7 @@ python3 scripts/build_dict.py
 | 点词查询 | 学习笔模式下：点一个词显示音标、中文、发音，并自动认出它所在的短语（例如点 gave 认出 give up）。拖选几个词：查短语。手机上长按选中后点"查询所选" |
 | 生词本 | 查词时一键加入，自动记下出处句子；可以删除（有撤销）、写笔记、手动添加。文章里会用浅绿底色标出生词 |
 | 复习 | 按记忆曲线安排复习（忘了 / 模糊 / 认识 / 太简单），键盘可用空格和 1–4 |
-| 短语 | 70 个单元，每个单元的短语清单（中文 + 英文释义，来自书后 Mini dictionary），原书讲解练习页、答案页 |
+| 短语 | 70 个单元，每个单元的短语清单（中文 + 英文释义，来自书后 Mini dictionary）。「讲解和练习」和题库一样是文字版：左边讲解（可以点词、标记），右边练习直接填空、选择，点「对答案」自动判分并显示答案。页面底部可以展开看原书页面 |
 | 写作 | 每套题的 Task 1/2 原题 + 写作框（自动保存、字数统计）+ 书后范文 |
 
 ## 数据在哪
@@ -44,6 +44,19 @@ python3 scripts/build_dict.py
 - `content/`：从书里提取出来的题库和页面图片
 - `content-src/answers.txt`：阅读答案，是对照原书答案页手工核对录入的（640 题）
 - `content-src/questions/*.md`：阅读题目，是对照原书题目页手工转写的（48 篇）。格式说明在 `web/questions.js` 开头，发现错字可以直接改，改完运行 `python3 scripts/build_content.py`
+
+## 短语书文字版怎么来的
+
+`python3 scripts/build_pv.py` 会按 OCR 的版面（`data/ocr/phrasal-verbs.json`）自动还原每个单元：小节、表格、对话、练习题、填空（`scripts/pv_layout.py`）。
+自动还原难免有错字或排版不对，以原书页面为准。练习数和答案对不上的单元（目前是第 52 单元）仍然显示原书图片。
+
+想手工修某个单元：
+
+```bash
+python3 scripts/pv_layout.py 12 > content-src/pv/12.md   # 导出自动还原的结果
+# 编辑 content-src/pv/12.md（格式说明在 web/pv.js 开头）
+python3 scripts/build_pv.py                              # 有 content-src/pv/NN.md 的单元优先用手工版
+```
 
 ## 文字识别说明
 

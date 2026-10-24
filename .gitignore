@@ -1,2 +1,3 @@
 data/dict.db
 data/raw/
+__pycache__/

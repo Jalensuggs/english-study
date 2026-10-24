@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from build_content import clean_text  # noqa: E402
+from pv_layout import unit_markdown  # noqa: E402
 
 pages = {p["page"]: p for p in json.loads((ROOT / "data/ocr/phrasal-verbs.json").read_text())}
 FIRST_UNIT_PAGE = 9
@@ -159,6 +160,57 @@ def key_pages():
     return out
 
 
+# ---------------------------------------------------------------- 文字版（content-src/pv/）
+
+def key_by_unit():
+    """content-src/pv/key.md -> {单元号: {"md": 整个单元的答案, "ex": {"6.1": 这道题的答案}}}"""
+    out, unit, ex = {}, None, None
+    for line in (ROOT / "content-src/pv/key.md").read_text().split("\n"):
+        m = re.match(r"^## Unit (\d+)\s*$", line)
+        if m:
+            unit, ex = int(m.group(1)), None
+            out[unit] = {"md": [], "ex": {}}
+            continue
+        if unit is None:
+            continue
+        m = re.match(r"^### (\d+\.\d+)\s*$", line)
+        if m:
+            ex = m.group(1)
+            out[unit]["ex"][ex] = []
+        elif ex:
+            out[unit]["ex"][ex].append(line)
+        out[unit]["md"].append(line)
+    return {u: {"md": "\n".join(v["md"]).strip(), "ex": {k: "\n".join(x).strip() for k, x in v["ex"].items()}}
+            for u, v in out.items()}
+
+
+def write_text_units(units):
+    """每个单元写成 content/pv/NN.json，网页直接显示文字。
+    有手工整理的 content-src/pv/NN.md 就用它，没有就按 OCR 版面自动还原（scripts/pv_layout.py）；
+    自动还原出来的练习数和答案对不上的单元，还是显示原书图片。"""
+    keys = key_by_unit()
+    out_dir = ROOT / "content/pv"
+    out_dir.mkdir(exist_ok=True)
+    for u in units:
+        src = ROOT / f"content-src/pv/{u['n']:02d}.md"
+        k = keys.get(u["n"], {"md": "", "ex": {}})
+        if src.exists():
+            doc, u["auto"] = src.read_text().strip(), False
+        else:
+            doc = unit_markdown(pages, u["n"], u["title"], [p["key"] for p in u["phrases"]],
+                                ROOT / "content/pages/phrasal-verbs").strip()
+            u["auto"] = True
+            if sorted(re.findall(r"^### (\d+\.\d+)", doc, re.M)) != sorted(k["ex"]):
+                doc = ""
+        u["text"] = bool(doc)
+        u["hasKey"] = bool(k["md"])
+        (out_dir / f"{u['n']:02d}.json").write_text(json.dumps({"doc": doc, "key": k["md"], "keyEx": k["ex"]},
+                                                              ensure_ascii=False, indent=1))
+    for old in out_dir.glob("*.json"):
+        if not re.fullmatch(r"\d\d\.json", old.name):
+            old.unlink()
+
+
 def main():
     titles = contents()
     entries = mini_dictionary()
@@ -174,13 +226,15 @@ def main():
                    for k, e in sorted(entries.items()) if u in e["units"]]
         units.append({"n": u, "title": title, "group": group, "pages": [left, left + 1],
                       "keyPages": kp.get(u, []), "phrases": phrases, "blocks": unit_blocks([left, left + 1])})
-    out = {"units": units, "index": index,
+    write_text_units(units)
+    out ={"units": units, "index": index,
            "entries": {k: {"phrase": e["phrase"], "def": "; ".join(e["defs"][:3]), "units": e["units"]}
                        for k, e in entries.items()}}
     (ROOT / "content/phrasal-verbs.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
     print(f"{len(units)} 个单元，Mini dictionary {len(entries)} 个短语，"
           f"有标题 {sum(1 for u in units if not u['title'].startswith('Unit'))}，"
-          f"有答案页 {sum(1 for u in units if u['keyPages'])}")
+          f"有答案页 {sum(1 for u in units if u['keyPages'])}，文字版 {sum(1 for u in units if u['text'])}"
+          f"（自动还原 {sum(1 for u in units if u['text'] and u['auto'])}）")
 
 
 if __name__ == "__main__":

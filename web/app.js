@@ -4,6 +4,7 @@ import { initLookup, highlightVocab, closeLookup } from "./lookup.js";
 import { renderQuestions, answerKind } from "./questions.js";
 import { toolbarHtml, createMarker, bindToolbar, currentTool } from "./marks.js";
 import { timerHtml, createTimer } from "./timer.js";
+import { renderPV, gradeKey, checkAnswer } from "./pv.js";
 
 const app = document.getElementById("app");
 initLookup(app);
@@ -19,6 +20,7 @@ const routes = [
   [/^\/review$/, reviewView],
   [/^\/phrases$/, phrasesView],
   [/^\/phrases\/(\d+)$/, phraseUnitView],
+  [/^\/phrases\/(\d+)\/book$/, phraseBookView],
   [/^\/records$/, recordsView],
 ];
 
@@ -717,13 +719,15 @@ async function phraseUnitView(n) {
   const savedMap = new Map(vocab.map((v) => [v.word.toLowerCase(), v.id]));
   const tr = u.phrases.length ? await api.post("/api/phrases", { keys: u.phrases.map((p) => p.key) }) : {};
   let tab = local.get("pv-tab", "list");
+  if (tab === "book" && u.text) tab = "list"; // 讲解和练习是单独的页面
+  const doc = u.text || u.hasKey ? await getJSON(`/content/pv/${String(n).padStart(2, "0")}.json`) : null;
   app.innerHTML = `<div class="page">
     <div class="row small" style="margin-bottom:10px"><a href="#/phrases">← 全部单元</a><span class="spacer"></span>
       ${n > 1 ? `<a href="#/phrases/${n - 1}">← 第 ${n - 1} 单元</a>` : ""}${n < 70 ? `<a href="#/phrases/${n + 1}" style="margin-left:14px">第 ${n + 1} 单元 →</a>` : ""}</div>
     <div class="page-head"><div><div class="muted small">${esc(u.group || "")} · Unit ${n}</div><h1 style="margin-top:4px">${esc(u.title)}</h1></div>
       <button class="btn ${doneList.includes(n) ? "" : "primary"}" id="done">${doneList.includes(n) ? "✓ 已学完" : "标记为学完"}</button></div>
     <div class="seg" id="ptab" style="margin-bottom:16px">
-      <button data-t="list">本单元短语 ${u.phrases.length}</button><button data-t="book">原书讲解和练习</button><button data-t="key">练习答案</button>
+      <button data-t="list">本单元短语 ${u.phrases.length}</button><button data-t="book">讲解和练习</button><button data-t="key">练习答案</button>
     </div>
     <div id="pbody"></div>
   </div>`;
@@ -748,13 +752,21 @@ async function phraseUnitView(n) {
         : `<div class="card empty">这个单元没有整理出短语清单，请看「原书讲解和练习」。</div>`;
     } else if (tab === "book") {
       pbody.innerHTML = `<div class="qpages" style="padding:0">${u.pages.map((p) => `<img src="/content/pages/phrasal-verbs/${p}.jpg" alt="第 ${p} 页">`).join("")}</div>`;
+    } else if (doc?.key) {
+      pbody.innerHTML = `<div class="card pv-keydoc" data-source="短语书 Unit ${n} 答案" data-link="#/phrases/${n}">${renderPV(doc.key, { prefix: "k" }).left}
+        <details class="orig"><summary class="muted">看原书答案页</summary><div class="qpages" style="padding:12px 0">${u.keyPages.map((p) => `<img loading="lazy" src="/content/pages/phrasal-verbs/${p}.jpg" alt="答案 第 ${p} 页">`).join("")}</div></details></div>`;
     } else {
       pbody.innerHTML = u.keyPages.length ? `<p class="muted small">答案页上也有其他单元的答案，找 Unit ${n}。</p><div class="qpages" style="padding:0">${u.keyPages.map((p) => `<img loading="lazy" src="/content/pages/phrasal-verbs/${p}.jpg" alt="答案 第 ${p} 页">`).join("")}</div>`
         : `<div class="card empty">没找到这个单元的答案页</div>`;
     }
   }
   render();
-  app.querySelector("#ptab").onclick = (e) => { if (e.target.dataset.t) { tab = e.target.dataset.t; local.set("pv-tab", tab); render(); } };
+  app.querySelector("#ptab").onclick = (e) => {
+    const t = e.target.dataset.t;
+    if (!t) return;
+    if (t === "book" && u.text) { location.hash = `#/phrases/${n}/book`; return; }
+    tab = t; local.set("pv-tab", tab); render();
+  };
   app.querySelector("#done").onclick = async (e) => {
     const list = new Set((await api.get("/api/kv?key=pv-done")).value || []);
     list.has(n) ? list.delete(n) : list.add(n);
@@ -786,6 +798,171 @@ async function phraseUnitView(n) {
     b.textContent = b.dataset.saved ? "✓ 已加入" : "＋ 生词本";
     await refreshVocab(); refreshBadge();
   });
+}
+
+// 原书讲解（左）+ 练习（右），和题库一样可以点词、标记，练习直接作答
+async function phraseBookView(n) {
+  n = +n;
+  const pv = await getPV();
+  const u = pv.units[n - 1];
+  if (!u) throw new Error("没有这个单元");
+  if (!u.text) { location.replace(`#/phrases/${n}`); return; }
+  const doc = await getJSON(`/content/pv/${String(n).padStart(2, "0")}.json`);
+  document.body.className = "practice immersive";
+  const draftKey = `pv-draft:${n}`;
+  const saveKey = `pv-ex:${n}`;
+  let answers = local.get(draftKey, {});
+  let submitted = false;
+  const { left, right } = renderPV(doc.doc, { unit: n });
+  const source = `短语书 Unit ${n} ${u.title}`;
+  const origPages = (pages) => `<details class="orig"><summary class="muted">看原书页面（转写难免有个别错误，以原书为准）</summary>
+    <div class="qpages" style="padding:12px 0">${pages.map((p) => `<img loading="lazy" src="/content/pages/phrasal-verbs/${p}.jpg" alt="第 ${p} 页">`).join("")}</div></details>`;
+
+  app.innerHTML = `
+    <div class="practice-bar">
+      <a class="btn ghost small" href="#/phrases/${n}" aria-label="返回">←</a>
+      <span class="title">Unit ${n}<span class="muted title-sub" style="font-weight:400"> · ${esc(u.title)}</span></span>
+      <span class="spacer"></span>
+      ${toolbarHtml()}
+      <button class="btn primary small" id="submit">对答案</button>
+    </div>
+    <div class="mobile-seg"><div class="seg" id="mseg">
+      <button data-p="passage" class="on">讲解</button><button data-p="questions">练习</button>
+    </div></div>
+    <div class="split">
+      <section class="pane pane-left show" id="pane-passage">
+        <article class="passage pv-doc" data-source="${esc(source)}" data-link="#/phrases/${n}/book">
+          <div class="muted small" style="font-family:var(--sans)">${esc(u.group || "")} · Unit ${n}</div>
+          <h1 class="p-title">${esc(u.title)}</h1>
+          ${left}
+          ${origPages([u.pages[0]])}
+        </article>
+      </section>
+      <section class="pane pane-right" id="pane-right">
+        <div class="qhead"><b>Exercises</b><span class="spacer"></span><span id="progress" class="muted small"></span></div>
+        <div id="result"></div>
+        <div class="questions pv-exs" id="questions" data-source="${esc(source + " 练习")}" data-link="#/phrases/${n}/book">${right}
+          ${origPages([u.pages[1]])}
+        </div>
+      </section>
+    </div>`;
+
+  const $ = (s) => app.querySelector(s);
+  const qbox = $("#questions");
+  const marker = createMarker({ root: app, unitId: `pv-${n}` });
+  const unbindTools = bindToolbar(app, marker);
+  const grow = (el) => { if (el.tagName === "TEXTAREA") { el.style.height = "auto"; el.style.height = el.scrollHeight + 2 + "px"; } };
+
+  const inputs = () => [...qbox.querySelectorAll("[data-b]")];
+  const choiceKey = (ex, q) => `c:${ex}:${q}`;
+  function fill() {
+    inputs().forEach((i) => { i.value = answers[i.dataset.b] || ""; i.disabled = submitted; grow(i); });
+    qbox.querySelectorAll(".radio[data-v]").forEach((b) => b.classList.toggle("on", answers[choiceKey(b.dataset.ex, b.dataset.n)] === b.dataset.v));
+    const total = inputs().length + new Set([...qbox.querySelectorAll(".radio[data-v]")].map((b) => choiceKey(b.dataset.ex, b.dataset.n))).size;
+    const done = Object.values(answers).filter((v) => String(v).trim()).length;
+    $("#progress").textContent = total ? `已填 ${Math.min(done, total)}/${total}` : "";
+  }
+  function save() { local.set(draftKey, answers); fill(); }
+  qbox.addEventListener("input", (e) => { const b = e.target.dataset?.b; if (b) { answers[b] = e.target.value; local.set(draftKey, answers); grow(e.target); } });
+  qbox.addEventListener("change", () => fill());
+  qbox.addEventListener("click", (e) => {
+    const row = e.target.closest(".mcq-opt");
+    if (!row || submitted) return;
+    const tool = currentTool();
+    const radio = e.target.closest(".radio") || (tool === "none" || !e.target.closest(".text-sel") ? row.querySelector(".radio") : null);
+    if (!radio) return;
+    const k = choiceKey(radio.dataset.ex, radio.dataset.n);
+    answers[k] = answers[k] === radio.dataset.v ? "" : radio.dataset.v;
+    save();
+  });
+
+  // ---- 对答案：能自动判的标对错，每道练习下面显示原书答案
+  function showResult() {
+    let ok = 0, graded = 0;
+    qbox.querySelectorAll(".ans-chip, .pv-key").forEach((x) => x.remove());
+    qbox.querySelectorAll(".right, .wrong, .correct").forEach((x) => x.classList.remove("right", "wrong", "correct"));
+    for (const sec of qbox.querySelectorAll(".pv-ex")) {
+      const ex = sec.dataset.ex;
+      const md = doc.keyEx[ex];
+      const key = gradeKey(md);
+      if (key) {
+        for (const [q, alts] of Object.entries(key)) {
+          const els = sec.querySelectorAll(`[data-b][data-n="${q}"]`);
+          const radios = sec.querySelectorAll(`.radio[data-n="${q}"]`);
+          if (els.length === 1) {
+            const good = checkAnswer(answers[els[0].dataset.b], alts);
+            graded++; if (good) ok++;
+            els[0].classList.add(good ? "right" : "wrong");
+            if (!good) els[0].insertAdjacentHTML("afterend", `<span class="ans-chip">${esc(alts.join(" / "))}</span>`);
+          } else if (radios.length) {
+            const good = checkAnswer(answers[choiceKey(ex, q)], alts);
+            graded++; if (good) ok++;
+            radios.forEach((r) => { if (alts.includes(r.dataset.v)) r.classList.add("correct"); });
+            sec.querySelector(`.pv-q[data-q="${q}"]`)?.classList.add(good ? "right" : "wrong");
+          }
+        }
+      }
+      if (md) sec.insertAdjacentHTML("beforeend", `<div class="pv-key"><div class="pv-key-h">答案</div>${renderPV(md, { prefix: `k${ex}-` }).left}</div>`);
+    }
+    $("#result").innerHTML = `<div class="result-box">${graded ? `<span class="num">${ok}/${graded}</span>` : ""}
+      <div><div style="font-weight:650">${graded ? (ok === graded ? "全对！" : "看看红色的地方") : "答案已显示"}</div>
+      <div class="muted small">${graded ? "填空和选择自动判分；" : ""}每道练习下面有原书答案，写句子的题自己对照</div></div>
+      <span class="spacer"></span><button class="btn small" id="redo">重做</button></div>`;
+    $("#submit").textContent = "重做";
+    return { ok, graded };
+  }
+  async function submit() {
+    if (submitted) { redo(); return; }
+    submitted = true;
+    fill();
+    const { ok, graded } = showResult();
+    await api.post("/api/kv", { key: saveKey, value: { answers, ok, graded, at: Date.now() } });
+    local.del(draftKey);
+    show("questions");
+    $("#pane-right").scrollTo({ top: 0, behavior: "smooth" });
+  }
+  function redo() {
+    submitted = false; answers = {};
+    local.del(draftKey);
+    api.post("/api/kv", { key: saveKey, value: null });
+    $("#result").innerHTML = "";
+    qbox.querySelectorAll(".ans-chip, .pv-key").forEach((x) => x.remove());
+    qbox.querySelectorAll(".right, .wrong, .correct").forEach((x) => x.classList.remove("right", "wrong", "correct"));
+    $("#submit").textContent = "对答案";
+    fill();
+  }
+  $("#submit").onclick = submit;
+  $("#result").addEventListener("click", (e) => { if (e.target.id === "redo") redo(); });
+
+  // ---- 手机：讲解 / 练习切换
+  const paneLeft = $("#pane-passage"), paneRight = $("#pane-right");
+  function show(which) {
+    paneLeft.classList.toggle("show", which === "passage");
+    paneRight.classList.toggle("show", which !== "passage");
+    app.querySelectorAll("#mseg button").forEach((b) => b.classList.toggle("on", b.dataset.p === which));
+  }
+  $("#mseg").onclick = (e) => { const b = e.target.closest("button"); if (b) show(b.dataset.p); };
+
+  // 做过的：没有草稿时显示上一次对答案的结果
+  const last = (await api.get(`/api/kv?key=${encodeURIComponent(saveKey)}`)).value;
+  if (last && !Object.keys(answers).length) {
+    answers = last.answers || {};
+    submitted = true;
+    fill();
+    showResult();
+  }
+  fill();
+  await marker.load();
+  highlightVocab(app);
+  const onVocab = () => highlightVocab(app);
+  document.addEventListener("vocab-changed", onVocab);
+
+  return () => {
+    unbindTools();
+    delete document.body.dataset.tool;
+    document.removeEventListener("vocab-changed", onVocab);
+    if (window.CSS && CSS.highlights) CSS.highlights.delete("vocab");
+  };
 }
 
 // ================================================================ 启动
