@@ -103,6 +103,8 @@ def rows(page):
             continue
         for f in fixes:  # content-src/pv/ocr-fixes.json：手工补上 OCR 漏掉的题号、填空
             if abs(l["y"] - f["y"]) < 0.004 and abs(l["x"] - f["x"]) < 0.006:
+                if "replace" in f:
+                    t = t.replace(*f["replace"], 1)
                 t = f.get("prefix", "") + t + f.get("suffix", "")
         if re.search(r"English Phrasal Verbs in Use", t) and l["y"] > 0.9:
             continue
@@ -202,12 +204,13 @@ def explanation(page, bold, image=None):
         方框里、图片旁边的文字比整页窄，不能拿整页的右边线比。"""
         x = rs[i]["x"]
         near = [r["r"] for r in rs[max(0, i - 3):i + 4] if len(r["segs"]) == 1 and abs(r["x"] - x) < 0.03]
-        return min(max(near + [rs[i]["r"]]), fr) - 0.01  # 不比整页的右边线更严
+        return min(max(near + [rs[i]["segs"][0]["r"]]), fr) - 0.01  # 不比整页的右边线更严
 
     def end_para():
         nonlocal para
         if para:
-            out.append(bold(para["t"]))
+            out.append(bold(re.sub(r"^['’] (?=[a-z(])", "1 ", para["t"])))  # 脚注 1 常常认成 '
+
             out.append("")
             for c in para.get("captions", []):  # 图片旁边的说明文字
                 out.extend([bold(c), ""])
@@ -318,6 +321,9 @@ def explanation(page, bold, image=None):
         if dialog and len(segs) == 1 and first["x"] > bx + 0.04:
             dialog[-1][1] += " " + first["t"]
             continue
+        if len(segs) > 1 and not table and first["r"] - first["x"] > 0.25 and all(
+                len(s["t"]) <= 10 and len(s["t"].split()) == 1 for s in segs[1:]):
+            segs = [first]  # 旁边插图里的字（ansac、CHECK-1 这种），不要
         lonely = not table and (i + 1 >= len(rs) or len(rs[i + 1]["segs"]) == 1)
         if len(segs) > 1 and lonely and para and abs(first["x"] - para["x"]) < 0.03 and para["r"] > para["edge"] - 0.06 \
                 and segs[1]["x"] > para["edge"] - 0.03:
@@ -340,7 +346,8 @@ def explanation(page, bold, image=None):
             continue
         end_table(); end_dialog()
         t = first["t"]
-        if para and abs(first["x"] - para["x"]) < 0.03 and para["r"] > para["edge"] - 0.06 \
+        if para and abs(first["x"] - para["x"]) < 0.03 and (para["r"] > para["edge"] - 0.06 or (
+                re.match(r"^[a-z]", t) and re.match(r"^[A-Z]", para["t"]) and not re.search(r"[.!?]['\"]?$", para["t"]))) \
                 and not re.match(r"^\d\s|^[•-]", t) and not para.get("captions"):
             para["t"] = join_text(para["t"], t)
             para["r"] = first["r"]
@@ -421,6 +428,7 @@ def numbered_blanks(paras):
         return paras
     out, k = [], 0
     for t in paras:
+        t = re.sub(r"\((\d{1,2})\)\s*[-–]\s*(?=\{_\})", r"(\1) ", t)  # (8)-...... 的横线也是空的一部分
         t = re.sub(r"(?<![\w(])(\d{1,2})\)\s*\{_\}", r"(\1) {_}", t)
         t = re.sub(r"\((\d{1,2})\)(?!\s*\{_\})", r"(\1) {_}", t)
         t = re.sub(r"\{_\}\s*\((\d{1,2})\)", r"(\1) {_}", t)
@@ -564,7 +572,7 @@ def split_columns(rs, prose=False, breaks=lambda r: False):
             bounds = [x - 0.04 for x in anchors] + [2]
             notes = [sum(1 for r in blk for s in r["segs"] if abs(s["x"] - x) < 0.025
                          and re.match(r"^(['’*°®!\"]|\d{1,2})\s+[a-z(]", s["t"])) for x in anchors]
-            if len(blk) < 6 or a != anchors or (prose and max(notes) < 3):
+            if len(blk) < (4 if prose else 6) or a != anchors or (prose and max(notes) < 3):
                 out += blk
                 continue
             for c in range(len(anchors)):
@@ -589,10 +597,14 @@ def exercises(page, unit):
     exs = []
     last_col = None
     item_cols = {r["col"] for r in rs if r.get("col") and ITEM.match(r["segs"][0]["t"])}
+    # 有缩进的续行的栏（聊天记录）：顶着左边线的每一行是新的一句
+    turn_cols = {r["col"] for r in rs if r.get("col") and 0.02 < r["x"] - r["lx"] < 0.05}
+    prev_cy = 0
     for row in rs:
         segs = row["segs"]
         t0 = segs[0]["t"]
         lx = row.get("lx", bx)
+        gap, prev_cy = row["cy"] - prev_cy, row["cy"]  # 和上一行隔多远（隔得远是新的一段）
         col, last_col = row.get("col"), row.get("col") or last_col
         m = EXHEAD.match(t0)
         if m and segs[0]["x"] < bx - 0.03:
@@ -608,7 +620,13 @@ def exercises(page, unit):
             continue
         # 词库：一行好几个短词
         if len(segs) >= 3 and all(len(s["t"].split()) <= 3 and not DOTS.search(s["t"]) for s in segs) and not ITEM.match(t0):
+            if not ex["words"] and not ex["items"]:
+                ex["thead"] = segs  # 可能是要填的表格的表头
             ex["words"] += [s["t"] for s in segs]
+            continue
+        if len(segs) == 1 and ex.get("thead") and abs(segs[0]["x"] - ex["thead"][0]["x"]) < 0.02 \
+                and re.fullmatch(r"[a-z][a-z' -]*", t0) and len(t0.split()) <= 3 and not ex["items"]:
+            ex.setdefault("trows", []).append(t0)  # 表头下面第一栏的词：填表
             continue
         if len(segs) == 1 and ex["words"] and len(t0.split()) <= 3 and not ITEM.match(t0) and not ex["items"]:
             ex["words"].append(t0)
@@ -699,13 +717,14 @@ def exercises(page, unit):
             # 分栏的一段话（信）：每一栏一个方框，Dear …, 另起一行
             if ex.get("col") != col:
                 ex["intro"].append("> " + text)
-            elif re.match(r"^(Dear\b|\*\*)", text) or ex["intro"][-1].endswith(","):
+            elif re.match(r"^(Dear\b|\*\*)", text) or ex["intro"][-1].endswith(",") or (
+                    col in turn_cols and segs[0]["x"] - row["lx"] < 0.012):
                 ex["intro"][-1] += "\n> " + text
             else:
                 ex["intro"][-1] = join_text(ex["intro"][-1], text)
             ex["col"] = col
         else:
-            if ex["intro"] and segs[0]["x"] >= bx - 0.02 and not ex["words"]:
+            if ex["intro"] and segs[0]["x"] >= bx - 0.02 and not ex["words"] and gap < 0.03:
                 ex["intro"][-1] = join_text(ex["intro"][-1], text)
             else:
                 ex["intro"].append(text)
@@ -716,6 +735,14 @@ def exercises(page, unit):
         out.append(f"### {ex['n']} {intro}".rstrip())
         for p in ex["intro"][1:]:
             out += ["", p, ""] if p.startswith("> ") else [p]  # 每封信一个方框
+        if len(ex.get("trows", [])) >= 2:
+            # 填表：表头 + 每行第一栏给出的词，其余格子留空
+            head = [s["t"] for s in ex["thead"]]
+            out += ["", "| " + " | ".join(head) + " |"]
+            cell = ["{__}" if re.search(r"example|sentence", h, re.I) else "{_}" for h in head[1:]]  # 写句子的格子大一点
+            out += ["| " + " | ".join([r] + cell) + " |" for r in ex["trows"]]
+            out.append("")
+            ex["words"] = ex["words"][len(head):]
         if ex["words"]:
             out.append("[[" + " | ".join(ex["words"]) + "]]")
         # 选项全在小题后面：配对题（每个小题填一个字母）；跟在某个小题后面：选择题
@@ -739,7 +766,7 @@ def exercises(page, unit):
             out += [f"- {o['k']}) {o['t']}" for o in ex["opts"] if o["after"] == len(ex["items"])]
         elif not ex["items"]:
             out += [f"- {o['k']}) {o['t']}" for o in ex["opts"]]
-            if "{_}" not in "".join(ex["intro"]):
+            if "{_}" not in "".join(ex["intro"]) and not ex.get("trows"):
                 out.append("{__}")  # 没有小题、也没有空的练习（改写一段话之类）：给一个作答框
         if ex.get("halves"):
             out.append("")
