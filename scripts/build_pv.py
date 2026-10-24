@@ -195,10 +195,11 @@ def write_text_units(units):
         src = ROOT / f"content-src/pv/{u['n']:02d}.md"
         k = keys.get(u["n"], {"md": "", "ex": {}})
         if src.exists():
-            doc, u["auto"] = src.read_text().strip(), False
+            # 手工整理的文件后面如果附了答案（=== 答案 ===），网页上不要显示
+            doc, u["auto"] = src.read_text().split("=== 答案 ===")[0].strip(), False
         else:
             doc = unit_markdown(pages, u["n"], u["title"], [p["key"] for p in u["phrases"]],
-                                ROOT / "content/pages/phrasal-verbs").strip()
+                                ROOT / "content/pages/phrasal-verbs", k["ex"]).strip()
             u["auto"] = True
             if sorted(re.findall(r"^### (\d+\.\d+)", doc, re.M)) != sorted(k["ex"]):
                 doc = ""

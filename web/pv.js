@@ -15,7 +15,8 @@
 //   @img 10 0.2 0.7 0.8 0.9     原书插图：页码 + 左、上、右、下的位置（占整页的比例）
 //
 // 判分（gradeKey）：key.md 里这道题的答案是 "1 apart · 2 around/round" 这种短答案时自动判对错。
-// 填空对应第几小题：小题里只有一个空 → 小题号；空后面紧跟 (3) → 第 3 小题。其他题只显示答案对照。
+// 填空对应第几小题：小题里只有一个空 → 小题号；空后面紧跟 (3) → 第 3 小题。
+// 一个小题有几个空、答案用逗号分开几个（clock, clock）→ 按顺序一个空对一个。其他题只显示答案对照。
 
 import { esc } from "./util.js";
 
@@ -169,6 +170,8 @@ export function gradeKey(md) {
       const ans = m[2].replace(/\([^)]*\)/g, " ").replace(/\*/g, "").trim();
       const alts = ans.split(/\s*\/\s*|\s+or\s+/).map(norm).filter(Boolean);
       if (!alts.length || alts.some((a) => a.split(" ").length > 4)) return null;
+      // 一题两个空的答案写成 "clock, clock" 或 "ordering, about or around"：按逗号分开，第几个空对第几个
+      if (ans.includes(",")) alts.parts = ans.split(/\s*,\s*/).map((p) => p.split(/\s*\/\s*|\s+or\s+/).map(norm).filter(Boolean));
       out[m[1]] = alts;
     }
   }

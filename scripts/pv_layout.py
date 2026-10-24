@@ -356,7 +356,17 @@ def explanation(page, bold, image=None):
             end_para()
             para = {"t": t, "x": first["x"], "r": first["r"], "edge": local_right(i)}
     end_all()
-    return out
+    return superscripts(out)
+
+
+# 粗体短语后面紧跟的上标脚注号，OCR 认成了 ' ? ! * ® ° & " 或数字。? ! 后面还接着小写字（句子没完）才算
+NOTE_MARK_AFTER_BOLD = re.compile(r"(?<=\*\*)(['’*®°&\"]|\d{1,2}|[?!](?=[.,;:]|\s+[a-z]))(?=[\s,.;:)?!]|$)")
+
+
+def superscripts(lines):
+    """讲解里短语后面的脚注号 OCR 认成了标点（get away! from London、fitted in? at once），看着像标点用错了。
+    认不准是第几号，所以直接去掉；脚注就在这段文字下面。"""
+    return [l if l.startswith("#") else NOTE_MARK_AFTER_BOLD.sub("", l) for l in lines]
 
 
 def join_text(a, b):
@@ -393,9 +403,24 @@ def render_table(table, bold):
             grid.append(cells)
         else:
             grid[-1] = [join_text(a, b).strip() if b else a for a, b in zip(grid[-1], cells)]
+    # 几乎总是空的一栏（表格上面的图、错位的字带出来的）：并到左边那一栏
+    if len(grid) >= 3:
+        c = 1
+        while c < len(grid[0]):
+            if sum(1 for r in grid if r[c]) <= max(1, len(grid) // 4):
+                for r in grid:
+                    r[c - 1] = (r[c - 1] + " " + r[c]).strip()
+                    del r[c]
+            else:
+                c += 1
     if len(anchors) == 1 or len(grid) == 1:  # 只有一行的不是表格，是隔得比较开的一行字
         return [bold(" ".join(c for c in r if c)) for r in grid]
     out = []
+    if len(grid) >= 4 and all(len(c.split()) <= 5 for c in grid[0] + grid[1]) \
+            and any(re.search(r"\b[A-Z]{2,}\b", c) for c in grid[0]) \
+            and any(len(c.split()) > 5 for r in grid[2:] for c in r):
+        out += [" ".join(c for c in grid[0] if c), ""]  # 表头上面还有一行短字（图上的字）：不算表头
+        grid = grid[1:]
     for i, r in enumerate(grid):
         cells = [c.replace("|", "/") for c in r]
         out.append("| " + " | ".join(c if i == 0 else bold(c) for c in cells) + " |")
@@ -413,6 +438,7 @@ def blanks(t):
     t = DOTS.sub(" {_} ", t).replace("\x00", "{_} ")
     t = re.sub(r"\{_\}(?:\s*\{_\})+", "{_}", t)
     t = re.sub(r"\{_\}\s*\.{1,2}(?=\s+[a-z])", "{_}", t)  # 空后面剩下的一两个点
+    t = re.sub(r"(?<=[A-Za-z])\.\.(?=\s+[a-z])", " {_}", t)  # 只剩两个点的空：I.. about
     t = re.sub(r"\s+([?.,!;:])", r"\1", t.replace("{_} ", "{_} "))
     t = re.sub(r"\{_\}(?=[A-Za-z])", "{_} ", t)
     return re.sub(r"\s+", " ", t).strip()
@@ -421,10 +447,30 @@ def blanks(t):
 def numbered_blanks(paras):
     """短文填空：书上是 (3) ......，编号在空前面；OCR 有时丢了括号或者点、认错数字。
     统一成 {_} (3)，并且按出现的顺序重新编号（分栏已经排好了阅读顺序）。"""
+    paras = [re.sub(r"\{_\}[\s.•·]*(?=\(\d{1,2}\))", "{_} ", t) for t in paras]  # {_}.. (1)、{_} • (2)
+    paras = [re.sub(r"\{_\}[\s.•·]*\(?([\dIl]{1,2})\)", lambda m: "{_} (" + m.group(1).replace("l", "1").replace("I", "1") + ")", t)
+             for t in paras]  # {_}.. 1)、{_} l)
     text = " ".join(paras)
     before = len(re.findall(r"\(\d{1,2}\)\s*\{_\}", text))
     after = len(re.findall(r"\{_\}\s*\(\d{1,2}\)", text))
-    if before + after < 3 or after >= before:  # 已经是 {_} (3) 的写法
+    lone = len(re.findall(r"(?<!\{_\} )\((\d{1,2})\)", text))
+    if before + after < 3:
+        return paras
+    if after >= before:
+        # 已经是 {_} (3) 的写法：补上丢了括号的 {_} 3)、丢了空的 (4)
+        if after + lone < 3:
+            return paras
+        paras = [re.sub(r"\{_\}\s*(\d{1,2})\)", r"{_} (\1)", t) for t in paras]
+        paras = [re.sub(r"(?<!\{_\} )(?<!\{_\})\s*\((\d{1,2})\)", r" {_} (\1)", t) for t in paras]
+        seen = [int(n) for n in re.findall(r"\{_\} \((\d{1,2})\)", " ".join(paras))]
+        if seen != list(range(1, len(seen) + 1)):  # 有认错的编号（两个 (1)）：按出现的顺序重新编
+            k = 0
+
+            def renum(m):
+                nonlocal k
+                k += 1
+                return f"{{_}} ({k})"
+            paras = [re.sub(r"\{_\} \((\d{1,2})\)", renum, t) for t in paras]
         return paras
     out, k = [], 0
     for t in paras:
@@ -455,6 +501,7 @@ def tick_split(segs):
 def row_text(segs):
     """一行练习文字：段之间空得很开的地方是填空。"""
     t = ""
+    segs = [s for s in segs if not re.fullmatch(r"[•·\s]+", s["t"])] or segs  # 只有圆点的一段是杂点
     for i, s in enumerate(segs):
         after_num = i == 1 and re.fullmatch(r"[1-9]\d?|S", segs[0]["t"])  # 小题号后面空开的不是填空
         if i and s["gap"] > 0.05 and not after_num and not DOTS.search(t[-6:] + " " + s["t"][:6]) and not t.endswith("{_}"):
@@ -586,7 +633,120 @@ def split_columns(rs, prose=False, breaks=lambda r: False):
     return out
 
 
-def exercises(page, unit):
+def key_numbers(md):
+    """答案里这道练习有哪些小题号：1 b · 2 c 或者 1. …… 开头的行。"""
+    nums = set()
+    for line in (md or "").split("\n"):
+        if re.match(r"^\d{1,2}\.?\s", line.strip()):
+            nums |= {int(m) for m in re.findall(r"(?:^|·)\s*(\d{1,2})\.?\s", line.strip())}
+    return sorted(nums)
+
+
+INSTRUCTION = re.compile(
+    r"(Use|Write|Make|Then|Look|If|Remember|There (are|is)|Each|Some|Try|Do|Note|Explain|Decide|Choose|Complete|Match|"
+    r"Fill|Rewrite|Replace|Correct|Find|Put|Read|Answer|Think|Say|Underline|Check|Compare|Give|Change|Add|Describe|"
+    r"Imagine|Not|Be|Sometimes|Here|Which|What|How|Now|Finally|In (each|some|these|the)|The (first|words|sentences|verbs|phrasal|"
+    r"underlined|text|pictures|answers|box|following)|These|This (is|text|exercise)|One|Two|Three|Four|Five|Six)\b")
+
+
+def split_instruction(t):
+    """题目说明后面接着的短文（OCR 把它们排成了一段）：从第一句不像说明的句子开始分出去。
+    只在后面那部分有空、或者很长的时候才分。"""
+    for m in re.finditer(r"(?<=[.?!:)])\s+(?=[A-Za-z'\"{])", t):
+        rest = t[m.end():]
+        if INSTRUCTION.match(rest):
+            continue
+        if "{_}" in rest or len(rest) > 40:
+            return t[:m.start()], rest
+        break
+    return t, ""
+
+
+def no_items_repair(ex, want, letters, short_set=()):
+    """没有小题的练习，照答案里的小题号给作答的地方。"""
+    if not want or ex["items"]:
+        return
+    body = " ".join(ex["intro"])
+    # 一段话里写着 (1) (2) … 但是没有空（填句子的短文）：每个 (n) 前面放一个空
+    if "{_}" not in body and all(f"({k})" in body for k in want):
+        ex["intro"] = [re.sub(r"\((\d{1,2})\)", r"{_} (\1)", p) for p in ex["intro"]]
+        return
+    # 一段话里是 1 …… 2 …… 3 ……（编号的说明，OCR 接成了一段）：按题号拆开
+    for i, p in enumerate(ex["intro"]):
+        cuts = [re.search(rf"(?<=[\w.?!)}}]) {k} (?=[A-Z])", p) for k in want[1:]]
+        if i and all(cuts) and all(a.start() < b.start() for a, b in zip(cuts, cuts[1:])):
+            starts = [0] + [c.start() for c in cuts]
+            ends = [c.start() for c in cuts] + [len(p)]
+            texts = [p[a:b] for a, b in zip(starts, ends)]
+            texts = [re.sub(r"^\s*(\d{1,2}|[Il])\s+", "", t).strip() for t in texts]
+            ex["intro"] = ex["intro"][:i] + ex["intro"][i + 1:]
+            ex["items"] = [{"t": t, "n": k, "x": 0} for k, t in zip(want, texts)]
+            ex["book_nums"] = True
+            return
+    # 看图写短语、写出原形：没有句子，给编号的作答框
+    if "{_}" not in body:
+        ex["items"] = [{"t": "", "n": k, "x": 0} for k in want]
+        ex["book_nums"] = True
+        ex["short"] = ex["ex_letters"] or ex["n"] in short_set
+
+
+def repair_items(ex, want):
+    """OCR 漏掉了题号的时候，照着答案里的小题号补回来：
+    (a) 题号在同一行的中间（两栏的小题：1 …… 4 ……）；
+    (b) 题号整个没认出来，这一题的文字接在上一题后面（上一行句子已经完，这一行大写开头另起）；
+    (c) 整道题都没认出来（比如第 1 题）：放一个占位的小题，题号对上，提醒看原书。
+    只在书上认出来的题号都在答案里、而且是从小到大的时候才动。"""
+    items = ex["items"]
+    if not want or not items or any(0 < o["after"] < len(items) for o in ex["opts"]):
+        return
+    have = [it["n"] for it in items]
+    if have != sorted(set(have)) or not set(have) <= set(want):
+        return
+    missing = [m for m in want if m not in have]
+    tail_opts = [o for o in ex["opts"] if o["after"] == len(items)]  # 配对题：选项在所有小题后面
+    if not missing:
+        ex["book_nums"] = True
+        return
+    for m in list(missing):  # (a)
+        for it in items:
+            mm = re.search(rf"(?<=[\w?.!)}}]) {m} (?=[A-Za-z(])", it["t"])
+            if it["n"] < m and mm:
+                items.append({"t": it["t"][mm.end():], "n": m, "x": it["x"]})
+                it["t"] = re.sub(r"\s*\{_\}$", "", it["t"][:mm.start()]) or it["t"][:mm.start()]
+                it.pop("lines", None)
+                missing.remove(m)
+                break
+    items.sort(key=lambda it: it["n"])
+    for it in list(items):  # (b)
+        gap, k = [], it["n"] + 1
+        while k in missing:
+            gap.append(k)
+            k += 1
+        lines = it.get("lines", [])
+        cuts = [j for j in range(1, len(lines))
+                if (re.match(r"^[A-Z{]", lines[j]) and re.search(r"([.?!]['\"]?|\{__?\}|\([A-Z]{2,}\))$", lines[j - 1]))
+                or (re.match(r"^[a-z]", lines[j]) and lines[j - 1].endswith("?"))]  # 释义一条一条的：…? 下一条小写开头
+        if gap and len(cuts) == len(gap):
+            parts = [lines[a:b] for a, b in zip([0] + cuts, cuts + [len(lines)])]
+            join = lambda ls: " ".join(ls)
+            it["t"] = join(parts[0])
+            for m, part in zip(gap, parts[1:]):
+                items.append({"t": join(part), "n": m, "x": it["x"]})
+                missing.remove(m)
+    if 1 in missing and ex["intro"] and re.match(r"^[Il]\s+[A-Z]", ex["intro"][-1]) and len(ex["intro"]) > 1:
+        # 第 1 题的 1 认成了 I，跑到说明里去了
+        items.append({"t": ex["intro"].pop()[2:], "n": 1, "x": 0})
+        missing.remove(1)
+    for m in [m for m in missing if m < min(it["n"] for it in items)]:  # (c)
+        items.append({"t": "（这一题 OCR 没有认出来，请看下面的原书页面）", "n": m, "x": 0})
+        missing.remove(m)
+    items.sort(key=lambda it: it["n"])
+    for o in tail_opts:
+        o["after"] = len(items)
+    ex["book_nums"] = True
+
+
+def exercises(page, unit, expect=None):
     rs = rows(page)
     if rs and rs[0]["y"] < 0.075:
         rs = rs[1:]
@@ -619,7 +779,8 @@ def exercises(page, unit):
         if not ex:
             continue
         # 词库：一行好几个短词
-        if len(segs) >= 3 and all(len(s["t"].split()) <= 3 and not DOTS.search(s["t"]) for s in segs) and not ITEM.match(t0):
+        if len(segs) >= 3 and all(len(s["t"].split()) <= 3 and not DOTS.search(s["t"]) for s in segs) and not ITEM.match(t0) \
+                and not all(OPTION.match(s["t"]) for s in segs):
             if not ex["words"] and not ex["items"]:
                 ex["thead"] = segs  # 可能是要填的表格的表头
             ex["words"] += [s["t"] for s in segs]
@@ -674,7 +835,9 @@ def exercises(page, unit):
             im = ITEM.match(text)
         om = OPTION.match(text)
         if om and segs[0]["x"] < lx + 0.1:
-            ex["opts"].append({"k": om.group(1), "t": text[om.end():], "after": len(ex["items"]), "x": segs[0]["x"]})
+            # 一行里有好几个选项：a) turned b) walked c) poured
+            for k, t in re.findall(r"(?:^|\s)([a-h])[).]\s*(.*?)(?=\s+[a-h][).]\s|$)", text):
+                ex["opts"].append({"k": k, "t": t, "after": len(ex["items"]), "x": segs[0]["x"]})
             continue
         its = ex["items"]
         if not im and len(its) >= 2 and text.startswith("{_}") and all(it["t"].startswith("{_}") for it in its) \
@@ -685,7 +848,7 @@ def exercises(page, unit):
             continue
         if im and segs[0]["x"] < lx + 0.03:
             n = 5 if im.group(1) == "S" else int(im.group(1))
-            ex["items"].append({"t": text[im.end():], "x": segs[0]["x"], "n": n})
+            ex["items"].append({"t": text[im.end():], "x": segs[0]["x"], "n": n, "lines": [text[im.end():]]})
             ex.setdefault("item_cy", []).append(row["cy"])
             continue
         if re.match(r"^(EXAMPLE|Example)\b", text):
@@ -704,6 +867,11 @@ def exercises(page, unit):
                 and segs[0]["x"] < ex["opts"][-1]["x"] + 0.01:
             # 选项后面、小题前面不缩进的一行：小题的题干（Which notice would you respond to if …）
             ex.setdefault("stem", []).append(re.sub(r"\s*\{_\}$", " …", text))  # 题干末尾的点是"接下面的小题"
+        elif ex["opts"] and ex["opts"][-1]["after"] == len(ex["items"]) and ex["items"] \
+                and segs[0]["x"] < ex["opts"][-1]["x"] - 0.005 and re.match(r"^[A-Z]", text):
+            # 选择题的选项后面、比选项靠左、大写开头的一行：题号没认出来的下一题
+            ex["items"].append({"t": text, "x": segs[0]["x"], "n": ex["items"][-1]["n"] + 1, "lines": [text]})
+            ex.setdefault("item_cy", []).append(row["cy"])
         elif ex["opts"] and ex["opts"][-1]["after"] == len(ex["items"]):
             ex["opts"][-1]["t"] = join_text(ex["opts"][-1]["t"], text)
         elif ex["items"]:
@@ -713,6 +881,8 @@ def exercises(page, unit):
                 ex["tail"][-1] = join_text(ex["tail"][-1], text)
             else:
                 ex["items"][-1]["t"] = join_text(ex["items"][-1]["t"], text)
+                if "lines" in ex["items"][-1]:
+                    ex["items"][-1]["lines"].append(text)
         elif col:
             # 分栏的一段话（信）：每一栏一个方框，Dear …, 另起一行
             if ex.get("col") != col:
@@ -729,9 +899,19 @@ def exercises(page, unit):
             else:
                 ex["intro"].append(text)
 
+    letters = (expect or {}).get("_letters", set())
     for ex in exs:
+        if ex["intro"]:
+            head, passage = split_instruction(ex["intro"][0])
+            if passage:
+                ex["intro"][:1] = [head, passage]
+        ex["ex_letters"] = ex["n"] in letters
+        no_items_repair(ex, (expect or {}).get(ex["n"]), letters, (expect or {}).get("_short", set()))
+        repair_items(ex, (expect or {}).get(ex["n"]))
         ex["intro"] = numbered_blanks(ex["intro"])
-        intro = ex["intro"][0] if ex["intro"] else ""
+        ex["intro"] = [p for p in ex["intro"] if not re.fullmatch(r"\d{1,2}", p.strip())]  # 插图的编号
+        intro = re.sub(r"(?<=[.?!:])(\s+\d{1,2})+$", "", ex["intro"][0]) if ex["intro"] else ""
+
         out.append(f"### {ex['n']} {intro}".rstrip())
         for p in ex["intro"][1:]:
             out += ["", p, ""] if p.startswith("> ") else [p]  # 每封信一个方框
@@ -752,13 +932,37 @@ def exercises(page, unit):
             out += [f"- {o['k']}) {o['t']}" for o in ex["opts"] if o["after"] == 0] + [""]
         out += ex.get("stem", [])
         nums = [it["n"] for it in ex["items"]]
-        if len(nums) < 2 or nums[0] < 3 or nums != list(range(nums[0], nums[0] + len(nums))):
+        if ex.get("book_nums"):
+            pass  # 题号和答案对上了，用书上的
+        elif len(nums) < 2 or nums[0] < 3 or nums != list(range(nums[0], nums[0] + len(nums))):
             nums = list(range(1, len(ex["items"]) + 1))
+        pairs = ex["opts"] and not ex["ex_letters"] and (expect or {}).get(ex["n"]) and not matching
+        if pairs:
+            # 答案不是字母：a) b) 是要比较/解释的两句话，不是选项。每个 a) 开始新的一组（OCR 有时漏了题号）
+            groups = []
+            for i, it in enumerate(ex["items"], 1):
+                lines = ([it["t"]] if it["t"].strip() else []) + [f"{o['k']}) {o['t']}" for o in ex["opts"] if o["after"] == i]
+                for line in lines:
+                    if re.match(r"^a\)", line) or not groups:
+                        groups.append([])
+                    groups[-1].append(line)
+            for num, g in enumerate(groups, 1):
+                out.append(f"{num}. {g[0]}")
+                out += [f"- {line}" for line in g[1:]] + ["{__}"]
+            ex["items"], ex["opts"] = [], []
         for i, (it, num) in enumerate(zip(ex["items"], nums), 1):
             t = it["t"]
             mine = [o for o in ex["opts"] if o["after"] == i and not matching]
+            if t.count("{_}") > 1:
+                t = re.sub(r"([?.!])\s*\{_\}\s*$", r"\1", t)  # 句子说完了后面又一个空：杂点
+            inline = re.findall(r"(?:^|\s)([a-h])\s?\)\s*(.*?)(?=\s+(?:\{_\}\s*)?[a-h]\s?\)|$)", t) if re.match(r"^a\)", t) else []
+            if len(inline) >= 2 and ex["ex_letters"]:
+                # 这一题只有选项（短文里第 n 个空选哪个）：a) back b) up c) off d) out
+                out.append(f"{num}. ({num})")
+                out += [f"{k}) {re.sub(r'\s*\{_?_\}\s*', ' ', v).strip(' .')}" for k, v in inline]
+                continue
             if "{_}" not in t and "{__}" not in t and not mine:
-                t += " {_}" if matching else " {__}"
+                t += " {_}" if matching or (not t and ex.get("short")) else " {__}"
             out.append(f"{num}. {t}")
             out += [f"{o['k']}) {o['t']}" for o in mine]
         if matching and len(ex["items"]) in afters:
@@ -766,7 +970,7 @@ def exercises(page, unit):
             out += [f"- {o['k']}) {o['t']}" for o in ex["opts"] if o["after"] == len(ex["items"])]
         elif not ex["items"]:
             out += [f"- {o['k']}) {o['t']}" for o in ex["opts"]]
-            if "{_}" not in "".join(ex["intro"]) and not ex.get("trows"):
+            if "{_}" not in "".join(ex["intro"]) and not ex.get("trows") and not pairs:
                 out.append("{__}")  # 没有小题、也没有空的练习（改写一段话之类）：给一个作答框
         if ex.get("halves"):
             out.append("")
@@ -777,11 +981,24 @@ def exercises(page, unit):
     return out
 
 
-def unit_markdown(pages, unit, title, phrase_keys, page_dir=None):
+def unit_markdown(pages, unit, title, phrase_keys, page_dir=None, key_ex=None):
+    """key_ex：答案里每道练习的答案 {"6.1": "1 apart · 2 out …"}，用来核对、补回 OCR 漏掉的题号。"""
     left, right = 9 + 2 * (unit - 1), 10 + 2 * (unit - 1)
     bold = bolder(phrase_keys)
     image = f"{page_dir}/{left}.jpg" if page_dir else None
-    md = [f"# {unit} {title}", ""] + explanation(pages[left], bold, image) + exercises(pages[right], unit)
+    expect = {ex: key_numbers(md) for ex, md in (key_ex or {}).items()}
+    # 答案是字母的练习（1 b · 2 c）才是选择题/配对题
+    letters = {ex for ex, md in (key_ex or {}).items()
+               if re.fullmatch(r"(\s*\d{1,2}\.?\s+[a-h](\s*(\*?or\*?|/)\s*[a-h])*\s*(·|$))+",
+                               md.replace("\n", " · ").strip(" ·"))}
+    expect["_letters"] = letters
+    # 答案都很短（几个词）的练习：作答框用一行的
+    def short(md):
+        parts = [re.sub(r"^\d{1,2}\.?\s+", "", p.strip()) for line in md.split("\n") for p in line.split("·")]
+        parts = [p for p in parts if p and not p.startswith("*")]
+        return bool(parts) and all(len(re.sub(r"\*?or\*?.*", "", p).split()) <= 4 for p in parts)
+    expect["_short"] = {ex for ex, md in (key_ex or {}).items() if short(md)}
+    md = [f"# {unit} {title}", ""] + explanation(pages[left], bold, image) + exercises(pages[right], unit, expect)
     return re.sub(r"\n{3,}", "\n\n", "\n".join(md)).strip() + "\n"
 
 
@@ -792,5 +1009,7 @@ if __name__ == "__main__":
     pages = {p["page"]: p for p in json.loads((root / "data/ocr/phrasal-verbs.json").read_text())}
     pv = json.loads((root / "content/phrasal-verbs.json").read_text())
     u = pv["units"][int(sys.argv[1]) - 1]
+    sys.path.insert(0, str(root / "scripts"))
+    from build_pv import key_by_unit
     sys.stdout.write(unit_markdown(pages, u["n"], u["title"], [p["key"] for p in u["phrases"]],
-                                   root / "content/pages/phrasal-verbs"))
+                                   root / "content/pages/phrasal-verbs", key_by_unit().get(u["n"], {}).get("ex")))
