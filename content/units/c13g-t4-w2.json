@@ -1,0 +1,19 @@
+{
+ "id": "c13g-t4-w2",
+ "book": "c13g",
+ "test": 4,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "Some people say it is important to keep your home and your workplace tidy, with everything organised and in the correct place.",
+  "What is your opinion about this?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+ ],
+ "pages": [
+  95
+ ],
+ "samplePages": [
+  133
+ ]
+}

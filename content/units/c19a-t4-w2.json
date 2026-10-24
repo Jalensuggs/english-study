@@ -1,0 +1,21 @@
+{
+ "id": "c19a-t4-w2",
+ "book": "c19a",
+ "test": 4,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "In many countries nowadays, consumers can go to a supermarket and buy food produced all over the world.",
+  "Do you think this is a positive or negative development?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+  "→ @ P. 137 97"
+ ],
+ "pages": [
+  96
+ ],
+ "samplePages": [
+  136,
+  137
+ ]
+}

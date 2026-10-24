@@ -1,0 +1,130 @@
+{
+ "id": "c13g-t2-r1",
+ "book": "c13g",
+ "test": 2,
+ "n": 1,
+ "kind": "reading",
+ "label": "Section 1",
+ "title": "Online roommate finder: Toronto",
+ "q": [
+  1,
+  14
+ ],
+ "pages": [
+  38,
+  39,
+  40,
+  41
+ ],
+ "qpages": [
+  39,
+  41
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Online roommate finder: Toronto"
+  },
+  {
+   "type": "sub",
+   "text": "I have one room available in a large apartment located just off Queen and Bathurst in Toronto. The room is fully furnished with a double bed, desk, shelf and wardrobe."
+  },
+  {
+   "type": "p",
+   "text": "About us: I'm Sasha! I'm Canadian, and I've been living in this apartment since I was a teenager. I'm 23 and work in a restaurant. These past two years, my best friend has been living here but as she's now moving to Europe there is a room available as of October 1. The third room is occupied by Simon, who is from Australia. He works part-time in a music shop downtown and is a great drummer. We both like keeping the place neat and tidy - I actually enjoy cleaning in my spare time and sometimes we do it together as a roommate team (we make it fun!). I love watching movies, exploring, getting out of the city and into the outdoors, and listening to music."
+  },
+  {
+   "type": "p",
+   "text": "The apartment itself is very large and comes equipped with unlimited wi-fi, a fully stocked kitchen, cable television, and Netflix. The bedroom is a long way from the living room, so it shouldn't disturb you if people come round and besides, we are certainly very respectful. Oh! We also have two cats who are well-behaved but they might be a problem if you have allergies. If you have a pet, that's no problem - these cats get along with other animals."
+  },
+  {
+   "type": "p",
+   "text": "We love having people coming from other countries as it's really fun having the opportunity to show them around the neighborhood (it's a great neighborhood - lots of character and plenty to do). That said, we're certainly interested in living with Canadians too! We're very easy-going and open-minded and just hope that our new roommate will be the same."
+  },
+  {
+   "type": "h",
+   "text": "\"Reading"
+  },
+  {
+   "type": "h",
+   "text": "Smartphone fitness apps"
+  },
+  {
+   "type": "h",
+   "text": "A Pacer"
+  },
+  {
+   "type": "p",
+   "text": "Although they were previously split into 'pro' and 'free' versions, Pacer's developer now generously includes all the features in one free app. That means you can spend no money, yet use your smartphone's GPS capabilities to track your jogging routes, and examine details of your pace and calories burned."
+  },
+  {
+   "type": "h",
+   "text": "B Beat2"
+  },
+  {
+   "type": "p",
+   "text": "There are a wealth of running apps available, but Beat2 is a good one. This free app monitors your pace - or if you have a wrist or chest-based heart rate monitor, your beats per minute - and offers up its specially curated playlists to give you the perfect music for the pace you're running at, adding a whole new dimension to your run. The best bit is when you explode into a sprint and the music pounds in your ears. Or if you fancy something different, the app also has In-App Purchases, including tales of past sporting heroes you can listen to while you run."
+  },
+  {
+   "type": "h",
+   "text": "C Impel"
+  },
+  {
+   "type": "p",
+   "text": "If you're serious about the sport you do, then you should be serious about Impel. As smartphone fitness tools go it's one of the best, allowing you to track your performance, set goals and see daily progress updates. If you're ever not sure where to run or cycle you can find user-created routes on the app, or share your own. All of that comes free of charge, while a premium version adds even more tools."
+  },
+  {
+   "type": "h",
+   "text": "D Fast Track"
+  },
+  {
+   "type": "p",
+   "text": "There are plenty of GPS running apps for smartphones, but Fast Track is an excellent freebie. Although you naturally get more features if you pay for the 'pro' version, the free release gets you GPS tracking, a nicely designed map view, your training history, music, and cheering. Yes, you read the last of those right - you can have friends cheer you on as you huff and puff during a run. If you can afford the 'pro' version, you can add possible routes, voice coaches, smartwatch connectivity and more; but as a"
+  }
+ ],
+ "answers": {
+  "1": [
+   "FALSE"
+  ],
+  "2": [
+   "TRUE"
+  ],
+  "3": [
+   "FALSE"
+  ],
+  "4": [
+   "TRUE"
+  ],
+  "5": [
+   "TRUE"
+  ],
+  "6": [
+   "NOT GIVEN"
+  ],
+  "7": [
+   "NOT GIVEN"
+  ],
+  "8": [
+   "C"
+  ],
+  "9": [
+   "D"
+  ],
+  "10": [
+   "D"
+  ],
+  "11": [
+   "A"
+  ],
+  "12": [
+   "B"
+  ],
+  "13": [
+   "C"
+  ],
+  "14": [
+   "A"
+  ]
+ },
+ "questions": "## Questions 1–7\nDo the following statements agree with the information given in the first text (*Online roommate finder*)?\n@tfng\n1. The room available has two beds.\n2. The Australian in Sasha's apartment is a musician.\n3. Sasha does all the cleaning in the apartment.\n4. Sasha likes being in the open air.\n5. The room available would be suitable for someone who likes to be quiet.\n6. Sasha thinks her apartment is in the best part of Toronto.\n7. Sasha has never had a roommate from Canada.\n\n## Questions 8–14\nLook at the four reviews of smartphone fitness apps, **A–D**, in the second text.\nFor which app are the following statements true?\n**NB** You may use any letter more than once.\n@options A-D\n8. This app can be used for more than one sport.\n9. You have to pay if you want this app to suggest where you can go.\n10. This app has well-presented visuals.\n11. You do not have to pay for any of the features on this app.\n12. You can pay to download true stories on this app.\n13. You can get ideas about where to go from other people on this app.\n14. This app gives you details of the energy you have used.\n"
+}

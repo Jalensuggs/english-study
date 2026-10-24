@@ -1,0 +1,23 @@
+{
+ "id": "c13g-t2-w1",
+ "book": "c13g",
+ "test": 2,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "You recently organised an all-day meeting for your company, which took place in a local hotel. In their feedback, participants at the meeting said that they liked the hotel, but they were unhappy about the food that was served for lunch.",
+  "Write a letter to the manager of the hotel. In your letter",
+  "• say what the participants liked about the hotel",
+  "• explain why they were unhappy about the food",
+  "• suggest what the manager should do to improve the food in future",
+  "You do NOT need to write any addresses.",
+  "Begin your letter as follows:",
+  "Dear Sir or Madam,"
+ ],
+ "pages": [
+  51
+ ],
+ "samplePages": [
+  128
+ ]
+}

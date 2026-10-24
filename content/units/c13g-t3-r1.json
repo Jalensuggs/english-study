@@ -1,0 +1,149 @@
+{
+ "id": "c13g-t3-r1",
+ "book": "c13g",
+ "test": 3,
+ "n": 1,
+ "kind": "reading",
+ "label": "Section 1",
+ "title": "New York Late-Starters String Orchestra",
+ "q": [
+  1,
+  14
+ ],
+ "pages": [
+  60,
+  61,
+  62,
+  63
+ ],
+ "qpages": [
+  61,
+  63
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "New York Late-Starters String Orchestra"
+  },
+  {
+   "type": "p",
+   "text": "NYLSO, the New York Late-Starters String Orchestra, is something special. It was founded in early 2007, and grew out of a concept developed by The East London Late Starters Orchestra (ELLSO), an award-winning group in England. NYLSO is an amateur orchestra for adult players of violin, viola, cello, and double bass. If you played a string instrument when you were younger and would like to start again, or if you are learning as an adult and would like the chance to play in a group of similar people, then NYLSO is for you! Our goal is to create a fun, supportive, non-competitive environment for adults 18 to 80+ who wish to participate in collective music-making."
+  },
+  {
+   "type": "p",
+   "text": "Participants should have basic music reading skills and a willingness to commit to the group, but are not required to audition. It is recommended that you have studied your instrument for at least one year. If you have ever been paid to play your instrument, recently graduated with a degree in performance, or have been playing continuously since elementary school, you may decide we are not the appropriate group for you."
+  },
+  {
+   "type": "h",
+   "text": "How We Work:"
+  },
+  {
+   "type": "p",
+   "text": "We know that New Yorkers are busy people. It is fine if you miss an entire rehearsal period when an emergency arises. Ultimately, though, too many absences disrupt the function of the group and make it difficult to perform the pieces. Sessions are in six-week rehearsal cycles, with two-hour rehearsals held once a week. We work with the goal of producing one to three very informal 'friends-and-family' concerts per year."
+  },
+  {
+   "type": "p",
+   "text": "Our professional tutor/facilitator serves as coach and conductor during rehearsals. Substitute conductors also join in to teach different sections, providing groups of players with valuable experience in working with different approaches and styles. Everyone is encouraged to play to their fullest potential, whatever that may be, but please recognize that while we do have a conductor, her role is not to provide one-on-one instruction during rehearsals."
+  },
+  {
+   "type": "p",
+   "text": "NYLSO is a self-supporting collective; we do not receive any other funding. The cost is $80 for each six-week cycle. Payments are applied to the costs of rehearsal space, conductor's fees, and photocopying music."
+  },
+  {
+   "type": "h",
+   "text": "Materials You Will Need At Rehearsals:"
+  },
+  {
+   "type": "p",
+   "text": "You will need an instrument, a portable music stand, and any other relevant accessories. You should bring a folder to keep your music together and a soft-lead pencil with an eraser for writing in changes. Sheet music is provided."
+  },
+  {
+   "type": "h",
+   "text": "The 10 best running watches"
+  },
+  {
+   "type": "p",
+   "text": "Kate Hilpern advises people on the best watches to use when they go running."
+  },
+  {
+   "type": "p",
+   "text": "Soleus FIT 1.0 Soleus claims this has everything you need and nothing you don't. Water-resistant to 30m and with a built-in rechargeable battery, it's accurate at measuring speed, pace, distance and calories burnt.",
+   "label": "A"
+  },
+  {
+   "type": "p",
+   "text": "Niket SportWatch GPS You'll be hard pushed to find a running watch that finds a GPS signal quicker than this. It will keep you updated on current location, distance covered, number of laps and calories burnt.",
+   "label": "B"
+  },
+  {
+   "type": "p",
+   "text": "Garmin Forerunner This watch, which is small enough to wear at the office, is touchscreen and is packed with impressive features, although the battery life is limited.",
+   "label": "C"
+  },
+  {
+   "type": "p",
+   "text": "Timex Run Trainer 2.0 The hires screen makes this a great watch for athletes at any level. The easy-to-use, upgraded menu system makes monitoring pace, speed and distance child's play. Alerts remind you when it's time to hydrate or top up the nutrition.",
+   "label": "D"
+  },
+  {
+   "type": "p",
+   "text": "Garmin Forerunner 10 This is a well-priced, entry-level watch that's light as well as waterproof and available in a range of colours. Don't expect added extras, but do expect good basic functionality.",
+   "label": "E"
+  },
+  {
+   "type": "p",
+   "text": "Nike Fuelband Described by the Huffington Post as 'the sports watch you never knew you needed,' this soft-touch and lightweight watch has been lovingly designed to appear more like a piece of futuristic jewellery than a running watch. But it's hi-tech too and synchronises with your phone to show the results.",
+   "label": "F"
+  },
+  {
+   "type": "p",
+   "text": "Suunto Ambit2 S HR This is better suited to off-roaders rather than urban runners and although it's quite big, it has a functional design and is compatible with the thousands of Suunto apps available.",
+   "label": "G"
+  }
+ ],
+ "answers": {
+  "1": [
+   "TRUE"
+  ],
+  "2": [
+   "TRUE"
+  ],
+  "3": [
+   "TRUE"
+  ],
+  "4": [
+   "NOT GIVEN"
+  ],
+  "5": [
+   "FALSE"
+  ],
+  "6": [
+   "FALSE"
+  ],
+  "7": [
+   "NOT GIVEN"
+  ],
+  "8": [
+   "E"
+  ],
+  "9": [
+   "F"
+  ],
+  "10": [
+   "D"
+  ],
+  "11": [
+   "C"
+  ],
+  "12": [
+   "D"
+  ],
+  "13": [
+   "A"
+  ],
+  "14": [
+   "G"
+  ]
+ },
+ "questions": "## Questions 1–7\nDo the following statements agree with the information given in the first text (*New York Late-Starters String Orchestra*)?\n@tfng\n1. The idea behind NYLSO was based on another orchestra.\n2. An ability to read music is essential.\n3. The NYLSO might be unsuitable for very advanced level musicians.\n4. NYLSO concerts are free to members' families and friends.\n5. Rehearsals always involve the full orchestra playing together.\n6. The conductor provides her services free to NYLSO.\n7. The NYLSO gives advice on what instrument to purchase.\n\n## Questions 8–14\nLook at the seven advertisements for running watches, **A–G**, in the second text.\nFor which running watch are the following statements true?\n**NB** You may use any letter more than once.\n@options A-G\n8. This would be a suitable and not too expensive first watch for a runner.\n9. Care has been taken to make this watch very attractive to look at.\n10. This watch can be programmed to let the runner know when it is time to get some refreshment.\n11. This watch will need recharging at frequent intervals.\n12. Both experienced and inexperienced runners will find this watch useful.\n13. Runners will find all the features on this watch are useful.\n14. People who do most of their running in cities may find this watch is not appropriate for them.\n"
+}

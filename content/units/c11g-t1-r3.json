@@ -1,0 +1,103 @@
+{
+ "id": "c11g-t1-r3",
+ "book": "c11g",
+ "test": 1,
+ "n": 3,
+ "kind": "reading",
+ "label": "Section 3",
+ "title": "The Zebras' long walk across Africa",
+ "q": [
+  28,
+  40
+ ],
+ "pages": [
+  28,
+  29,
+  30,
+  31
+ ],
+ "qpages": [
+  28,
+  31
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "The Zebras' long walk across Africa"
+  },
+  {
+   "type": "sub",
+   "text": "James Gifford investigates some interesting new research into migration patterns of zebras living in Botswana in southern Africa"
+  },
+  {
+   "type": "p",
+   "text": "For any animal to travel over 270 km in Botswana partly across the sand and low bush terrain of the Kalahari Desert is a remarkable achievement. But to do so in 11 days and without any obvious motivation, as this zebra population does, is quite extraordinary. On average their journey involves an exhausting round-trip of 588 km - between the Makgadikgadi salt pan area and the Okavango river - making it second only to the great trek undertaken by the zebra herds in the Serengeti National Park. However, what is even more incredible still in my view is that until recently it was completely unheard of."
+  },
+  {
+   "type": "p",
+   "text": "Hattie Bartlam, a researcher, discovered this migration while she was tracking zebra groups, officially known as harems, by the Okavango river for her PhD. Each harem consists of a stallion and his seven or eight mares with juvenile foals. There is no loyalty between zebras beyond this social group, though harems often gather together into so-called herds. For her study, Hattie had planned to compare the small-scale movement patterns of 11 different zebra herds in the area."
+  },
+  {
+   "type": "p",
+   "text": "In December, when the annual rains had transformed the roads into rivers, Hattie was, therefore, more than a little surprised when she checked the data sent by the radio collars she fits to the zebras she is tracking to find that six of the harems were 270 km away on the edge of the Makgadikgadi, a huge mineral-rich area where salt has collected over the years as water evaporates in the heat. Then, when the last of the moisture from the rains had disappeared in May the following year, five of those harems came wearily back to the Okavango. This raised the question: why, despite a plentiful supply of food and water, were the zebras being drawn eastwards to the salt pans? Even more difficult to understand was what made six of the groups travel so far, while the other five remained by the Okavango."
+  },
+  {
+   "type": "p",
+   "text": "This discovery created quite a buzz in the research community. I decided to visit Hattie and she explained that a century ago the large number of Botswana's zebra and wildebeest herds and the resulting competition for grass made migration essential. One of the migration tracks went from the Okavango to Makgadikgadi. But in the late 1960s, giant fences were put up to stop foot and mouth and other diseases spreading between wildlife and domestic cattle. One of these went across the migration track. Though the animals could get round the obstacle, each leg of their journey would now be 200 km longer - an impossible distance given the lack of permanent water on the extended route. Even today, with the fence gone (it was taken down in 2004), there is dangerously little drinking water to support the zebras on the return journey to the Okavango."
+  },
+  {
+   "type": "p",
+   "text": "As a zebra can live up to 20 years, the migration must have skipped at least one generation during the 40 or so years that the fences were up. This prompts another question: it has always been assumed that the young of social herbivores like zebras learn migratory behaviour from their parents, so how did the latest generation learn when and where to go? Not from their parents, who were prevented from migrating. Did they follow another species, such as elephants? We may never know."
+  },
+  {
+   "type": "p",
+   "text": "Hattie's data points to the conclusion that there are several zebra populations adopting different behaviour. The first, like the vast majority of the Okavango zebras, take it easy, spending the entire year by the river. The second group, 15,000-20,000 strong, work a bit harder. They divide their time between the Makgadikgadi salt pans and the Boteti River, which is reasonably near by. They sometimes struggle to find water in the Boteti area during the dry season, often moving 30 km in search of fresh grazing. Their reward: the juicy grass around the Makgadikgadi after the rains. The final group of zebras, whose numbers are more modest (though as yet unknown), must surely be considered as among the animal kingdom's most remarkable athletes. By moving between the Okavango and the salt pans, they enjoy the best of both worlds. But the price they pay is an extraordinary journey across Botswana."
+  },
+  {
+   "type": "p",
+   "text": "Endangered species naturally tend to grab the headlines, so it's refreshing for a relatively abundant animal like the zebra to be the centre of attention for once. Zebras are a vital part of the food chain: understanding their migration in turn helps us to interpret the movements of their predators, and Hattie's research has shed light on the impact of fences on migratory animals. So what triggered her interest in zebras? She explains that it is easier to get funding to study exciting animals like lions. Crucial as that undoubtedly is, she believes that herbivores like zebras are key to understanding any ecosystem. The scientific community is fortunate that people like Hattie are willing to take the hard option."
+  }
+ ],
+ "answers": {
+  "28": [
+   "vi"
+  ],
+  "29": [
+   "viii"
+  ],
+  "30": [
+   "iv"
+  ],
+  "31": [
+   "ii"
+  ],
+  "32": [
+   "ix"
+  ],
+  "33": [
+   "vii"
+  ],
+  "34": [
+   "x"
+  ],
+  "35": [
+   "harems"
+  ],
+  "36": [
+   "mares"
+  ],
+  "37": [
+   "herds"
+  ],
+  "38": [
+   "D"
+  ],
+  "39": [
+   "A"
+  ],
+  "40": [
+   "B"
+  ]
+ },
+ "questions": "## Questions 28–34\nThe text has seven sections, **A–G**.\nChoose the correct heading for each section from the list of headings below.\n@options i-x\n\n> ### List of Headings\n> i. A decrease in the zebra population\n> ii. An obstruction on the traditional route\n> iii. An unknown species\n> iv. Some confusing information\n> v. Staying permanently in the Makgadikgadi\n> vi. Nearly a record in the zebra world\n> vii. Three different ways of living\n> viii. The original aim of the work\n> ix. How was the information passed on?\n> x. Why it is important to study zebras\n\n28. Section **A**\n29. Section **B**\n30. Section **C**\n31. Section **D**\n32. Section **E**\n33. Section **F**\n34. Section **G**\n\n## Questions 35–37\nComplete the summary below.\nChoose **ONE WORD ONLY** from the text for each answer.\n\n> ### Social behaviour in zebras\n> Zebras tend to live together in small units, which experts call {35} . Here, a male zebra has charge of a number of adult {36} and their young. These units sometimes assemble in bigger groupings or {37} , but it is still clear that the zebras' loyalty only extends to the small unit they live in.\n\n## Questions 38–40\nChoose the correct letter, **A**, **B**, **C** or **D**.\n38. How did Hattie feel when she heard some of the zebras had travelled so far?\nA. annoyed because she would have to follow them to Makgadikgadi\nB. disappointed that not all of them made it back to Okavango\nC. frustrated as the rains had made the roads unusable\nD. unsure as to their real motivation for going\n\n39. When describing the different Botswana zebra populations, the writer indicates\nA. his admiration for the ones who migrate the furthest distance.\nB. his sympathy for the ones who stay by the Okavango River.\nC. his disbelief that those by the Boteti have difficulty finding food.\nD. his anxiety that their migration patterns may not be able to continue.\n\n40. What does the writer suggest in the final paragraph?\nA. Too much time has been wasted on research into the predators like lions.\nB. It is sometimes necessary to go against the trend in research matters.\nC. Research will result in a ban on fences in areas where zebras live.\nD. Research into animals which are not endangered will increase.\n"
+}

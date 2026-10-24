@@ -1,0 +1,21 @@
+{
+ "id": "c18a-t1-w2",
+ "book": "c18a",
+ "test": 1,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "The most important aim of science should be to improve people's lives.",
+  "To what extent do you agree or disagree with this statement?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+  "+6p.128"
+ ],
+ "pages": [
+  32
+ ],
+ "samplePages": [
+  130,
+  131
+ ]
+}

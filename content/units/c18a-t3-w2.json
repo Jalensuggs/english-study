@@ -1,0 +1,21 @@
+{
+ "id": "c18a-t3-w2",
+ "book": "c18a",
+ "test": 3,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "In many countries around the world, rural people are moving to cities, so the population in the countryside is decreasing.",
+  "Do you think this is a positive or a negative development?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+  "-@p.133"
+ ],
+ "pages": [
+  78
+ ],
+ "samplePages": [
+  135,
+  136
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "id": "c11g-t4-w2",
+ "book": "c11g",
+ "test": 4,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "Some people say that it is possible to tell a lot about a person's culture and character from their choice of clothes.",
+  "Do you agree or disagree?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+ ],
+ "pages": [
+  99
+ ],
+ "samplePages": [
+  137
+ ]
+}

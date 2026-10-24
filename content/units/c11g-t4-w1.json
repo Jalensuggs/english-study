@@ -1,0 +1,20 @@
+{
+ "id": "c11g-t4-w1",
+ "book": "c11g",
+ "test": 4,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "You work for an international company. You have seen an advertisement for a training course which will be useful for your job.",
+  "Write a letter to your manager. In your letter",
+  "You do NOT need to write any addresses.",
+  "Begin your letter as follows:",
+  "Dear Sir or Madam,"
+ ],
+ "pages": [
+  99
+ ],
+ "samplePages": [
+  136
+ ]
+}

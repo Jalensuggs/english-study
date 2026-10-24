@@ -1,0 +1,147 @@
+{
+ "id": "c11g-t2-r2",
+ "book": "c11g",
+ "test": 2,
+ "n": 2,
+ "kind": "reading",
+ "label": "Section 2",
+ "title": "Tips for giving an effective business presentation",
+ "q": [
+  15,
+  27
+ ],
+ "pages": [
+  46,
+  47,
+  48,
+  49
+ ],
+ "qpages": [
+  47,
+  49
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Tips for giving an effective business presentation"
+  },
+  {
+   "type": "sub",
+   "text": "Preparation"
+  },
+  {
+   "type": "p",
+   "text": "Get someone else to evaluate your performance and highlight your best skills. For example, go through your presentation in front of a colleague or relative. Think about who your audience is and what you want them to get out of the presentation. Think about content and style."
+  },
+  {
+   "type": "p",
+   "text": "Go into the presentation room and try out any moves you may have to make, e.g. getting up from your chair and moving to the podium. Errors in the first 20 seconds can be very disorientating."
+  },
+  {
+   "type": "p",
+   "text": "Familiarise yourself with the electronic equipment before the presentation and also have a backup plan in mind, should there be an unexpected problem like a power cut."
+  },
+  {
+   "type": "h",
+   "text": "Dealing with presentation nervousness"
+  },
+  {
+   "type": "p",
+   "text": "A certain amount of nervousness is vital for a good presentation. The added adrenaline will keep your faculties sharp and give your presentation skills extra force. This can, however, result in tension in the upper chest. Concentrate on your breathing. Slow it right down and this will relax you. Strangely, having something to pick up and put down tends to help you do this."
+  },
+  {
+   "type": "p",
+   "text": "It may seem an odd idea, but we seem to feel calmer when we engage in what's referred to as a displacement activity, like clicking a pen or fiddling with jewellery. A limited amount of this will not be too obvious and can make you feel more secure at the start."
+  },
+  {
+   "type": "h",
+   "text": "Interacting with your audience"
+  },
+  {
+   "type": "p",
+   "text": "Think of your presentation as a conversation with your audience. They may not actually say anything, but make them feel consulted, questioned, challenged, then they will stay awake and attentive."
+  },
+  {
+   "type": "p",
+   "text": "Engage with your present audience, not the one you have prepared for. Keep looking for reactions to your ideas and respond to them. If your audience doesn't appear to be following you, find another way to get your ideas across. If you don't interact, you might as well send a video recording of your presentation instead!"
+  },
+  {
+   "type": "h",
+   "text": "Structuring effective presentations"
+  },
+  {
+   "type": "p",
+   "text": "Effective presentations are full of examples. These help your listeners to see more clearly what you mean. It's quicker and more colourful. Stick to the point using three or four main ideas. For any subsidiary information that you cannot present in 20 minutes, try another medium, such as handouts."
+  },
+  {
+   "type": "p",
+   "text": "End as if your presentation has gone well. Do this even if you feel you've presented badly. And anyway a good finish will get you some applause - and you deserve it!"
+  },
+  {
+   "type": "h",
+   "text": "How to get a job in journalism"
+  },
+  {
+   "type": "p",
+   "text": "You can get a good qualification in journalism, but what employers actually want is practical, rather than theoretical, knowledge. There's no substitute for creating real stories that have to be handed in by strict deadlines. So write for your school magazine, then maybe try your hand at editing. Once you've done that for a while, start requesting internships in newspapers in the area. These are generally short-term and unpaid, but theyre definitely worthwhile, since, instead of providing you with money, they! teach you the skills that every twenty-first century journalist has to have, like laying out articles, creating web pages, taking good digital pictures and so on."
+  },
+  {
+   "type": "p",
+   "text": "Most reporters keep a copy of every story they've had published, from secondary school onwards. They're called cuttings, and you need them to get a job - indeed a few impressive ones can be the deciding factor in whether you're appointed or not. So start creating a portfolio now that will show off your developing talent."
+  },
+  {
+   "type": "p",
+   "text": "It seems obvious - research is an important part of an effective job hunt. But it's surprising how many would-be journalists do little or none. If you're thorough, it can help you decide whether the job you're thinking about applying for is right for you. And nothing impresses an editor more than an applicant who knows a lot about the paper."
+  },
+  {
+   "type": "p",
+   "text": "There are two more elements to an application - your covering letter and curriculum vitae. However, your CV is the thing that will attract an editors attention first, so get it right. The key words are brevity, (no more than one page) accuracy (absolutely no spelling or typing errors) and clarity (it should be easy to follow)."
+  },
+  {
+   "type": "p",
+   "text": "In journalism, good writing skills are essential, so it's critical that the style of your letter is appropriate. And, make sure it conveys your love of journalism and your cagerness to do the work."
+  }
+ ],
+ "answers": {
+  "15": [
+   "colleague"
+  ],
+  "16": [
+   "power cut"
+  ],
+  "17": [
+   "breathing"
+  ],
+  "18": [
+   "displacement activity"
+  ],
+  "19": [
+   "conversation"
+  ],
+  "20": [
+   "reactions"
+  ],
+  "21": [
+   "examples"
+  ],
+  "22": [
+   "handouts"
+  ],
+  "23": [
+   "internships"
+  ],
+  "24": [
+   "skills"
+  ],
+  "25": [
+   "cuttings"
+  ],
+  "26": [
+   "research"
+  ],
+  "27": [
+   "errors"
+  ]
+ },
+ "questions": "## Questions 15–22\nComplete the sentences below.\nChoose **NO MORE THAN TWO WORDS** from the text for each answer.\n15. Practising your presentation on a {15} or a family member is helpful.\n16. Be prepared for a problem such as a {16} .\n17. One way to overcome pre-presentation nerves is to make your {17} less rapid.\n18. It is acceptable to do something called a {18} at the start of the presentation to reassure you.\n19. Your presentation should be like a {19} with the people who have come to hear you.\n20. Check constantly for {20} to the points you are making.\n21. Make sure you use plenty of {21} to communicate your message effectively.\n22. To keep the presentation short, use things like {22} to provide extra details.\n\n## Questions 23–27\nComplete the flow chart below.\nChoose **ONE WORD ONLY** from the text for each answer.\n\n### Getting a job in journalism\n[flow]\nGain relevant experience, e.g. writing articles to meet specific deadlines.\nApply for temporary {23} with local papers and acquire the extra {24} you'll need.\nBuild up a set of {25} in a portfolio, displaying how your writing ability has progressed over time.\nTake time to do detailed {26} first, before applying for a post with a paper.\nOnce you decide to apply, make sure your CV is short, makes sense and is without {27} of any kind.\nWrite your covering letter, paying particular attention to the style.\n[/flow]\n"
+}

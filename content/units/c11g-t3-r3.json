@@ -1,0 +1,119 @@
+{
+ "id": "c11g-t3-r3",
+ "book": "c11g",
+ "test": 3,
+ "n": 3,
+ "kind": "reading",
+ "label": "Section 3",
+ "title": "Efforts to save a special bird - the spoon-billed sandpiper",
+ "q": [
+  28,
+  40
+ ],
+ "pages": [
+  72,
+  73,
+  74,
+  75,
+  76
+ ],
+ "qpages": [
+  72,
+  75,
+  76
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Efforts to save a special bird - the spoon-billed sandpiper"
+  },
+  {
+   "type": "sub",
+   "text": "Last year an international team of ornithologists devised a bold plan to rescue one of the world's rarest birds. Gerrit Vyn reports."
+  },
+  {
+   "type": "p",
+   "text": "At first glance the spoon-billed sandpiper resembles other small migratory birds of the sandpiper family that breed across the Arctic. But it is the only one to have developed a flattened bill that flares out into a 'spoon' at the end, and that makes it special. If it becomes extinct, thousands of years of evolution will come to an end, which would be a real tragedy.",
+   "label": "A"
+  },
+  {
+   "type": "p",
+   "text": "The bird's Russian name, kulik-lopaten, means 'shovel beak', which is an apt description of a remarkable structure. The bill is 19mm long and 10 mm wide near the tip and the edges are lined with sharp serrations, called papillae. Theories have varied as to how the bill functions; one suggestion is that the sandpiper sweeps it through the water in a similar fashion to its larger namesake, the spoonbill. But Nigel Clark, a leading authority on the sandpiper, says the comparison is misleading."
+  },
+  {
+   "type": "p",
+   "text": "Until a few years ago, the spoon-billed sandpiper had never been fully documented, which added to its fascination. But an air of mystery is not helpful if you're a Critically Endangered species. So the organisation 'Birds Russia' decided to produce a photographic and audio record of this imperilled bird with the help of experts round the world. In May of last year, joined the international expedition to one of the species' last breeding strongholds in North-East Russia. The primary aim of the two-and-a-half month expedition, however, was to collect eggs from wild sandpipers; those eggs would then be hatched in captivity nearby. Later, the chicks would be flown to the Wildfowl and Wetlands Trust (WWT) headquarters at Slimbridge in the UK, in order to establish a small, self-sustaining population there. These birds would provide a 'safety net', an insurance policy against the wild birds dying out.",
+   "label": "B"
+  },
+  {
+   "type": "p",
+   "text": "You might wonder why birds like the spoon-billed sandpiper travel such great distances, about 8,000 km in total, from their wintering grounds on the tropical coasts of Bangladesh, Burma and Vietnam in South-East Asia to breed on the low land, commonly called tundra, in North-East Russia, but from the birds' point of view it is worth it. Though they often arrive to find hostile, wintry weather while they are finding their mates and making their nests, there are relatively few predators there, and the abundance of insects that emerge during the brief but intense Arctic summer creates ideal conditions for raising their chicks.",
+   "label": "C"
+  },
+  {
+   "type": "p",
+   "text": "Two main factors are responsible for the sandpiper's recent rapid decline: the ongoing destruction of stopover habitat on its migration route and hunting on its wintering grounds. The development of new industrial cities is destroying former tidal areas, where sandpipers and other migratory birds used to rest and refuel. Subsistence hunting is certainly a hazard in some Asian countries, where hunters trap birds for food. Conservationists are targeting this problem with small-scale interventions. For example, hunters from 40 villages have been given alternative sources of income, such as cool boxes in which they can take fish to sell at markets, in return for a halt to the bird-netting.",
+   "label": "D"
+  },
+  {
+   "type": "p",
+   "text": "Once the expedition team had reached its destination, it was seven days before we spotted the first sandpiper. In the following days, more began to arrive and the males' song was heard, advertising their patches of territory to potential mates. As the sandpipers paired up, the song gave way to the quiet of egg-laying and incubation. In total nine nests were found. The first one was lost to a predator, along with the female attending it. This was a stark reminder of the vulnerability of a tiny population to natural events, such as storms or predation.",
+   "label": "E"
+  },
+  {
+   "type": "p",
+   "text": "The team then selected donor nests and transferred the eggs to specially prepared incubators. They collected 20 eggs in all, taking entire clutches each time - it was early in the breeding season, so the females were likely to lay replacements. Then 50 days after our arrival, the moment arrived: I witnessed my first wild spoon-billed sandpipers hatch. I had been lying inside a wind-battered hide for 36 hours when I saw the first tiny chicks emerge from the eggs. Having hidden a microphone near the nest, I could also just hear their first calls. Later, I watched them stumbling through the 15 cm-high jungle of grasses on comically oversized legs and feet. But my joy was tempered by concern. Difficulties on their migration route and in their wintering areas meant that other tiny creatures like these faced immense dangers."
+  },
+  {
+   "type": "p",
+   "text": "The complex rescue plan does give some grounds for hope. Young chicks were flown to WWT Slimbridge last year and again this summer. A high-tech biosecure unit has been built for them there. It is divided in two, with the older birds in one section and this year's chicks in the other. To minimise the risk of infections, staff change into full-body overalls and rubber shoes and wash their hands before entering. Hygiene is crucial: even a single strand of human hair could harm the chicks by becoming twisted round their legs or bills. The rescue plan's final stage, once the captive flock has built up sufficiently, will be to fly eggs back to Russia, to release the chicks there. It's a gamble, but when the survival of a species this special is at stake, you have to try.",
+   "label": "F"
+  },
+  {
+   "type": "h",
+   "text": "CR"
+  }
+ ],
+ "answers": {
+  "28": [
+   "vii"
+  ],
+  "29": [
+   "iv"
+  ],
+  "30": [
+   "ii"
+  ],
+  "31": [
+   "vi"
+  ],
+  "32": [
+   "iii"
+  ],
+  "33": [
+   "viii"
+  ],
+  "34": [
+   "B"
+  ],
+  "35": [
+   "D"
+  ],
+  "36": [
+   "C"
+  ],
+  "37": [
+   "A"
+  ],
+  "38": [
+   "tundra"
+  ],
+  "39": [
+   "insects"
+  ],
+  "40": [
+   "predators"
+  ]
+ },
+ "questions": "## Questions 28–33\nThe text has six sections, **A–F**.\nChoose the correct heading for each section from the list of headings below.\n@options i-viii\n\n> ### List of Headings\n> i. Gaining public recognition\n> ii. Reasons for continuing to make the long journey\n> iii. A disappointment followed by desirable outcomes\n> iv. The main stages of the plan\n> v. A growth in the number of natural predators\n> vi. Increasing threats\n> vii. A very unusual feature of these birds\n> viii. Cautious optimism\n\n28. Section **A**\n29. Section **B**\n30. Section **C**\n31. Section **D**\n32. Section **E**\n33. Section **F**\n\n## Questions 34–37\nChoose the correct letter, **A**, **B**, **C** or **D**.\n34. What was the main purpose of the international expedition?\nA. to add sandpiper eggs to an international frozen egg bank\nB. to maintain a small group of sandpipers for future generations\nC. to make an audiovisual record of the Russian sandpiper colony\nD. to protect a colony of wild sandpipers through a breeding season\n\n35. What do we learn about the drop in the sandpiper population?\nA. The birds are increasingly being hunted on their way north to Russia.\nB. Scientists are managing to reduce deaths from netting considerably.\nC. Efforts are being made to protect some of their coastal habitat sites.\nD. Economic growth is one of the underlying causes of the decline.\n\n36. Which feeling did the writer express when the sandpiper chicks hatched?\nA. relief that his long wait was over\nB. surprise at the sound of their song\nC. worry about birds of the same species\nD. amazement that they could walk so soon\n\n37. The writer describes the sandpipers' unit at WWT Slimbridge to emphasise\nA. how much care is being devoted to their welfare.\nB. how much money is being spent on the project.\nC. his surprise at how fragile the young birds are.\nD. his confidence in the technology available.\n\n## Questions 38–40\nComplete the summary below.\nChoose **ONE WORD ONLY** from the text for each answer.\n\n> ### The life cycle of the spoon-billed sandpiper\n> In early spring, spoon-billed sandpipers return to their breeding grounds in Russia in the area known as {38} . Although the weather there is often very harsh to begin with, there are obvious advantages to the sandpipers. There is above all a plentiful supply of {39} , and this makes it possible for the sandpiper chicks to develop well. The lack of {40} is another definite advantage. As a result, a good proportion of the chicks grow up to face the long flight to the South-East Asian coasts.\n"
+}

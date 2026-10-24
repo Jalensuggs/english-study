@@ -1,0 +1,174 @@
+{
+ "id": "c13g-t1-r1",
+ "book": "c13g",
+ "test": 1,
+ "n": 1,
+ "kind": "reading",
+ "label": "Section 1",
+ "title": "THE BEST SUITCASES",
+ "q": [
+  1,
+  14
+ ],
+ "pages": [
+  17,
+  18,
+  19,
+  20
+ ],
+ "qpages": [
+  18,
+  20
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "THE BEST SUITCASES"
+  },
+  {
+   "type": "sub",
+   "text": "A Briggs and Riley Weekender"
+  },
+  {
+   "type": "p",
+   "text": "A weekend suitcase that's sophisticated and unusually spacious for its type. The strong nylon outer fabric is water and abrasion resistant, so it should handle any knocks without showing signs of damage."
+  },
+  {
+   "type": "h",
+   "text": "B Mulberry Scotchgrain"
+  },
+  {
+   "type": "p",
+   "text": "Trimmed in brown leather, with gold details, this bag from the renowned fashion house is a truly indulgent buy. If you're investing this much in a suitcase then you'd better be planning an amazing holiday to go with it."
+  },
+  {
+   "type": "h",
+   "text": "C Rimova Salsa"
+  },
+  {
+   "type": "p",
+   "text": "A design you can trust, this case is built from super light polycarbonate and is incredibly solid. The built-in combination lock offers state-of-the-art security so you can travel with peace of mind."
+  },
+  {
+   "type": "h",
+   "text": "D Tripp Holiday"
+  },
+  {
+   "type": "p",
+   "text": "Simple and affordable, the Tripp range offers a great selection of tough cases. They also come in a huge range of cheerful colours that should go with anything you choose to put on, and you'll definitely be able to spot it on the luggage carousel at the airport."
+  },
+  {
+   "type": "h",
+   "text": "E Eastpak Tranverz Holdall"
+  },
+  {
+   "type": "p",
+   "text": "For those who want something in between an annual holiday suitcase and a weekend bag, this is a fantastic compromise. With two wheels and a telescopic handle, the bag is guaranteed for 30 years. Did we mention it also comes in colourful leopard print?"
+  },
+  {
+   "type": "h",
+   "text": "F Herschel Parcel"
+  },
+  {
+   "type": "p",
+   "text": "From the brand behind some of today's most popular rucksacks, this suitcase really is a delight. Custom printed, with Herschel's signature leather toggles this well-crafted case is as cool, stylish and up to date as they come."
+  },
+  {
+   "type": "h",
+   "text": "G The Diplomat"
+  },
+  {
+   "type": "p",
+   "text": "Travel in style with this beautiful suitcase that goes back to the days when trains ran on steam and air travel was leisurely. The leather case, part of the Steamline Luggage range, features roller wheels and a metal frame to hold it in shape."
+  },
+  {
+   "type": "h",
+   "text": "THE OXFORD SCHOOL OF DRAMA"
+  },
+  {
+   "type": "h",
+   "text": "One-Year Acting Course"
+  },
+  {
+   "type": "p",
+   "text": "This is an intensive course which is designed for those who have completed their academic studies and have some theatre or film experience already. In order to be accepted you should be a high achiever, knowledgeable about the industry and determined to succeed."
+  },
+  {
+   "type": "p",
+   "text": "Term One: Technical classes in acting, voice, movement, applied movement and characterisation, music, singing, film, radio and professional development. The term finishes with an internal production given for tutors and students."
+  },
+  {
+   "type": "p",
+   "text": "Term Two: All technical classes continue from term one. There is an internal performance of a one-act play, the recording of an audio showreel at a professional studio and the Showcase Drama in front of an invited audience including casting directors and agents."
+  },
+  {
+   "type": "p",
+   "text": "Term Three: Technical classes continue with additional focus on audition technique, workshops and masterclasses. This term includes a public performance of a play outdoors in the grounds of Blenheim Palace, and the chance to act a short film recorded on location by a professional crew."
+  },
+  {
+   "type": "h",
+   "text": "How to Apply"
+  },
+  {
+   "type": "p",
+   "text": "Entry to The Oxford School of Drama is by audition only and there are no academic requirements for any of our courses."
+  },
+  {
+   "type": "p",
+   "text": "Once we have received your application form and audition fee, we will email you with a date for your audition and further details about what to expect when you are here."
+  },
+  {
+   "type": "p",
+   "text": "For your initial audition, you will need to prepare two contrasting speeches from plays, lasting no longer than two minutes. There will also be some group work for which you will need to wear loose, comfortable clothing."
+  },
+  {
+   "type": "p",
+   "text": "you are applying from overseas, you will be able to submit your first auditio y means of DVD, YouTube or link to a secure website. You will be invited t submit this once we have received your application form and audition fee. If you are successful in your first audition, you will be invited to attend future auditions here at the school. The school will provide a free bus from central Oxford for those attending auditions."
+  }
+ ],
+ "answers": {
+  "1": [
+   "B"
+  ],
+  "2": [
+   "F"
+  ],
+  "3": [
+   "D"
+  ],
+  "4": [
+   "E"
+  ],
+  "5": [
+   "A"
+  ],
+  "6": [
+   "E"
+  ],
+  "7": [
+   "G"
+  ],
+  "8": [
+   "FALSE"
+  ],
+  "9": [
+   "TRUE"
+  ],
+  "10": [
+   "NOT GIVEN"
+  ],
+  "11": [
+   "FALSE"
+  ],
+  "12": [
+   "TRUE"
+  ],
+  "13": [
+   "NOT GIVEN"
+  ],
+  "14": [
+   "FALSE"
+  ]
+ },
+ "questions": "## Questions 1–7\nLook at the seven reviews of suitcases, **A–G**, in the first text.\nFor which suitcase are the following statements true?\n**NB** You may use any letter more than once.\n@options A-G\n1. This suitcase is for those who wish to purchase expensive luggage.\n2. This suitcase is the right one for people who like to follow the latest fashion.\n3. It is easy to choose one of these suitcases to match most clothing.\n4. The manufacturer is confident that this suitcase will last a long time.\n5. Items in this suitcase will not be affected if it gets wet.\n6. This suitcase is of a useful, medium size.\n7. Those who want to be reminded of an earlier age of travel will like this suitcase.\n\n## Questions 8–14\nDo the following statements agree with the information given in the second text (*The Oxford School of Drama*)?\n@tfng\n8. Students can begin the one-year course without any previous involvement in acting.\n9. Students will act in a performance in front of their classmates at the end of the first term.\n10. Family members may attend a performance during the second term.\n11. Students are required to make a film on their own in the last term of the course.\n12. In their first audition, candidates perform speeches they have worked on in advance.\n13. The Oxford School of Drama will send candidates details of local accommodation.\n14. Overseas candidates can do all their auditions via a digital link.\n"
+}

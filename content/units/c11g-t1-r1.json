@@ -1,0 +1,178 @@
+{
+ "id": "c11g-t1-r1",
+ "book": "c11g",
+ "test": 1,
+ "n": 1,
+ "kind": "reading",
+ "label": "Section 1",
+ "title": "Is Your Child at School Today?",
+ "q": [
+  1,
+  14
+ ],
+ "pages": [
+  19,
+  20,
+  21,
+  22,
+  23
+ ],
+ "qpages": [
+  21,
+  23
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Is Your Child at School Today?"
+  },
+  {
+   "type": "sub",
+   "text": "School Attendance Information for Parents/Carers"
+  },
+  {
+   "type": "h",
+   "text": "Introduction"
+  },
+  {
+   "type": "p",
+   "text": "Receiving a good full-time education will give your child the best possible start in life. Attending school regularly and punctually is essential if children are to make the most of the opportunities available to them. The law says that parents must ensure that their child regularly attends the school where he/she is registered."
+  },
+  {
+   "type": "h",
+   "text": "What you can do to help"
+  },
+  {
+   "type": "p",
+   "text": "Make sure your child arrives at school on time. This encourages habits of good timekeeping and lessens any possible classroom disruption. If your child arrives after the register has closed without a good reason, this will be recorded as an 'unauthorised' absence for that session."
+  },
+  {
+   "type": "p",
+   "text": "If your child has to miss school it is vital that you let the school know why, preferably on the first morning of absence. (Your child's school will have an attendance policy explaining how this should be done.) If you know or think that your child is having difficulties attending school you should contact the school. It is better to do this sooner rather than later, as most problems can be dealt with very quickly."
+  },
+  {
+   "type": "h",
+   "text": "Authorised and Unauthorised Absence"
+  },
+  {
+   "type": "p",
+   "text": "If your child is absent and the school either does not receive an explanation from you, or considers the explanation unsatisfactory, it will record your child's absence as 'unauthorised', that is, as truancy."
+  },
+  {
+   "type": "p",
+   "text": "Most absences for acceptable reasons will be authorised by your child's school:"
+  },
+  {
+   "type": "h",
+   "text": "Sickness"
+  },
+  {
+   "type": "p",
+   "text": "Unavoidable medical or dental appointments (if possible, arrange these for after school or during school holidays) An interview with a prospective employer or college 188883008944 Exceptional family circumstances, such as bereavement Days of religious observance."
+  },
+  {
+   "type": "p",
+   "text": "Your child's school will not authorise absence for the following reasons:"
+  },
+  {
+   "type": "h",
+   "text": "Shopping during school hours"
+  },
+  {
+   "type": "h",
+   "text": "Day trips"
+  },
+  {
+   "type": "p",
+   "text": "Holidays which have not been agreed Birthdays Looking after brothers or sisters or ill relatives."
+  },
+  {
+   "type": "h",
+   "text": "HOLIDAY APARTMENTS TO LET"
+  },
+  {
+   "type": "p",
+   "text": "Sleeps 2-3. One-bedroom apartment with uninterrupted sea views. This is a small first floor apartment in a well-established apartment complex containing a range of leisure facilities and a supermarket for residents. On the edge of the town but close to cafés and restaurants. On-street parking is generally available.",
+   "label": "A"
+  },
+  {
+   "type": "p",
+   "text": "Sleeps 2-4. Spacious one-bedroom apartment in a complex that has only just opened, five minutes' walk from the sea. Private parking in front of building. It is located in a quiet, unspoilt village with a local market, banks, cafés and restaurants. There are some fabulous championship golf courses within easy walking distance.",
+   "label": "B"
+  },
+  {
+   "type": "p",
+   "text": "Sleeps 2+child. One-bedroom cottage (child's bed can also be provided), large terrace with uninterrupted views of the river and mountains. A truly peaceful location in a picturesque village, but less than ten minutes' drive from the coast and all the amenities of a town. Owners live nearby and are happy to help in any way they can.",
+   "label": "C"
+  },
+  {
+   "type": "p",
+   "text": "Sleeps 2-5. Two-bedroom apartment in a complex with its own pool and beautiful views of the national park. A peaceful location just 3 km from the town centre, where there are plenty of shops and excellent sports facilities. Superb local golf courses within easy reach.",
+   "label": "D"
+  },
+  {
+   "type": "p",
+   "text": "Sleeps 2-4. Modern one-bedroom first floor apartment in house, owners resident on ground floor. This great location offers easy access to all that this fantastic town has to offer, a few minutes' drive from its supermarket, bank, cafés, restaurants. The ferry to the island beach leaves from 100 m away. Ten minutes walk from the new shopping centre, which has many shops, food hall, cinema and multi-storey car park.",
+   "label": "E"
+  },
+  {
+   "type": "p",
+   "text": "Sleeps 2. One-bedroom first floor apartment. Beautifully furnished, offering a high standard of comfort. Situated in a peaceful location on the edge of an inland village, with attractive views of the golf course. Many restaurants, bars, shops etc. are within easy walking distance. Garage available by arrangement with the owners.",
+   "label": "F"
+  },
+  {
+   "type": "p",
+   "text": "Sleeps 2-4. Two-bedroom apartment in central location in busy street with shops, restaurants etc. not far from the beach. The town has ideal facilities for holidays all year round, including swimming pool, tennis courts and golf course.",
+   "label": "G"
+  },
+  {
+   "type": "h",
+   "text": "DR"
+  }
+ ],
+ "answers": {
+  "1": [
+   "TRUE"
+  ],
+  "2": [
+   "FALSE"
+  ],
+  "3": [
+   "NOT GIVEN"
+  ],
+  "4": [
+   "NOT GIVEN"
+  ],
+  "5": [
+   "NOT GIVEN"
+  ],
+  "6": [
+   "F"
+  ],
+  "7": [
+   "B"
+  ],
+  "8": [
+   "G"
+  ],
+  "9": [
+   "A"
+  ],
+  "10": [
+   "D"
+  ],
+  "11": [
+   "B"
+  ],
+  "12": [
+   "A"
+  ],
+  "13": [
+   "C"
+  ],
+  "14": [
+   "F"
+  ]
+ },
+ "questions": "## Questions 1–5\nDo the following statements agree with the information given in the text *Is Your Child at School Today?*\n@tfng\n1. Children must go to the school where they are registered.\n2. All arrivals after the register has closed are recorded as 'unauthorised' absences.\n3. If your child is absent from school, you must send the school a letter to explain why.\n4. Staff who think a child is having difficulties at school will contact the parents.\n5. Schools will contact other authorities about children who take frequent unauthorised absences.\n\n## Questions 6–14\nThe second text (the apartments) has seven sections, **A–G**.\nFor which apartment are the following statements true?\n**NB** You may use any letter more than once.\n@options A-G\n6. It overlooks a golf course.\n7. It has its own parking space.\n8. It is in the centre of a town.\n9. The sea can be seen from it.\n10. There is a swimming pool for residents of the apartment complex.\n11. It is in a new apartment complex.\n12. It is part of an apartment complex with its own supermarket.\n13. It has a private outdoor area where you can sit.\n14. The owners will organise parking on request.\n"
+}

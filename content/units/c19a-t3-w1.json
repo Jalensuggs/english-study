@@ -1,0 +1,34 @@
+{
+ "id": "c19a-t3-w1",
+ "book": "c19a",
+ "test": 3,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "The diagram below shows how a biofuel called ethanol is produced.",
+  "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+  "Biofuel production: how ethanol is made",
+  "Energy",
+  "(sunlight + carbon dioxide)",
+  "Plants and trees grow",
+  "Harvesting",
+  "Carbon Dioxide",
+  "Pre-processing",
+  "Processing",
+  "Cellulose",
+  "Carbon Dioxide",
+  "Ethanol",
+  "Sugars",
+  "Carbon Dioxide",
+  "Carbon a Dioxide",
+  "Carbon Dioxide",
+  "Microbes added",
+  "@ p. 133"
+ ],
+ "pages": [
+  74
+ ],
+ "samplePages": [
+  132
+ ]
+}

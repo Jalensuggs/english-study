@@ -1,0 +1,42 @@
+{
+ "id": "c18a-t3-w1",
+ "book": "c18a",
+ "test": 3,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "The diagram below shows the floor plan of a public library 20 years ago and how it looks now.",
+  "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+  "Central Library 20 years ago",
+  "CDs, videos, computer games",
+  "Children's books",
+  "Adult fiction books",
+  "Adult non-fiction books",
+  "Reading room",
+  "(newspapers & magazines)",
+  "Tables & chairs",
+  "Entrance",
+  "Central Library today",
+  "Sofa",
+  "Storytelling events",
+  "[Sofa",
+  "Children fiction books.",
+  "All reference books",
+  "Enquiry desk",
+  "(tickets, book returns, etc.)",
+  "Computer room",
+  "Lecture room",
+  "Adult fiction books",
+  "Information desk",
+  "Sell-service machines",
+  "Café",
+  "Entrance",
+  "→ 9 p. 132"
+ ],
+ "pages": [
+  77
+ ],
+ "samplePages": [
+  134
+ ]
+}

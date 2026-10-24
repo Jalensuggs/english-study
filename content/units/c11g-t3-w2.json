@@ -1,0 +1,20 @@
+{
+ "id": "c11g-t3-w2",
+ "book": "c11g",
+ "test": 3,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "News stories on TV and in newspapers are very often accompanied by pictures.",
+  "Some people say that these pictures are more effective than words.",
+  "What is your opinion about this?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+ ],
+ "pages": [
+  77
+ ],
+ "samplePages": [
+  135
+ ]
+}

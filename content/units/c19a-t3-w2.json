@@ -1,0 +1,21 @@
+{
+ "id": "c19a-t3-w2",
+ "book": "c19a",
+ "test": 3,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "It is important for everyone, including young people, to save money for their future.",
+  "To what extent do you agree or disagree with this statement?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+  "76 → &p. 134"
+ ],
+ "pages": [
+  75
+ ],
+ "samplePages": [
+  133,
+  134
+ ]
+}

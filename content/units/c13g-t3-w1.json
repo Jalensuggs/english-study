@@ -1,0 +1,23 @@
+{
+ "id": "c13g-t3-w1",
+ "book": "c13g",
+ "test": 3,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "The system used for rubbish/garbage collection in your local area is not working properly. This is causing problems for you and your neighbours.",
+  "Write a letter to the local council. In your letter",
+  "• describe how the rubbish collection system is not working properly",
+  "• explain how this is affecting you and your neighbours",
+  "• suggest what should be done about the problem",
+  "You do NOT need to write any addresses.",
+  "Begin your letter as follows:",
+  "Dear Sir or Madam,"
+ ],
+ "pages": [
+  73
+ ],
+ "samplePages": [
+  130
+ ]
+}

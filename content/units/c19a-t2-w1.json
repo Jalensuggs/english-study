@@ -1,0 +1,28 @@
+{
+ "id": "c19a-t2-w1",
+ "book": "c19a",
+ "test": 2,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "The plans below show a harbour in 2000 and how it looks today.",
+  "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+  "Porth Harbour (in 2000)",
+  "• E",
+  "park",
+  "- Passenge",
+  "Car park",
+  "Porth Harbour (today)",
+  "• E",
+  "Marina",
+  "Cates & shops | Lifeboa",
+  "(lor the hotel)",
+  "→ 8 p. 130|"
+ ],
+ "pages": [
+  51
+ ],
+ "samplePages": [
+  129
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "id": "c13g-t2-r2",
+ "book": "c13g",
+ "test": 2,
+ "n": 2,
+ "kind": "reading",
+ "label": "Section 2",
+ "title": "Why you should delegate tasks to team members",
+ "q": [
+  15,
+  27
+ ],
+ "pages": [
+  42,
+  43,
+  44,
+  45
+ ],
+ "qpages": [
+  43,
+  45
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Why you should delegate tasks to team members"
+  },
+  {
+   "type": "sub",
+   "text": "Delegation helps you get more done, helps your team members progress through learning new things and spreads the load in the team."
+  },
+  {
+   "type": "p",
+   "text": "When you give someone a project task to do, make sure that they have all the information they require to actually get on and do it. That includes specifying the date it is due, writing a clear definition of the task, providing any resources they need to get it done or names of people you expect them to talk to. It also means informing them of any expectations you have, such as delivering it as a spreadsheet rather than a Word document."
+  },
+  {
+   "type": "p",
+   "text": "If you have concerns that someone doesn't have the skills to do a good job (or they tell you this outright), make sure that you offer some help. It might take longer this time but next time they will be able to do it without you, so it will save you time in the long run."
+  },
+  {
+   "type": "p",
+   "text": "Once you have given the task to someone, let them get on with it. Tell them how you expect to be kept informed, like through a report once a week. Then let them get on with it, unless you feel things are not progressing as you would like."
+  },
+  {
+   "type": "p",
+   "text": "As a project manager, you have to retain some of the main project responsibilities for yourself. You shouldn't expect someone else on the project team to do your job. Equally, don't delegate tasks such as dull administrative ones, just because you don't want to do them. But remember that project management is a leadership position so you don't want your role to be seen as too basic."
+  },
+  {
+   "type": "p",
+   "text": "One way to free up your time to spend on the more strategic and leadership parts of project management is to delegate things that are regular, like noting whether weekly targets have been met. Could someone in your team take this on for you? This can be a useful way of upskilling your team members to complement any ongoing training and allowing them to gain confidence too."
+  },
+  {
+   "type": "p",
+   "text": "So in summary, be clear, supportive, and don't micromanage. Don't become the problem on your project that prevents progress just because you're afraid to leave people alone to get on with their jobs."
+  },
+  {
+   "type": "h",
+   "text": "Choosing the right format for your CV"
+  },
+  {
+   "type": "p",
+   "text": "A good CV should be clear, simple and easy to understand. Here are four of the most popular CV formats and advice on when to use them:"
+  },
+  {
+   "type": "h",
+   "text": "Chronological"
+  },
+  {
+   "type": "p",
+   "text": "This is the traditional CV format and is extremely popular because it allows employers to see all the posts you have held in order. It provides flexibility because it works in almost all circumstances, the exception being if you have blocks of unemployment that are difficult to account for. This type of format is particularly useful when you have a solid and complete working history spanning five years or more."
+  },
+  {
+   "type": "h",
+   "text": "Functional"
+  },
+  {
+   "type": "p",
+   "text": "The functional CV is designed to describe your key skills rather than the jobs you have done. The functional CV format is typically used by people who have extensive gaps in their employment history, or have often changed jobs. It also suits those who want to go in a different direction work-wise and change industry. You might choose it if you want to highlight skills learned early in your career, points that might get missed if a chronological format is used. It is also appropriate if you have done little or no actual work, for example, if you are one of the current year's graduates."
+  },
+  {
+   "type": "p",
+   "text": "Because this format is often used to cover a patchy employment history, some interviewers may view such CVs with suspicion, so be very careful should you choose it."
+  },
+  {
+   "type": "h",
+   "text": "Achievement"
+  },
+  {
+   "type": "p",
+   "text": "An alternative to the functional CV is to use an achievement-based résumé highlighting key achievements in place of skills. This can help show your suitability for a role if you lack direct experience of it."
+  },
+  {
+   "type": "h",
+   "text": "Non-traditional"
+  },
+  {
+   "type": "p",
+   "text": "With the explosion of digital and creative industries over recent years, CV formats have become more and more imaginative. You can present information through graphics, which n be more visually engaging and turn out to be an unusual but winning option. This w finitely make you stand out from the crowd. It also demonstrates design skills and creativi in a way that a potential employer can see and feel. However, a highly creative CV format is only really appropriate for creative and artistic sectors, such as those involving promoting products, though it would also work for the media too."
+  }
+ ],
+ "answers": {
+  "15": [
+   "expectations"
+  ],
+  "16": [
+   "concerns"
+  ],
+  "17": [
+   "report"
+  ],
+  "18": [
+   "dull"
+  ],
+  "19": [
+   "targets"
+  ],
+  "20": [
+   "micromanage"
+  ],
+  "21": [
+   "flexibility"
+  ],
+  "22": [
+   "unemployment"
+  ],
+  "23": [
+   "direction"
+  ],
+  "24": [
+   "suspicion"
+  ],
+  "25": [
+   "experience"
+  ],
+  "26": [
+   "graphics"
+  ],
+  "27": [
+   "media"
+  ]
+ },
+ "questions": "## Questions 15–20\nComplete the sentences below.\nChoose **ONE WORD ONLY** from the text for each answer.\n15. Ensure team members are aware of any {15} there are regarding how the work should be presented.\n16. Make sure support is made available if any {16} exist as to the team member's ability to do the work.\n17. Ask the team member to detail how the work is developing, for example by providing a regular {17} .\n18. Don't delegate administrative tasks simply because they are {18} .\n19. Managers can ask a team member to check on the achievement of {19} at fixed intervals.\n20. If you {20} , you risk delaying the whole project.\n\n## Questions 21–27\nComplete the notes below.\nChoose **ONE WORD ONLY** from the text for each answer.\n\n> ### CV formats\n> There are several different formats including:\n> **Chronological**\n> - very common\n> - gives {21} in most cases\n> - perhaps inappropriate if there are periods where {22} is not easy to explain\n> **Functional**\n> - appropriate for people who intend to follow a new {23} in their career\n> - suits recent graduates\n> - can create {24} in recruiters, so is best used with caution\n> **Achievement**\n> - focuses mainly on what the person has achieved\n> - may be advisable if the person has no {25} in the area\n> **Non-traditional**\n> - enables use of attractive {26} to present data\n> - suits applications for jobs in marketing or {27}\n"
+}

@@ -1,0 +1,30 @@
+{
+ "id": "c18a-t2-w1",
+ "book": "c18a",
+ "test": 2,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "The chart below shows the number of households in the US by their annual income in 2007, 2011 and 2015.",
+  "Summarise the information by selecting and reporting the main features, an nake comparisons where relevan",
+  "Number of US households (in millions), by annual income",
+  ": 35",
+  "25 -",
+  "Number of households (millions",
+  "2007",
+  "2011",
+  "2015",
+  "Year",
+  "Less than $25,000",
+  "• M$25,000-$49,999 • $50,000-$74,999",
+  "$75,000-$99,999",
+  "$100,000 or more",
+  "→ 8 p. 130"
+ ],
+ "pages": [
+  54
+ ],
+ "samplePages": [
+  132
+ ]
+}

@@ -1,0 +1,130 @@
+{
+ "id": "c13g-t3-r2",
+ "book": "c13g",
+ "test": 3,
+ "n": 2,
+ "kind": "reading",
+ "label": "Section 2",
+ "title": "Employees' health and safety responsibilities",
+ "q": [
+  15,
+  27
+ ],
+ "pages": [
+  64,
+  65,
+  66,
+  67
+ ],
+ "qpages": [
+  65,
+  67
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Employees' health and safety responsibilities"
+  },
+  {
+   "type": "p",
+   "text": "As an employee you have rights and you have responsibilities for your own wellbeing and that of your colleagues. This article explains what these responsibilities are, and how you can meet them. Your rights Your rights as an employee to work in a safe and healthy environment are set down in law and generally can't be changed or removed by your employer. The most important of these rights are:"
+  },
+  {
+   "type": "p",
+   "text": "as far as possible, to have any hazards to your health and safety properly controlled to be given any personal protective and safety equipment without being charged for it to stop work and leave your work area, without being disciplined, if you have reasonable concerns about your safety to tell your employer about any health and safety concerns you have not to be disciplined if you contact the Health and Safety Executive, or your local authority, if your employer won't listen to you to have breaks during the time you are at work to have time off from work during the working week to have annual paid holiday. Your responsibilities Your most important responsibilities as an employee are:"
+  },
+  {
+   "type": "p",
+   "text": "to take reasonable care of your own health and safety to remove jewellery and avoid loose clothing when operating machinery if you have long hair, or wear a headscarf, make sure it's tucked out of the way as it could get caught in machinery to take reasonable care not to expose fellow employees and members of the public to risk by what you do or don't do in the course of your work to co-operate with your employer, making sure you complete the training that is provided and that you understand and follow the company's health and safety policies not to interfere with or misuse anything that's been provided for your health, safety or welfare to report any injuries you suffer as a result of doing your job - your employer may then need to change the way you work. If you drive or operate machinery, you have a responsibility to tell your employer if you take medication that makes you feel sleepy. If you do, they should temporarily move you to another job if they have one for you to do."
+  },
+  {
+   "type": "h",
+   "text": "Our company notices"
+  },
+  {
+   "type": "p",
+   "text": "Advance warning Refurbishment of offices in the Perkins Building will start on Monday 22 May, and is expected to be completed by the end of June. Staff based in that building will be individually notified of where they'll work for that time. On the previous Friday, facilities staff will move everything that needs to go to your new office. Before then, please make a list of what should be moved, and another list of what can be stored.",
+   "label": "A"
+  },
+  {
+   "type": "p",
+   "text": "Information about financial systems The review of the company's financial systems is now complete, and modifications will shortly be introduced. Jane Phillips from Finance will explain the changes and how they affect you, and answer any queries about them, between 12 and 1 pm on 15 March in Room 5.",
+   "label": "B"
+  },
+  {
+   "type": "p",
+   "text": "Purchasing Manager As you probably know, Sadia Ahmed is leaving the company on 31 March, after ten years as Purchasing Manager. Her replacement, Jeff Bridges, will join us on the previous Monday. Jeff will be in Room 70 between 12 and 2 pm on 3 April: feel free to drop in and say hello to him during your lunch break.",
+   "label": "C"
+  },
+  {
+   "type": "p",
+   "text": "We're doing well!",
+   "label": "D"
+  },
+  {
+   "type": "p",
+   "text": "We've received a large and urgent order from one of our major customers. As a result, we'll need to run the production line for an additional three hours each evening throughout the week beginning 13 March. Any production workers willing to do this shift in addition to their normal work should speak to the Production Manager asap."
+  },
+  {
+   "type": "p",
+   "text": "Quality control Because of recent concerns about product quality, we're setting up a team to consider ways of raising quality and making recommendations for changes. As staff from any department might have useful ideas, anyone is welcome to join the team - ring Rodrigo Pérez on 1012. It will involve fortnightly meetings and some research, over a six-month period.",
+   "label": "E"
+  },
+  {
+   "type": "p",
+   "text": "New opportunity Dev Patel will cease to be part-time content editor of the company intranet at the end of April, as his new role in Marketing leaves him no time for it. We're looking for two people to take over. If you're interested, and can work an extra three or four hours a week (for extra pay, of course!), contact Maggie Campbell on 2146.",
+   "label": "F"
+  },
+  {
+   "type": "p",
+   "text": "And finally ...",
+   "label": "G"
+  },
+  {
+   "type": "p",
+   "text": "We hope to re-start the company tennis championship, which hasn't taken place for the last three years. If this is something for you, talk to Bill Sinclair on extension 2371. You don't need to be a star player!"
+  }
+ ],
+ "answers": {
+  "15": [
+   "law"
+  ],
+  "16": [
+   "equipment"
+  ],
+  "17": [
+   "concerns"
+  ],
+  "18": [
+   "breaks"
+  ],
+  "19": [
+   "risk"
+  ],
+  "20": [
+   "training"
+  ],
+  "21": [
+   "injuries"
+  ],
+  "22": [
+   "medication"
+  ],
+  "23": [
+   "F"
+  ],
+  "24": [
+   "E"
+  ],
+  "25": [
+   "G"
+  ],
+  "26": [
+   "D"
+  ],
+  "27": [
+   "A"
+  ]
+ },
+ "questions": "## Questions 15–22\nComplete the notes below.\nChoose **ONE WORD ONLY** from the text for each answer.\n\n> ### Health and Safety at Work\n> **Employees' rights**\n> - are established by {15} and include the following:\n>   - employers should manage any potential dangers to their staff's health and safety\n>   - any {16} needed for employees to work safely should be free\n>   - employees may inform management of any {17} they have relating to health and safety\n>   - employees are entitled to some {18} while they are working\n> **Employees' responsibilities**\n>   - to take off jewellery and dress appropriately for their particular work\n>   - to avoid putting colleagues and others at {19}\n>   - to do any {20} that the employer offers\n>   - to inform the employer of any {21} received while working\n>   - to make sure the employer knows of any {22} you are taking that might affect performance\n\n## Questions 23–27\nLook at the seven notices for a company's staff, **A–G**, in the second text.\nFor which company notice are the following statements true?\n@options A-G\n23. Staff are needed to work on internal communications.\n24. People are needed to help improve an internal system.\n25. Staff are asked if they want to take part in an internal competition.\n26. Volunteers are asked to work overtime for a limited period.\n27. Staff will be told where to work temporarily.\n"
+}

@@ -1,0 +1,19 @@
+{
+ "id": "c11g-t2-w2",
+ "book": "c11g",
+ "test": 2,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "Some people say that in all levels of education, from primary schools to universities, too much time is spent on learning facts and not enough on learning practical skills.",
+  "Do you agree or disagree?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+ ],
+ "pages": [
+  54
+ ],
+ "samplePages": [
+  133
+ ]
+}

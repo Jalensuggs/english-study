@@ -1,0 +1,114 @@
+{
+ "id": "c11g-t4-r3",
+ "book": "c11g",
+ "test": 4,
+ "n": 3,
+ "kind": "reading",
+ "label": "Section 3",
+ "title": "Understanding hares",
+ "q": [
+  28,
+  40
+ ],
+ "pages": [
+  95,
+  96,
+  97,
+  98
+ ],
+ "qpages": [
+  95,
+  98
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Understanding hares"
+  },
+  {
+   "type": "sub",
+   "text": "With its wild stare, swift speed and secretive nature, the UK's brown hare is the rabbit's mysterious cousin. Even in these days of agricultural intensification, the hare is still to be seen in open countryside, but its numbers are falling."
+  },
+  {
+   "type": "p",
+   "text": "Like many herbivores, brown hares spend a relatively large amount of their time feeding. They prefer to do this in the dark, but when nights are short, their activities do spill into daylight hours. Wherever they live, hares appear to have a fondness for fields with a variety of vegetation, for example short as well as longer clumps of grasses. Studies have demonstrated that they benefit from uncultivated land and other unploughed areas on farms, such as field margins. Therefore, if farmers provided patches of woodland in areas of pasture as well as assorted crops in arable areas, there would be year-round shelter and food, and this could be the key to turning round the current decline in hare populations.",
+   "label": "A"
+  },
+  {
+   "type": "p",
+   "text": "Brown hares have a number of physical adaptations that enable them to survive in open countryside. They have exceptionally large ears that move independently, so that a range of sounds can be pinpointed accurately. Positioned high up on their heads, the hares' large golden eyes give them 360° vision, making it hard to take a hare by surprise. Compared to mammals of a similar size, hares have a greatly enlarged heart and a higher volume of blood in their bodies, and this allows for superior speed and stamina. In addition, their legs are longer than those of a rabbit, enabling hares to run more like a dog and reach speeds of up to 70 kph.",
+   "label": "B"
+  },
+  {
+   "type": "h",
+   "text": "Brown hares have unusual lifestyles for their large size, breeding from a young"
+  },
+  {
+   "type": "p",
+   "text": "age and producing many leverets (babies). There are about three litters of up to four leverets every year. Both males and females are able to breed at about seven months old, but they have to be quick because they seldom live for more than two years. The breeding season runs from January to October, and by late February most females are pregnant or giving birth to their first litter of the year. So it seems strange, therefore, that it is in March, when the breeding season is already underway, that hares seemingly go mad: boxing, dancing, running and fighting. This has given rise to the age-old reference to 'mad March hares'. In fact, boxing occurs throughout the breeding season, but people tend to see this behaviour more often in March. This is because in the succeeding months, dusk - the time when hares are most active - is later, when fewer people are about. Crops and vegetation are also taller, hiding the hares from view. Though it is often thought that they are males fighting over females, boxing hares are usually females fighting off males.",
+   "label": "C"
+  },
+  {
+   "type": "p",
+   "text": "Hares are mostly solitary, but a female fights off a series of males until she is ready to mate. This occurs several times through the breeding season because, as soon as the female has given birth, she will be ready to mate again."
+  },
+  {
+   "type": "p",
+   "text": "But how can females manage to do this while simultaneously feeding themselves and rearing their young? The reason is that hares have evolved such self-sufficient young. Unlike baby rabbits, leverets are born furry and mobile. They weigh about 100g at birth and are immediately left to their own devices by their mothers. A few days later, the members of the litter creep away to create their own individual resting places, known as 'forms'. Incredibly, their mother visits them only once every 24 hours and, even then, she only suckles them for a maximum of five minutes each. This lack of family contact may seem harsh to us, but it is a strategy that draws less attention from predators. At the tender age of two weeks, leverets start to feed themselves, while still drinking their mother's milk. They grow swiftly and are fully weaned at four weeks, reaching adult weight at about six months.",
+   "label": "D"
+  },
+  {
+   "type": "p",
+   "text": "Research has shown that hares' milk is extremely rich and fatty, so a little goes a long way. In order to produce such nutritious milk, females need a high-quality, high-calorie diet. Hares are selective feeders at the best of times: unlike many herbivores, they can't sit around waiting to digest low-quality food - they need high-energy herbs and other leaves in order to sprint. This causes them problems when faced with the smallest alterations in food availability and abundance. So, as well as reductions in the diversity of farmland habitat, the decline in the range of food plants is injurious to hares.",
+   "label": "E"
+  },
+  {
+   "type": "p",
+   "text": "The rapid turnaround in the breeding cycle suggests that hares should, in principle, be able to increase their populations quickly to exploit new habitats. They certainly used to: studies show that hares evolved on the open plains and spread rapidly vestward from the Black Sea after the last ice age (though they were probabl troduced to Britain as a species to be hunted for the pot by the Romans). Bu today's hares are thwarted by the lack of rich farmland habitat. When the delicate erbs and other plants they rely on are ploughed up or poisoned by herbicides hese wonderful, agile runners disappear too, taking with them some of thi wildness from our lives.",
+   "label": "F"
+  }
+ ],
+ "answers": {
+  "28": [
+   "v"
+  ],
+  "29": [
+   "ix"
+  ],
+  "30": [
+   "iii"
+  ],
+  "31": [
+   "vii"
+  ],
+  "32": [
+   "ii"
+  ],
+  "33": [
+   "viii"
+  ],
+  "34": [
+   "C"
+  ],
+  "35": [
+   "A"
+  ],
+  "36": [
+   "C"
+  ],
+  "37": [
+   "stamina",
+   "energy"
+  ],
+  "38": [
+   "dog"
+  ],
+  "39": [
+   "vision"
+  ],
+  "40": [
+   "ears"
+  ]
+ },
+ "questions": "## Questions 28–33\nThe text has six sections, **A–F**.\nChoose the correct heading for each section from the list of headings below.\n@options i-ix\n\n> ### List of Headings\n> i. The need for population reduction\n> ii. The problem with being a fussy eater\n> iii. Reproductive patterns\n> iv. The need for further research\n> v. A possible solution to falling numbers\n> vi. The fastest runners\n> vii. A rather lonely beginning\n> viii. A comparison between past and present survival rates\n> ix. Useful physical features\n\n28. Paragraph **A**\n29. Paragraph **B**\n30. Paragraph **C**\n31. Paragraph **D**\n32. Paragraph **E**\n33. Paragraph **F**\n\n## Questions 34–36\nChoose the correct letter, **A**, **B**, **C** or **D**.\n34. According to the writer, what is the ideal habitat for hares?\nA. open grassland which they can run across\nB. densely wooded areas to breed in\nC. areas which include a range of vegetation\nD. land that has been farmed intensively for years\n\n35. When leverets are living alone they are not visited often by their mother because\nA. this helps to protect them from being eaten by other animals.\nB. the 'forms' are so far apart.\nC. they are very energetic from a surprisingly early age.\nD. they know how to find their own food from birth.\n\n36. What does the writer suggest about the adult hares' diet?\nA. They need some plants with a high fat content.\nB. They need time to digest the plants that they eat.\nC. It is difficult for them to adapt to changes in vegetation.\nD. It is vital for them to have a supply of one particular herb.\n\n## Questions 37–40\nComplete the summary below.\nChoose **ONE WORD ONLY** from the text for each answer.\n\n> ### Brown hares\n> The brown hare is well known for its ability to run fast, at speeds of up to 70 kph, largely due to the length of its legs as well as the unusual size of its heart. An increased amount of blood also gives it the necessary {37} to continue running fast for some time. A running hare resembles the {38} more closely than its relative, the rabbit.\n> The hare has some other characteristics that help it to avoid capture. The first is its excellent all-round {39} . This means that predators cannot easily creep up behind it. Another feature is its ability to position its massive {40} separately, to sense the slightest indication of danger.\n"
+}

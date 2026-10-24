@@ -1,0 +1,20 @@
+{
+ "id": "c18a-t2-w2",
+ "book": "c18a",
+ "test": 2,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "ome university students want to learn about other subjects in addition eir main subjects. Others believe it is more important to give all their tim and attention to studying for a qualification.",
+  "Discuss both these views and give your own opinion.",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+  "→ & p. 131]"
+ ],
+ "pages": [
+  55
+ ],
+ "samplePages": [
+  133
+ ]
+}

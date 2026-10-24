@@ -1,0 +1,19 @@
+{
+ "id": "c13g-t1-w2",
+ "book": "c13g",
+ "test": 1,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "In some areas of the US, a 'curfew' is imposed, in which teenagers are not allowed to be out of doors after a particular time at night unless they are accompanied by an adult.",
+  "What is your opinion about this?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+ ],
+ "pages": [
+  30
+ ],
+ "samplePages": [
+  127
+ ]
+}

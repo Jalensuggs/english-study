@@ -1,0 +1,125 @@
+{
+ "id": "c18a-t2-r2",
+ "book": "c18a",
+ "test": 2,
+ "n": 2,
+ "kind": "reading",
+ "label": "Passage 2",
+ "title": "Living with artificial intelligence",
+ "q": [
+  14,
+  26
+ ],
+ "pages": [
+  45,
+  46,
+  47,
+  48,
+  49
+ ],
+ "qpages": [
+  47,
+  48,
+  49
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Living with artificial intelligence"
+  },
+  {
+   "type": "sub",
+   "text": "Powerful artificial intelligence (Al) needs to be reliably aligned with human values, but does this mean Al will eventually have to police those values?"
+  },
+  {
+   "type": "p",
+   "text": "This has been the decade of Al, with one astonishing feat after another. A chess-playing Al that can defeat not only all human chess players, but also all previous human-programmed chess machines, after learning the game in just four hours? That's yesterday's news, what's next? True, these prodigious accomplishments are all in so-called narrow Al, where machines perform highly specialised tasks. But many experts believe this restriction is very temporary. By mid-century, we may have artificial general intelligence (AGI) - machines that can achieve human-level performance on the full range of tasks that we ourselves can tackle."
+  },
+  {
+   "type": "p",
+   "text": "If so, there's little reason to think it will stop there. Machines will be free of many of the physical constraints on human intelligence. Our brains run at slow biochemical processing speeds on the power of a light bulb, and their size is restricted by the dimensions of the human birth canal. It is remarkable what they accomplish, given these handicaps. But they may be as far from the physical limits of thought as our eyes are from the incredibly powerful Webb Space Telescope."
+  },
+  {
+   "type": "p",
+   "text": "Once machines are better than us at designing even smarter machines, progress towards these limits could accelerate. What would this mean for us? Could we ensure a safe and worthwhile coexistence with such machines? On the plus side, Al is already useful and profitable for many things, and super Al might be expected to be super useful, and super profitable. But the more powerful Al becomes, the more important it will be to specify its goals with great care. Folklore is full of tales of people who ask for the wrong thing, with disastrous consequences - King Midas, for example, might have wished that everything he touched turned to gold, but didn't really intend this to apply to his breakfast."
+  },
+  {
+   "type": "p",
+   "text": "So we need to create powerful Al machines that are 'human-friendly' - that have goals reliably aligned with our own values. One thing that makes this task difficult is that we are far from reliably human-friendly ourselves. We do many terrible things to each other and to many other creatures with whom we share the planet. If superintelligent machines don't do a lot better than us, we'll be in deep trouble. We'll have powerful new intelligence amplifying the dark sides of our own fallible natures."
+  },
+  {
+   "type": "p",
+   "text": "For safety's sake, then, we want the machines to be ethically as well as cognitively superhuman. We want them to aim for the moral high ground, not for the troughs in which many of us spend some of our time. Luckily they'll be smart enough for the job."
+  },
+  {
+   "type": "p",
+   "text": "If there are routes to the moral high ground, they'll be better than us at finding them, and steering us in the right direction."
+  },
+  {
+   "type": "p",
+   "text": "However, there are two big problems with this utopian vision. One is how we get the machines started on the journey, the other is what it would mean to reach this destination. The 'getting started' problem is that we need to tell the machines what they're looking for with sufficient clarity that we can be confident they will find it-whatever 'it' actually turns out to be. This won't be easy, given that we are tribal creatures and conflicted about the ideals ourselves. We often ignore the suffering of strangers, and even contribute to it, at least indirectly. How then, do we point machines in the direction of something better?"
+  },
+  {
+   "type": "p",
+   "text": "As for the 'destination' problem, we might, by putting ourselves in the hands of these moral guides and gatekeepers, be sacrificing our own autonomy - an important part of what makes us human. Machines who are better than us at sticking to the moral high ground may be expected to discourage some of the lapses we presently take for granted. We might lose our freedom to discriminate in favour of our own communities, for example."
+  },
+  {
+   "type": "p",
+   "text": "Loss of freedom to behave badly isn't always a bad thing, of course: denying ourselves the freedom to put children to work in factories, or to smoke in restaurants are signs of progress. But are we ready for ethical silicon police limiting our options? They might be so good at doing it that we won't notice them; but few of us are likely to welcome such a future."
+  },
+  {
+   "type": "p",
+   "text": "These issues might seem far-fetched, but they are to some extent already here. Al already has some input into how resources are used in our National Health Service (NHS) here in the UK, for example. If it was given a greater role, it might do so much more efficiently than humans can manage, and act in the interests of taxpayers and those who use the health system. However, we'd be depriving some humans (e.g. senior doctors) of the control they presently enjoy. Since we'd want to ensure that people are treated equally and that policies are fair, the goals of Al would need to be specified correctly."
+  },
+  {
+   "type": "p",
+   "text": "We have a new powerful technology to deal with - itself, literally, a new way of thinking. For our own safety, we need to point these new thinkers in the right direction, and get them to act well for us. It is not yet clear whether this is possible, but if it is, it will require a cooperative spirit, and a willingness to set aside self-interest."
+  },
+  {
+   "type": "p",
+   "text": "Both general intelligence and moral reasoning are often thought to be uniquely human capacities. But safety seems to require that we think of them as a package: if we are to give general intelligence to machines, we'll need to give them moral authority, too. And where exactly would that leave human beings? All the more reason to think about the destination now, and to be careful about what we wish for."
+  }
+ ],
+ "answers": {
+  "14": [
+   "C"
+  ],
+  "15": [
+   "A"
+  ],
+  "16": [
+   "B"
+  ],
+  "17": [
+   "D"
+  ],
+  "18": [
+   "C"
+  ],
+  "19": [
+   "D"
+  ],
+  "20": [
+   "YES"
+  ],
+  "21": [
+   "NOT GIVEN"
+  ],
+  "22": [
+   "NO"
+  ],
+  "23": [
+   "YES"
+  ],
+  "24": [
+   "C"
+  ],
+  "25": [
+   "A"
+  ],
+  "26": [
+   "E"
+  ]
+ },
+ "questions": "## Questions 14–19\nChoose the correct letter, **A**, **B**, **C** or **D**.\n14. What point does the writer make about AI in the first paragraph?\nA. It is difficult to predict how quickly AI will progress.\nB. Much can be learned about the use of AI in chess machines.\nC. The future is unlikely to see limitations on the capabilities of AI.\nD. Experts disagree on which specialised tasks AI will be able to perform.\n\n15. What is the writer doing in the second paragraph?\nA. explaining why machines will be able to outperform humans\nB. describing the characteristics that humans and machines share\nC. giving information about the development of machine intelligence\nD. indicating which aspects of humans are the most advanced\n\n16. Why does the writer mention the story of King Midas?\nA. to compare different visions of progress\nB. to illustrate that poorly defined objectives can go wrong\nC. to emphasise the need for cooperation\nD. to point out the financial advantages of a course of action\n\n17. What challenge does the writer refer to in the fourth paragraph?\nA. encouraging humans to behave in a more principled way\nB. deciding which values we want AI to share with us\nC. creating a better world for all creatures on the planet\nD. ensuring AI is more human-friendly than we are ourselves\n\n18. What does the writer suggest about the future of AI in the fifth paragraph?\nA. The safety of machines will become a key issue.\nB. It is hard to know what impact machines will have on the world.\nC. Machines will be superior to humans in certain respects.\nD. Many humans will oppose machines having a wider role.\n\n19. Which of the following best summarises the writer's argument in the sixth paragraph?\nA. More intelligent machines will result in greater abuses of power.\nB. Machine learning will share very few features with human learning.\nC. There are a limited number of people with the knowledge to program machines.\nD. Human shortcomings will make creating the machines we need more difficult.\n\n## Questions 20–23\nDo the following statements agree with the claims of the writer in Reading Passage 2?\n@ynng\n20. Machines with the ability to make moral decisions may prevent us from promoting the interests of our communities.\n21. Silicon police would need to exist in large numbers in order to be effective.\n22. Many people are comfortable with the prospect of their independence being restricted by machines.\n23. If we want to ensure that machines act in our best interests, we all need to work together.\n\n## Questions 24–26\nComplete the summary using the list of phrases, **A–F**, below.\n@options A-F\n\n> ### Using AI in the UK health system\n> AI currently has a limited role in the way {24} are allocated in the health service. The positive aspect of AI having a bigger role is that it would be more efficient and lead to patient benefits. However, such a change would result, for example, in certain {25} not having their current level of {26} . It is therefore important that AI goals are appropriate so that discriminatory practices could be avoided.\n\n> A. medical practitioners\n> B. specialised tasks\n> C. available resources\n> D. reduced illness\n> E. professional authority\n> F. technology experts\n"
+}

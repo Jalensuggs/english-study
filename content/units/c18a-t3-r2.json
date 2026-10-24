@@ -1,0 +1,113 @@
+{
+ "id": "c18a-t3-r2",
+ "book": "c18a",
+ "test": 3,
+ "n": 2,
+ "kind": "reading",
+ "label": "Passage 2",
+ "title": "The steam car",
+ "q": [
+  14,
+  26
+ ],
+ "pages": [
+  67,
+  68,
+  69,
+  70,
+  71
+ ],
+ "qpages": [
+  67,
+  70,
+  71
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "The steam car"
+  },
+  {
+   "type": "sub",
+   "text": "The successes and failures of the Doble brothers and their steam cars"
+  },
+  {
+   "type": "p",
+   "text": "When primitive automobiles first began to appear in the 1800s, their engines were based on steam power. Steam had already enjoyed a long and successful career in the railways, so it was only natural that the technology evolved into a miniaturized version which was separate from the trains. But these early cars inherited steam's weaknesses along with its strengths. The boilers had to be lit by hand, and they required about twenty minutes to build up pressure before they could be driven. Furthermore, their water reservoirs only lasted for about thirty miles before needing replenishment. Despite such shortcomings, these newly designed self-propelled carriages offered quick transportation, and by the early 1900s it was not uncommon to see such machines shuttling wealthy citizens around town.",
+   "label": "A"
+  },
+  {
+   "type": "p",
+   "text": "But the glory days of steam cars were few. A new technology called the Internal Combustion Engine soon appeared, which offered the ability to drive down the road just moments after starting up. At first, these noisy gasoline cars were unpopular because they were more complicated to operate and they had difficult hand-crank starters, which were known to break arms when the engines backfired. But in 1912 General Motors introduced the electric starter, and over the following few years steam power was gradually phased out.",
+   "label": "B"
+  },
+  {
+   "type": "p",
+   "text": "Even as the market was declining, four brothers made one last effort to rekindle the technology. Between 1906 and 1909, while still attending high school, Abner Doble and his three brothers built their first steam car in their parents' basement. It comprised parts taken from a wrecked early steam car but reconfigured to drive an engine of their own design. Though it did not run well, the Doble brothers went on to build a second and third prototype in the following years. Though the Doble boys' third prototype, nicknamed the Model B, still lacked the convenience of an internal combustion engine, it drew the attention of automobile trade magazines due to its numerous improvements over previous steam cars. The Model B proved to be superior to gasoline automobiles in many ways. Its high-pressure steam drove the engine pistons in virtual silence, in contrast to clattering gas engines which emitted the aroma of burned hydrocarbons. Perhaps most impressively, the Model B was amazingly swift. It could accelerate from zero to sixty miles per hour in just fifteen seconds, a feat described as 'remarkable acceleration' by Automobile magazine in 1914.",
+   "label": "C"
+  },
+  {
+   "type": "p",
+   "text": "The following year Abner Doble drove the Model B from Massachusetts to Detroit in order to seek investment in his automobile design, which he used to open the General Engineering Company. He and his brothers immediately began working on the Model C, which was intended to expand upon the innovations of the Model B. The brothers added features such as a key-based ignition in the cabin, eliminating the need for the operator to manually ignite the boiler. With these enhancements, the Dobles' new car company promised a steam vehicle which would provide all of the convenience of a gasoline car, but with much greater speed, much simpler driving controls, and a virtually silent powerplant. By the following April, the General Engineering Company had received 5,390 deposits for Doble Detroits, which were scheduled for delivery in early 1918.",
+   "label": "D"
+  },
+  {
+   "type": "p",
+   "text": "Later that year Abner Doble delivered unhappy news to those eagerly awaiting the delivery of their modern new cars. Those buyers who received the handful of completed cars complained that the vehicles were sluggish and erratic, sometimes going in reverse when they should go forward. The new engine design, though innovative, was still plagued with serious glitches.",
+   "label": "E"
+  },
+  {
+   "type": "p",
+   "text": "The brothers made one final attempt to produce a viable steam automobile. In early 1924, the Doble brothers shipped a Model E to New York City to be road-tested by the Automobile Club of America. After sitting overnight in freezing temperatures, the car was pushed out into the road and left to sit for over an hour in the frosty morning air. At the turn of the key, the boiler lit and reached its operating pressure inside of forty seconds. As they drove the test vehicle further, they found that its evenly distributed weight lent it surprisingly good handling, even though it was so heavy. As the new Doble steamer was further developed and tested, its maximum speed was pushed to over a hundred miles per hour, and it achieved about fifteen miles per gallon of kerosene with negligible emissions.",
+   "label": "F"
+  },
+  {
+   "type": "p",
+   "text": "Sadly, the Dobles' brilliant steam car never was a financial success. Priced at around $18,000 in 1924, it was popular only among the very wealthy. Plus, it is said that no two Model Es were quite the same, because Abner Doble tinkered endlessly with the design. By the time the company folded in 1931, fewer than fifty of the amazing Model E steam cars had been produced. For his whole career, until his death in 1961, Abner Doble remained adamant that steam-powered automobiles were at least equal to gasoline cars, if not superior. Given the evidence, he may have been right. Many of the Model E Dobles which have survived are still in good working condition, some having been driven over half a million miles with only normal maintenance. Astonishingly, an unmodified Doble Model B runs clean enough to pass the emissions laws in California today, and they are pretty strict. It is true that the technology poses some difficult problems, but you cannot help but wonder how efficient a steam car might be with the benefit of modern materials and computers. Under the current pressure to improve automotive performance and reduce emissions, it is not unthinkable that the steam car may rise again.",
+   "label": "G"
+  }
+ ],
+ "answers": {
+  "14": [
+   "iii"
+  ],
+  "15": [
+   "viii"
+  ],
+  "16": [
+   "vi"
+  ],
+  "17": [
+   "v"
+  ],
+  "18": [
+   "vii"
+  ],
+  "19": [
+   "i"
+  ],
+  "20": [
+   "iv"
+  ],
+  "21": [
+   "A"
+  ],
+  "22": [
+   "C"
+  ],
+  "23": [
+   "B"
+  ],
+  "24": [
+   "speed"
+  ],
+  "25": [
+   "fifty",
+   "50"
+  ],
+  "26": [
+   "strict"
+  ]
+ },
+ "questions": "## Questions 14–20\nReading Passage 2 has seven paragraphs, **A–G**.\nChoose the correct heading for each paragraph from the list of headings below.\n@options i-viii\n\n> ### List of Headings\n> i. A period in cold conditions before the technology is assessed\n> ii. Marketing issues lead to failure\n> iii. Good and bad aspects of steam technology are passed on\n> iv. A possible solution to the issues of today\n> v. Further improvements lead to commercial orders\n> vi. Positive publicity at last for this quiet, clean, fast vehicle\n> vii. A disappointing outcome for customers\n> viii. A better option than the steam car arises\n\n14. Paragraph **A**\n15. Paragraph **B**\n16. Paragraph **C**\n17. Paragraph **D**\n18. Paragraph **E**\n19. Paragraph **F**\n20. Paragraph **G**\n\n## Questions 21–23\nChoose the correct letter, **A**, **B**, **C** or **D**.\n21. What point does the writer make about the steam car in Paragraph B?\nA. Its success was short-lived.\nB. Not enough cars were made.\nC. Car companies found them hard to sell.\nD. People found them hard to drive.\n\n22. When building their first steam car, the Doble brothers\nA. constructed all the parts themselves.\nB. made written notes at each stage of the construction.\nC. needed several attempts to achieve a competitive model.\nD. sought the advice of experienced people in the car industry.\n\n23. In order to produce the Model C, the Doble brothers\nA. moved production to a different city.\nB. raised financial capital.\nC. employed an additional worker.\nD. abandoned their earlier designs.\n\n## Questions 24–26\nComplete the summary below.\nChoose **ONE WORD AND/OR A NUMBER** from the passage for each answer.\n\n> ### The Model E\n> The Model E was road-tested in 1924 by the Automobile Club of America. They found it easy to drive, despite its weight, and it impressed the spectators. A later version of the Model E raised its {24} , while keeping its emissions extremely low.\n> The steam car was too expensive for many people and its design was constantly being altered. Under {25} cars were produced before the company went out of business. However, even today, there are Model Es on the road in the US. They are straightforward to maintain, and they satisfy California's {26} emissions laws. Perhaps today's technology and materials would help us revive the steam car.\n"
+}

@@ -1,0 +1,23 @@
+{
+ "id": "c13g-t1-w1",
+ "book": "c13g",
+ "test": 1,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "You work for an international company, and would like to spend six months working in its head office in another country.",
+  "Write a letter to your manager. In your letter",
+  "• explain why you want to work in the company's head office for six months",
+  "• say how your work could be done while you are away",
+  "• ask for his/her help in arranging it",
+  "You do NOT need to write any addresses.",
+  "Begin your letter as follows:",
+  "Dear................"
+ ],
+ "pages": [
+  29
+ ],
+ "samplePages": [
+  126
+ ]
+}

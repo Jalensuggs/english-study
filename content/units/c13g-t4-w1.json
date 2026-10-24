@@ -1,0 +1,23 @@
+{
+ "id": "c13g-t4-w1",
+ "book": "c13g",
+ "test": 4,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "A friend you made while you were studying abroad has written to ask you for help in finding a job in your country. You have heard about a job in a local company that might be suitable for him/her.",
+  "Write a letter to this friend. In your letter",
+  "• tell your friend about the job and what sort of work it involves",
+  "• say why you think the job would be suitable for him/her",
+  "• explain how to apply for the job",
+  "You do NOT need to write any addresses.",
+  "Begin your letter as follows:",
+  "Dear...,"
+ ],
+ "pages": [
+  94
+ ],
+ "samplePages": [
+  132
+ ]
+}

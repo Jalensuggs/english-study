@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1d1f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="英语学习">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<title>英语学习</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <a class="brand" href="#/">英语学习</a>
+  <nav class="nav">
+    <a href="#/" data-nav="home">首页</a>
+    <a href="#/library" data-nav="library">题库</a>
+    <a href="#/phrases" data-nav="phrases">短语</a>
+    <a href="#/vocab" data-nav="vocab">生词本</a>
+    <a href="#/review" data-nav="review">复习<span class="badge" id="due-badge" hidden></span></a>
+  </nav>
+</header>
+<main id="app"></main>
+
+<!-- 底部导航（手机） -->
+<nav class="tabbar" id="tabbar">
+  <a href="#/" data-nav="home"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1z"/></svg>首页</a>
+  <a href="#/library" data-nav="library"><svg viewBox="0 0 24 24"><path d="M5 4.5h9.5a2 2 0 0 1 2 2V20H7a2 2 0 0 1-2-2zM16.5 7.5H19V20h-2.5M8 8.5h5M8 11.5h5"/></svg>题库</a>
+  <a href="#/phrases" data-nav="phrases"><svg viewBox="0 0 24 24"><path d="M4 7h7M4 12h11M4 17h7M15 6l4 4-4 4"/></svg>短语</a>
+  <a href="#/vocab" data-nav="vocab"><svg viewBox="0 0 24 24"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3.5L6 20V5a1 1 0 0 1 1-1z"/></svg>生词本</a>
+  <a href="#/review" data-nav="review"><svg viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4.5V8h-3.5"/></svg>复习<span class="badge" id="due-badge-m" hidden></span></a>
+</nav>
+
+<!-- 查词卡片 -->
+<div class="lookup" id="lookup" hidden>
+  <div class="lookup-scrim" data-close></div>
+  <div class="lookup-card" role="dialog" aria-label="查词">
+    <div class="lookup-grip"></div>
+    <div class="lookup-body" id="lookup-body"></div>
+  </div>
+</div>
+<button class="select-btn" id="select-btn" hidden>查询所选</button>
+<div class="toast" id="toast" hidden></div>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>

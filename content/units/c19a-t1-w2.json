@@ -1,0 +1,20 @@
+{
+ "id": "c19a-t1-w2",
+ "book": "c19a",
+ "test": 1,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "Some people think that competition at work, at school and in daily life is a good thing. Others believe that we should try to cooperate more, rather than competing against each other.",
+  "Discuss both these views and give your own opinion.",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+  "→ @ p. 129 31"
+ ],
+ "pages": [
+  30
+ ],
+ "samplePages": [
+  128
+ ]
+}

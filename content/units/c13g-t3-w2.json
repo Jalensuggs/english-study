@@ -1,0 +1,19 @@
+{
+ "id": "c13g-t3-w2",
+ "book": "c13g",
+ "test": 3,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "Some people say that now we can see films on our phones or tablets there is no need to go to the cinema. Others say that to be fully enjoyed, films need to be seen in a cinema.",
+  "Discuss both these views and give your own opinion.",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+ ],
+ "pages": [
+  74
+ ],
+ "samplePages": [
+  131
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "id": "c13g-t2-w2",
+ "book": "c13g",
+ "test": 2,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "Many working people get tie or no exercise either during the working day or in their free time, and have health problems as a result.",
+  "Why do many working people not get enough exercise?",
+  "What can be done about this problem?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+ ],
+ "pages": [
+  52
+ ],
+ "samplePages": [
+  129
+ ]
+}

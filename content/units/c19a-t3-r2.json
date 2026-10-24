@@ -1,0 +1,135 @@
+{
+ "id": "c19a-t3-r2",
+ "book": "c19a",
+ "test": 3,
+ "n": 2,
+ "kind": "reading",
+ "label": "Passage 2",
+ "title": "The global importance of wetlands",
+ "q": [
+  14,
+  26
+ ],
+ "pages": [
+  65,
+  66,
+  67,
+  68
+ ],
+ "qpages": [
+  67,
+  68
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "The global importance of wetlands"
+  },
+  {
+   "type": "p",
+   "text": "Wetlands are areas where water covers the soil, or is present either at or near the surface of the soil, for all or part of the year. These are complex ecosystems, rich in unique plant and animal life. But according to the World Wide Fund for Nature (WWFN), half of the world's wetlands have disappeared since 1990 - converted or destroyed for commercial development, drainage schemes and the extraction of minerals and peat\". Many of those that remain have been damaged by agricultural pesticides and fertilisers, industrial pollutants, and construction works.",
+   "label": "A"
+  },
+  {
+   "type": "p",
+   "text": "Throughout history, humans have gathered around wetlands, and their fertile ecosystems have played an important part in human development. Consequently, they are of considerable religious, historical and archacological value to many communities around the world. \"Wetlands directly support the livelihoods and well-being of millions of people,' says Dr Matthew McCartney, principal researcher and hydrologist at the International Water Management Institute (IWMI). 'In many developing countries, large numbers of people are dependent on wetland agriculture for their livelihoods.'",
+   "label": "B"
+  },
+  {
+   "type": "p",
+   "text": "They also serve a crucial environmental purpose. Wetlands are one of the key tools in mitigating climate change across the planet,' says Pieter van Eijk, head of Climate Adaptation at Wetlands International (WI), pointing to their use as buffers that protect coastal areas from sea-level rise and extreme weather events such as hurricanes and flooding. Wetland coastal forests provide food and water, as well as shelter from storms, and WI and other agencies are working to restore those forests which have been lost. 'It can be as simple as planting a few trees per hectare to create shade and substantially change a microclimate,' he says. \"Implementing climate change projects isn't so much about money.'",
+   "label": "C"
+  },
+  {
+   "type": "p",
+   "text": "The world's wetlands are, unfortunately, rich sources for in-demand commodities, such as palm oil and pulpwood. Peatlands - wetlands with a waterlogged organic soil layer - are particularly targeted. When peatlands are drained for cultivation, they become net carbon emitters instead of active carbon stores, and, according to Marcel Silvius, head of Climate-smart Land-use at WI, this practice causes six per cent of all global carbon emissions. The clearance of peatlands for planting also increases the risk of forest fires, which release huge amounts of CO. 'We're seeing huge peatland forests with extremely high biodiversity value being lost for a few decades of oil palm revenues,' says Silvius.",
+   "label": "D"
+  },
+  {
+   "type": "p",
+   "text": "\"peal: a brown deposit formed by the partial decomposition of vegetation in wet acidic conditions, often cut out and dried for use as fuel"
+  },
+  {
+   "type": "p",
+   "text": "The damage starts when logging companies arrive to clear the trees. They dig ditches to enter the peat swamps by boat and then float the logs out the same way. These are then used to drain water out of the peatlands to allow for the planting of corn, oil palms or pulpwood trees. Once the water has drained away, bacteria and fungi then break down the carbon in the peat and turn it into CO2 and methane. Meanwhile, the remainder of the solid matter in the peat starts to move downwards, in a process known as subsidence\".",
+   "label": "E"
+  },
+  {
+   "type": "h",
+   "text": ". Peat comprises"
+  },
+  {
+   "type": "p",
+   "text": "90 per cent water, so this is one of the most alarming consequences of peatland clearances. \"In the tropics, peat subsides at about four centimetres a year, so within half a century, very large landscapes on Sumatra and Borneo will become flooded as the peat drops below water level, says Silvius. 'It's a huge catastrophe that's in preparation. Some provinces will lose 40 per cent of their landmass."
+  },
+  {
+   "type": "p",
+   "text": "And while these industries affect wetlands in ways that can easily be documented, Dr Dave Tickner of the WWN believes that more subtle impacts can be even more devastating.",
+   "label": "F"
+  },
+  {
+   "type": "p",
+   "text": "'Sediment run-off and fertilisers can be pretty invisible,' says Tickner."
+  },
+  {
+   "type": "note",
+   "text": "*Over-extraction of water is equally invisible. You do get shock stories about rivers running red, or even catching fire, but there's seldom one big impact that really hurts a wetland. Tickner does not blame anyone for deliberate damage, however. 'I've worked on wetland issues for 20 years and have never met anybody who wanted to damage a wetland,' he says. 'It isn't something that people generally set out to do. Quite often, the effects simply come from people trying to make a living.'"
+  },
+  {
+   "type": "p",
+   "text": "Silvius also acknowledges the importance of income generation. It's not that we just want to restore the biodiversity of wetlands - which we do - but we recognise there's a need to provide an income for local people.' This approach is supported by IWMI. \"The idea is that people in a developing country will only protect wetlands if they value and profit from them,' says McCartney. 'For sustainability, it's essential that local people are involved in wetland planning and decision making and have clear rights to use wetlands.?",
+   "label": "G"
+  },
+  {
+   "type": "p",
+   "text": "The fortunes of wetlands would be improved, Silvius suggests, if more governments recognised their long-term value. Different governments have different attitudes,' he says, and goes on to explain that some countries place a high priority on restoring wetlands, while others still deny the issue. McCartney is cautiously optimistic, however. 'Awareness of the importance of wetlands is growing,' he says. 'It's true that wetland degradation still continues at a rapid pace, but my impression is that things are slowly changing.'",
+   "label": "H"
+  },
+  {
+   "type": "p",
+   "text": "\"subsidence: the sinking of the Earth's surface, most often caused by the removal of resources from the ground"
+  }
+ ],
+ "answers": {
+  "14": [
+   "G"
+  ],
+  "15": [
+   "A"
+  ],
+  "16": [
+   "H"
+  ],
+  "17": [
+   "B"
+  ],
+  "18": [
+   "carbon"
+  ],
+  "19": [
+   "fires"
+  ],
+  "20": [
+   "biodiversity"
+  ],
+  "21": [
+   "ditches"
+  ],
+  "22": [
+   "subsidence"
+  ],
+  "23": [
+   "A"
+  ],
+  "24": [
+   "C"
+  ],
+  "25": [
+   "D"
+  ],
+  "26": [
+   "B"
+  ]
+ },
+ "questions": "## Questions 14–17\nReading Passage 2 has eight paragraphs, **A–H**.\nWhich paragraph contains the following information?\n@options A-H\n14. reference to the need to ensure that inhabitants of wetland regions continue to benefit from them\n15. the proportion of wetlands which have already been lost\n16. reference to the idea that people are beginning to appreciate the value of wetlands\n17. mention of the cultural significance of wetlands\n\n## Questions 18–22\nComplete the sentences below.\nChoose **ONE WORD ONLY** from the passage for each answer.\n18. Peatlands which have been drained begin to release {18} instead of storing it.\n19. Once peatland areas have been cleared, {19} are more likely to occur.\n20. Clearing peatland forests to make way for oil palm plantations destroys the {20} of the local environment.\n21. Water is drained out of peatlands through the {21} which are created by logging companies.\n22. Draining peatlands leads to {22} : a serious problem which can eventually result in coastal flooding and land loss.\n\n## Questions 23–26\nLook at the following statements (Questions 23–26) and the list of experts below.\nMatch each statement with the correct expert, **A–D**.\n@options A-D\n23. Communities living in wetland regions must be included in discussions about the future of these areas.\n24. Official policies towards wetlands vary from one nation to the next.\n25. People cause harm to wetlands without having any intention to do so.\n26. Initiatives to reverse environmental damage need not be complex.\n\n> ### List of Experts\n> A. Matthew McCartney\n> B. Pieter van Eijk\n> C. Marcel Silvius\n> D. Dave Tickner\n"
+}

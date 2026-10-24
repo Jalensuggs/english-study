@@ -1,0 +1,121 @@
+{
+ "id": "c13g-t2-r3",
+ "book": "c13g",
+ "test": 2,
+ "n": 3,
+ "kind": "reading",
+ "label": "Section 3",
+ "title": "DINOSAURS AND THE SECRETS THEY STILL HOLD",
+ "q": [
+  28,
+  40
+ ],
+ "pages": [
+  46,
+  47,
+  48,
+  49,
+  50
+ ],
+ "qpages": [
+  48,
+  49,
+  50
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "DINOSAURS AND THE SECRETS THEY STILL HOLD"
+  },
+  {
+   "type": "sub",
+   "text": "Dinosaur expert Dr Steve Brusatte continues to investigate the mysteries surrounding these fascinating prehistoric creatures"
+  },
+  {
+   "type": "p",
+   "text": "I was recently part of a team of palacontologists that discovered a new dinosaur. Living in what is now China, the species would have resembled a strange bird. It was about the size of a sheep and covered in feathers, with a sharp beak that it probably used to crack open shellfish. It was given the formal scientific name Tongtianlong, but we called it 'Mud Dragon' because its skeleton was discovered in rock that had hardened from ancient mud. It seems that the creature got trapped in the mud and died. Then its fossil remains were found a few months ago when workmen were excavating a site in order to build a school."
+  },
+  {
+   "type": "p",
+   "text": "It is every dinosaur-obsessed child's dearest wish to discover and name a completely new species. In fact what my colleagues and I did wasn't that unusual. New dinosaurs are appearing everywhere these days - about 50 each year. And this pace shows no signs of slowing, as different areas continue to open up to fossil hunters and a fresh generation of scientists comes of age. Because of this plentiful supply of new fossils, we now know more about dinosaurs than we do about many modern animals. But there are still many unsolved mysteries."
+  },
+  {
+   "type": "p",
+   "text": "Dinosaurs didn't start out as huge monsters like Tyrannosaurus Rex. Instead they evolved from a group of angular, cat-sized reptiles called dinosauromorphs. These creatures remained small and rare for millions of years until they developed into dinosaurs. The boundary between dinosauromorphs and dinosaurs is becoming less and less distinct with each new discovery that's made, but what's becoming clear is that it took millions of years for these first dinosaurs to spread around the world, grow to huge sizes and become truly dominant."
+  },
+  {
+   "type": "p",
+   "text": "Some discoveries in the 1970s, like the agile and strangely bird-like Deinonychus, proved that dinosaurs were far more dynamic and intelligent than previously thought."
+  },
+  {
+   "type": "p",
+   "text": "Some palaeontologists even proposed that they were warm-blooded creatures like modern birds with a constant high body temperature that they controlled internally, rather than from warming themselves by lying in the sun. A few decades later opinions are still mixed. The problem is that dinosaurs can't be observed. Palaeontologists must rely on studying fossils. Some results are convincing: we know from studying their bones that dinosaurs had rapid growth rates, just like modern, warm-blooded animals. Other palaeontologists, however, use the same fossils to suggest that dinosaurs were somewhere between cold-blooded reptiles and warm-blooded birds. More studies are needed to provide more clarity."
+  },
+  {
+   "type": "p",
+   "text": "The discovery of Deinonychus with its long arms, skinny legs, arched neck and big claws on its teet, helped to strengthen the theory that birds evolved from dinosaurs."
+  },
+  {
+   "type": "p",
+   "text": "In the late 1990s, the discovery of thousands of feather-covered dinosaurs closed the argument. But the fossils raised another question: why did feathers first develop in dinosaurs? They probably originated as simple, hair-like strands - a necessary means of keeping warm. Many dinosaurs retained this basic flufty coat, but in one group the strands modified. They grew bigger, started to branch out and changed into feathers like those on modern birds. They lined the arms, and sometimes the legs, forming wings. These feathers were probably for display: to attract mates or scare off rivals. They appeared in species such as the ostrich-like Ornithomimosaur. Such creatures were too large to fly. Flight may actually have come about by accident when smaller winged dinosaurs began jumping between trees or leaping in the air, and suddenly found that their wings had aerodynamic properties. This is one of the most stimulating new notions about dinosaurs and a fascinating area for further investigation."
+  },
+  {
+   "type": "p",
+   "text": "There's something else that these feathers can tell us. They allow us to determine what colour dinosaurs were. If you look at modern bird feathers under a microscope, you can see tiny blobs called melanosomes. These structures contain melanin, one of the main colour-producing pigments in animals. Some are round, others are egg-shaped, etc. And that's important, because different shapes contain different colour pigments. So if you can identify the shape, you can identify the colour. A few years ago, some palacontologists realised that you could find melanosomes in particularly well-preserved fossil feathers."
+  },
+  {
+   "type": "p",
+   "text": "They discovered that different dinosaurs had different melanosomes, which meant they had a variety of colours. Dinosaurs, therefore, probably came in a rainbow of colours - yet another thing that links them to modern birds."
+  },
+  {
+   "type": "p",
+   "text": "The most enduring mystery of all, which has been argued about ever since the first dinosaur fossils were found, is 'Why aren't dinosaurs around today! Of course, we now know that birds evolved from dinosaurs, so some dinosaurs do continue in a sense. But there's nothing like a Tyrannosaurus Rex today. They dominated the planet for over 150 million years, but suddenly disappeared from the fossil record 66 million years ago. That's when a 10 km-wide asteroid came out of space and struck what is now Mexico, impacting with huge force and unleashing earthquakes, tidal waves, wildfires and hurricane-force winds. Although palaeontologists still like to argue about what part the asteroid played in the dinosaurs' extinction, there really isn't much of a mystery left. The asteroid did it and did it quickly. There are few signs that dinosaurs were struggling before the impact. None survived except a few birds and some small furry mammals."
+  },
+  {
+   "type": "p",
+   "text": "They found themselves in an empty world, and as the planet started to recover, they evolved into new creatures, including the first apes, and so the long journey began to the beginning of humankind."
+  }
+ ],
+ "answers": {
+  "28": [
+   "sheep"
+  ],
+  "29": [
+   "shellfish"
+  ],
+  "30": [
+   "beak"
+  ],
+  "31": [
+   "rock"
+  ],
+  "32": [
+   "school"
+  ],
+  "33": [
+   "D"
+  ],
+  "34": [
+   "B"
+  ],
+  "35": [
+   "C"
+  ],
+  "36": [
+   "A"
+  ],
+  "37": [
+   "D"
+  ],
+  "38": [
+   "D"
+  ],
+  "39": [
+   "D"
+  ],
+  "40": [
+   "C"
+  ]
+ },
+ "questions": "## Questions 28–32\nComplete the summary below.\nChoose **ONE WORD ONLY** from the text for each answer.\n\n> ### The discovery of *Tongtianlong*\n> This species of dinosaur has only recently been found in an area of China. Scientists believe that it was bird-like in appearance and probably no bigger than a {28} . It is thought to have eaten {29} and it used its {30} to get through their hard exterior. The fossil of *Tongtianlong* was found surrounded by {31} under the ground where the foundations of a new {32} were being dug.\n\n## Questions 33–37\nChoose the correct letter, **A**, **B**, **C** or **D**.\n33. What does the writer suggest about finding new dinosaurs?\nA. Many scientists dream of being able to do so one day.\nB. It is probable that most have now been discovered.\nC. People are running out of places to look for them.\nD. It is becoming relatively common to dig one up.\n\n34. In the fourth paragraph, what does the writer suggest about palaeontologists?\nA. They should study the fossilised bones of dinosaurs more closely.\nB. Their theories are based on evidence that can be interpreted in different ways.\nC. It is impossible to have any confidence in the proposals they have made.\nD. It is worrying that they still cannot agree about dinosaurs' body temperature.\n\n35. When describing the theory of how dinosaurs began to fly, the writer is\nA. amused that their flight probably came about by chance.\nB. surprised by the reason for the initial development of feathers.\nC. excited by the different possibilities it holds for future research.\nD. confused that feathers were also present on some creatures' legs.\n\n36. One significance of melanosomes is that they\nA. provide further evidence of where birds evolved from.\nB. are only found in certain parts of the world.\nC. can be clearly seen in most fossilised feathers.\nD. are only found in certain birds and dinosaurs.\n\n37. Which of the following best summarises the writer's point in the final paragraph?\nA. Scientists are right to continue questioning the effects of the asteroid strike.\nB. Large flightless dinosaurs may have existed after the asteroid hit.\nC. The dinosaurs were already declining before the asteroid hit.\nD. The effects of the asteroid strike killed most dinosaurs.\n\n## Questions 38–40\nLook at the following statements (Questions 38–40) and the list of prehistoric animals below.\nMatch each statement with the correct animal, **A**, **B**, **C** or **D**.\n**NB** You may use any letter more than once.\n@options A-D\n38. It may have used its feathers to frighten off members of the same species.\n39. This species resembles a large flightless bird that exists today.\n40. Finding this species made scientists revise their opinion of the brain power of dinosaurs.\n\n> ### List of Prehistoric Animals\n> A. *Tongtianlong*\n> B. *Tyrannosaurus Rex*\n> C. *Deinonychus*\n> D. *Ornithomimosaur*\n"
+}

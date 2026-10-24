@@ -1,0 +1,21 @@
+{
+ "id": "c19a-t2-w2",
+ "book": "c19a",
+ "test": 2,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "The working week should be shorter and workers should have a longer weekend.",
+  "Do you agree or disagree?",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+  "→ & p. 131]"
+ ],
+ "pages": [
+  52
+ ],
+ "samplePages": [
+  130,
+  131
+ ]
+}

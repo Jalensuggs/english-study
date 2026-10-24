@@ -1,0 +1,142 @@
+{
+ "id": "c11g-t3-r1",
+ "book": "c11g",
+ "test": 3,
+ "n": 1,
+ "kind": "reading",
+ "label": "Section 1",
+ "title": "Summer activities at London's Kew Gardens",
+ "q": [
+  1,
+  14
+ ],
+ "pages": [
+  64,
+  65,
+  66,
+  67
+ ],
+ "qpages": [
+  65,
+  67
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "Summer activities at London's Kew Gardens"
+  },
+  {
+   "type": "p",
+   "text": "Climb up to the walkway among the trees, 18 metres above the ground, for a spectacular experience. Feel as tall as the trees and enjoy a bird's-eye view over the gardens.",
+   "label": "A"
+  },
+  {
+   "type": "p",
+   "text": "The Nash Conservatory displays stunning images from leading wildlife photographer Heather Angel. Each photograph explores the wealth of biodiversity at Kew Gardens, from foxes to birds, tiny insects to towering trees.",
+   "label": "B"
+  },
+  {
+   "type": "p",
+   "text": "A world of pollination comes to life in the Princess of Wales Conservatory. Find yourself in a tropical environment whilst walking through clouds of colourful butterflies as they fly around the Conservatory! Come face-to-face with gigantic sculptures of insects, birds and bats, which will help tell the fascinating stories of how they interact with plants.",
+   "label": "C"
+  },
+  {
+   "type": "p",
+   "text": "An extraordinary sound installation created by Chris Watson. On the hour throughout the day, the Palm House is filled with the sound of the dawn and dusk choruses of birds that live in the Central and South American rainforests.",
+   "label": "D"
+  },
+  {
+   "type": "p",
+   "text": "Come and see the fantastic outdoor exhibition of garden, wildlife and botanical photography. Walk amongst enlarged photographs and admire the wonderful garden photos - all taken by children aged 16 and under from all round the country. If you are in this age category and fancy yourself as a photographer, then you can enter for the next show!",
+   "label": "E"
+  },
+  {
+   "type": "p",
+   "text": "Young explorers can discover the new children's outdoor play area, shaped like a plant, in Kew's magical Conservation Area. As you journey through this interactive landscape, discover the functions of every part of a plant. Tunnel through giant roots, get lost among the leaves and hide amongst the large fungi, whilst solving puzzles along the way!",
+   "label": "F"
+  },
+  {
+   "type": "p",
+   "text": "What is biodiversity all about? Did you know that every breath we take and every move we make depends on plants? Take a guided tour to discover what biodiversity means and why it matters so much.",
+   "label": "G"
+  },
+  {
+   "type": "p",
+   "text": "Visit our exciting and colourful exhibition of South American botanical paintings, which brings the continent's exotic and lush plants to life in works from two hundred years ago and from this century.",
+   "label": "H"
+  },
+  {
+   "type": "h",
+   "text": "City Park and Ride"
+  },
+  {
+   "type": "p",
+   "text": "We have six purpose-built Park and Ride sites serving the city, more than almost anywhere else in the UK. Established for over 40 years, they provide around 5,000 parking spaces for cars. The sires are located on the main routes into the city centre. More than 3,000,000 passengers a year take a bus from a Park and Ride site into the city, reducing congestion and helping to improve the air quality in the city centre."
+  },
+  {
+   "type": "p",
+   "text": "Parking at the sites is available only for those travelling from the site on a Park and Ride or other scheduled bus service, and is free. No overnight parking is permitted. Heavy goods vehicles are not permitted at the Park and Ride site at any time."
+  },
+  {
+   "type": "p",
+   "text": "It's simple to use. Just park your car and buy your bus ticket from the bus driver, with the correct money if possible. An individual adult daily return purchased prior to 12:30 hrs for use that day costs £2.40. If purchased after 12:30 hrs it costs £2.10."
+  },
+  {
+   "type": "p",
+   "text": "Up to four children under 16 travel free with an adult or concessionary pass holder. The return fare for unaccompanied children under 16 is €1.10."
+  },
+  {
+   "type": "p",
+   "text": "Cycle and Ride for just €1.10 a day. Just park your cycle, motorcycle or scooter in the allocated space, and buy your ticket from the site office. You may be asked to provide evidence that you have travelled to the Park and Ride site by cycle, motorcycle or scooter."
+  },
+  {
+   "type": "p",
+   "text": "Return tickets for concessionary bus pass holders cost £1 after 09:30 Monday to Friday and any time at weekend or bank holidays (when open). At other times there is no reduction for holders of concessionary bus passes."
+  }
+ ],
+ "answers": {
+  "1": [
+   "F"
+  ],
+  "2": [
+   "H"
+  ],
+  "3": [
+   "E"
+  ],
+  "4": [
+   "G"
+  ],
+  "5": [
+   "D"
+  ],
+  "6": [
+   "C"
+  ],
+  "7": [
+   "NOT GIVEN"
+  ],
+  "8": [
+   "TRUE"
+  ],
+  "9": [
+   "FALSE"
+  ],
+  "10": [
+   "FALSE"
+  ],
+  "11": [
+   "TRUE"
+  ],
+  "12": [
+   "FALSE"
+  ],
+  "13": [
+   "NOT GIVEN"
+  ],
+  "14": [
+   "TRUE"
+  ]
+ },
+ "questions": "## Questions 1–6\nThe first text (*Summer activities at London's Kew Gardens*) has eight sections, **A–H**.\nWhich sections contain the following information?\n@options A-H\n1. learning what all the different sections of a plant do\n2. seeing art showing plants from a different part of the world\n3. the possibility of having your work exhibited\n4. learning about why human beings need plants\n5. something that happens daily at the same times\n6. learning about the relationship between various creatures, insects and plants\n\n## Questions 7–14\nDo the following statements agree with the information given in the second text (*City Park and Ride*)?\n@tfng\n7. This was one of the first UK cities to introduce a Park and Ride scheme.\n8. The amount of congestion in the city centre has fallen.\n9. There is a special section of the car park for heavy goods vehicles.\n10. Bus drivers do not give change so you must have the correct money for a ticket.\n11. Ticket prices vary depending on the time of day.\n12. Children under 16 travelling alone are allowed free travel.\n13. The space for cycles, motorcycles and scooters is close to the site office.\n14. People with concessionary bus passes must pay the full fare to travel at certain times.\n"
+}

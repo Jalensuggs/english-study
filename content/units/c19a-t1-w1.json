@@ -1,0 +1,38 @@
+{
+ "id": "c19a-t1-w1",
+ "book": "c19a",
+ "test": 1,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "The graph below gives information on the numbers of participants for different activities at one social centre in Melbourne, Australia for the period 2000 to 2020.",
+  "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+  "Number of participants, by activity 2000-2020",
+  "Number of participants",
+  "70-",
+  "60 -",
+  "10-",
+  "0*",
+  "2000",
+  "-0",
+  "・一口、",
+  "-O- Film club",
+  "- -A - Martial arts",
+  ".....•..... Amateur dramatics",
+  "-•-••- Table tennis",
+  "* Musical performances",
+  "2005",
+  "2010",
+  "Year",
+  "T",
+  "2015",
+  "2020",
+  "→ & p. 128"
+ ],
+ "pages": [
+  29
+ ],
+ "samplePages": [
+  127
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "id": "c18a-t4-w1",
+ "book": "c18a",
+ "test": 4,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "The graph below shows the average monthly change in the prices of three metals during 2014.",
+  "Summarise the information by selecting and reporting the main features, and nake comparisons where relevant",
+  "Average monthly change in prices o copper, nickel and zinc (2014)",
+  "% change in price compared with previous month",
+  "LONDO",
+  "MN-",
+  "F M",
+  "M",
+  "Month",
+  "S",
+  "--o-- Copper →-Nickel -- Zinc",
+  "N",
+  "D",
+  "→ 9 p. 135"
+ ],
+ "pages": [
+  98
+ ],
+ "samplePages": [
+  137
+ ]
+}

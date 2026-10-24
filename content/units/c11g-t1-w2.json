@@ -1,0 +1,19 @@
+{
+ "id": "c11g-t1-w2",
+ "book": "c11g",
+ "test": 1,
+ "task": 2,
+ "kind": "writing",
+ "prompt": [
+  "Write about the following topic:",
+  "mployers sometimes ask people applying for jobs for personal information such as their hobbies and interests, and whether they are married or single Some people say that this information may be relevant and useful. Others disagree.",
+  "Discuss both these views and give your own opinion.",
+  "Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+ ],
+ "pages": [
+  32
+ ],
+ "samplePages": [
+  131
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "id": "c13g-t1-r2",
+ "book": "c13g",
+ "test": 1,
+ "n": 2,
+ "kind": "reading",
+ "label": "Section 2",
+ "title": "BORDER CROSSING FOR COMMERCIAL VEHICLES",
+ "q": [
+  15,
+  27
+ ],
+ "pages": [
+  21,
+  22,
+  23,
+  24
+ ],
+ "qpages": [
+  22,
+  24
+ ],
+ "blocks": [
+  {
+   "type": "title",
+   "text": "BORDER CROSSING FOR COMMERCIAL VEHICLES"
+  },
+  {
+   "type": "sub",
+   "text": "This Border Crossing Guide is designed for drivers and motor carriers operating commercial vehicles at Michigan's international border crossings. This information will help you cross the border from the US into Canada, and from Canada into the US."
+  },
+  {
+   "type": "p",
+   "text": "Your first point of contact at the border consists of Primary Inspection. The best way to clear customs at Primary Inspection is to make sure Customs gets information about your shipment before you set off, using the Pre-Arrival Processing System (PAPS). When using this you need to provide information about your shipment, and you also need to send proof of a current annual inspection for your vehicle, tractor and trailer."
+  },
+  {
+   "type": "p",
+   "text": "Before you arrive at the border, make sure you have all your paperwork up to date and ready to present at Primary Inspection. You'll need a photo ID in addition to your birth certificate or passport. Drivers must also tum on interior cab lights and open all interior drapes or blinds to sleeper areas for easy inspection. If all of your paperwork is in order and was processed ahead of time, you will be released at the primary lane and this may be your only stop. If you are not a Canadian or US citizen, a visa is obligatory and you will also be required to complete an I-94 card. I-94 cards are available only at border crossings into the United States. Drivers who clear customs at Primary Inspection will be instructed to report to Immigration to fill out the I-94 card and receive verbal clearance from a US official to proceed into the United States. The charge for the I-94 card is $6."
+  },
+  {
+   "type": "h",
+   "text": "If your paperwork is not in order, you will be directed to Secondary Inspection. When"
+  },
+  {
+   "type": "p",
+   "text": "you get there, look for the signs for Truck Inspection and follow these."
+  },
+  {
+   "type": "h",
+   "text": "Appendix: Dealing with absence in the workplace"
+  },
+  {
+   "type": "p",
+   "text": "This appendix considers how to handle problems of absence and gives guidance about authorised and unauthorised absence of employees from work."
+  },
+  {
+   "type": "p",
+   "text": "The organisation should be aware of the rights of employees and in particular the requirements of the Equality Act 2010 when making any decisions about absences of employees who are disabled. In these cases the employer should consider what reasonable adjustments could be made in the workplace to help the employee. This might be something as simple as supplying an appropriate chair for the use of the employee. In cases where an employee suffers from an allergy caused by something in the workplace, the employer should consider remedial action or a transfer to alternative work."
+  },
+  {
+   "type": "p",
+   "text": "If the absence is because of temporary difficulties relating to dependants, the employee may be entitled to have time off under the provisions of the Employment Rights Act 1996. In cases where the employee has difficulty managing both work and home responsibilities, employees have the right to request flexible ways of working, such as job-sharing, and employers must have a good business reason for rejecting any such application."
+  },
+  {
+   "type": "p",
+   "text": "Employers should investigate unexpected absences promptly and the employee should be asked for an explanation at a return-to-work interview. In order to show both the employee concerned and other employees that absence is regarded as a serious matter and may result in dismissal, it is very important that persistent absence is dealt with firmly and consistently. Records showing lateness and the duration of and explanations for all spells of absence should be kept to help monitor levels of absence or lateness. If the employer wishes to contact the employee's doctor for more information about a medical condition, he or she must notify the employee in writing that they intend to make such an application and they must secure the employee's consent in writing. Consideration should be given to introducing measures to help employees, regardless of status or seniority, who may be suffering from stress. The aim should be to identify employees affected and encourage them to seek help and treatment."
+  }
+ ],
+ "answers": {
+  "15": [
+   "shipment"
+  ],
+  "16": [
+   "photo ID"
+  ],
+  "17": [
+   "lights",
+   "cab lights"
+  ],
+  "18": [
+   "sleeper areas"
+  ],
+  "19": [
+   "immigration"
+  ],
+  "20": [
+   "charge"
+  ],
+  "21": [
+   "chair"
+  ],
+  "22": [
+   "allergy"
+  ],
+  "23": [
+   "dependants"
+  ],
+  "24": [
+   "flexible"
+  ],
+  "25": [
+   "dismissal"
+  ],
+  "26": [
+   "doctor"
+  ],
+  "27": [
+   "stress"
+  ]
+ },
+ "questions": "## Questions 15–20\nComplete the flow-chart below.\nChoose **NO MORE THAN TWO WORDS** from the text for each answer.\n\n### Procedure for border crossing\n[flow]\n**Before setting off**<br>To speed up the border crossing, use PAPS.<br>For this, send your {15} details and current vehicle inspection documents.\n**Before arriving at the border**<br>Check that documents such as {16} and birth certificate/passport are ready for inspection.<br>Make sure the {17} are on inside the vehicle.<br>Check that the {18} in the vehicle can be easily seen.\n**At the border (Primary Inspection)**<br>This may be the only stop if paperwork is in order.<br>Non US/Canadian citizens must have a visa, and go to the {19} area to complete an I-94 card (there is a small {20} for this) and to receive verbal clearance.\n**At the border (Secondary Inspection)**<br>If there is a problem with paperwork, you will be sent to Truck Inspection.\n[/flow]\n\n## Questions 21–27\nComplete the notes below.\nChoose **ONE WORD ONLY** from the text for each answer.\n\n> ### Absence in the workplace\n> **Employees' rights**\n> - help with issues related to disabilities, e.g. provision of a suitable {21}\n> - provision of arrangements to deal with any work-related {22}\n> - time off work to deal with short-term problems of {23}\n> - possibility of arrangements that are {24} to help with domestic responsibilities\n> **Recommendations to employers**\n> - make it clear that absence is a possible reason for {25}\n> - ask employees for consent before contacting their {26}\n> - identify employees affected by {27} and provide support\n"
+}

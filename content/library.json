@@ -1,0 +1,897 @@
+{
+ "books": [
+  {
+   "id": "c18a",
+   "title": "剑桥雅思 18",
+   "short": "剑18",
+   "type": "A",
+   "tests": [
+    {
+     "n": 1,
+     "reading": [
+      {
+       "id": "c18a-t1-r1",
+       "n": 1,
+       "label": "Passage 1",
+       "title": "Urban farming",
+       "q": [
+        1,
+        13
+       ],
+       "words": 769,
+       "hasAnswers": true
+      },
+      {
+       "id": "c18a-t1-r2",
+       "n": 2,
+       "label": "Passage 2",
+       "title": "Forest management in Pennsylvania, USA",
+       "q": [
+        14,
+        26
+       ],
+       "words": 837,
+       "hasAnswers": true
+      },
+      {
+       "id": "c18a-t1-r3",
+       "n": 3,
+       "label": "Passage 3",
+       "title": "Conquering Earth's space junk problem",
+       "q": [
+        27,
+        40
+       ],
+       "words": 929,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c18a-t1-w1",
+       "task": 1
+      },
+      {
+       "id": "c18a-t1-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "reading": [
+      {
+       "id": "c18a-t2-r1",
+       "n": 1,
+       "label": "Passage 1",
+       "title": "Stonehenge",
+       "q": [
+        1,
+        13
+       ],
+       "words": 862,
+       "hasAnswers": true
+      },
+      {
+       "id": "c18a-t2-r2",
+       "n": 2,
+       "label": "Passage 2",
+       "title": "Living with artificial intelligence",
+       "q": [
+        14,
+        26
+       ],
+       "words": 982,
+       "hasAnswers": true
+      },
+      {
+       "id": "c18a-t2-r3",
+       "n": 3,
+       "label": "Passage 3",
+       "title": "An ideal city",
+       "q": [
+        27,
+        40
+       ],
+       "words": 809,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c18a-t2-w1",
+       "task": 1
+      },
+      {
+       "id": "c18a-t2-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "reading": [
+      {
+       "id": "c18a-t3-r1",
+       "n": 1,
+       "label": "Passage 1",
+       "title": "Materials to take us beyond concrete",
+       "q": [
+        1,
+        13
+       ],
+       "words": 888,
+       "hasAnswers": true
+      },
+      {
+       "id": "c18a-t3-r2",
+       "n": 2,
+       "label": "Passage 2",
+       "title": "The steam car",
+       "q": [
+        14,
+        26
+       ],
+       "words": 950,
+       "hasAnswers": true
+      },
+      {
+       "id": "c18a-t3-r3",
+       "n": 3,
+       "label": "Passage 3",
+       "title": "The case for mixed-ability classes",
+       "q": [
+        27,
+        40
+       ],
+       "words": 936,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c18a-t3-w1",
+       "task": 1
+      },
+      {
+       "id": "c18a-t3-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "reading": [
+      {
+       "id": "c18a-t4-r1",
+       "n": 1,
+       "label": "Passage 1",
+       "title": "Green roofs",
+       "q": [
+        1,
+        13
+       ],
+       "words": 787,
+       "hasAnswers": true
+      },
+      {
+       "id": "c18a-t4-r2",
+       "n": 2,
+       "label": "Passage 2",
+       "title": "The growth mindset",
+       "q": [
+        14,
+        26
+       ],
+       "words": 944,
+       "hasAnswers": true
+      },
+      {
+       "id": "c18a-t4-r3",
+       "n": 3,
+       "label": "Passage 3",
+       "title": "Alfred Wegener: science, exploration and the theory",
+       "q": [
+        27,
+        40
+       ],
+       "words": 950,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c18a-t4-w1",
+       "task": 1
+      },
+      {
+       "id": "c18a-t4-w2",
+       "task": 2
+      }
+     ]
+    }
+   ],
+   "answerKeyPages": [
+    5,
+    11,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128
+   ]
+  },
+  {
+   "id": "c19a",
+   "title": "剑桥雅思 19",
+   "short": "剑19",
+   "type": "A",
+   "tests": [
+    {
+     "n": 1,
+     "reading": [
+      {
+       "id": "c19a-t1-r1",
+       "n": 1,
+       "label": "Passage 1",
+       "title": "How tennis rackets have changed",
+       "q": [
+        1,
+        13
+       ],
+       "words": 907,
+       "hasAnswers": true
+      },
+      {
+       "id": "c19a-t1-r2",
+       "n": 2,
+       "label": "Passage 2",
+       "title": "The pirates of the ancient Mediterranean",
+       "q": [
+        14,
+        26
+       ],
+       "words": 977,
+       "hasAnswers": true
+      },
+      {
+       "id": "c19a-t1-r3",
+       "n": 3,
+       "label": "Passage 3",
+       "title": "The persistence and peril of misinformation",
+       "q": [
+        27,
+        40
+       ],
+       "words": 933,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c19a-t1-w1",
+       "task": 1
+      },
+      {
+       "id": "c19a-t1-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "reading": [
+      {
+       "id": "c19a-t2-r1",
+       "n": 1,
+       "label": "Passage 1",
+       "title": "The Industrial Revolution in Britain",
+       "q": [
+        1,
+        13
+       ],
+       "words": 899,
+       "hasAnswers": true
+      },
+      {
+       "id": "c19a-t2-r2",
+       "n": 2,
+       "label": "Passage 2",
+       "title": "Athletes and stress",
+       "q": [
+        14,
+        26
+       ],
+       "words": 814,
+       "hasAnswers": true
+      },
+      {
+       "id": "c19a-t2-r3",
+       "n": 3,
+       "label": "Passage 3",
+       "title": "An inquiry into the existence of the",
+       "q": [
+        27,
+        40
+       ],
+       "words": 982,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c19a-t2-w1",
+       "task": 1
+      },
+      {
+       "id": "c19a-t2-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "reading": [
+      {
+       "id": "c19a-t3-r1",
+       "n": 1,
+       "label": "Passage 1",
+       "title": "Archaeologists discover evidence of prehistoric island settlers",
+       "q": [
+        1,
+        13
+       ],
+       "words": 760,
+       "hasAnswers": true
+      },
+      {
+       "id": "c19a-t3-r2",
+       "n": 2,
+       "label": "Passage 2",
+       "title": "The global importance of wetlands",
+       "q": [
+        14,
+        26
+       ],
+       "words": 894,
+       "hasAnswers": true
+      },
+      {
+       "id": "c19a-t3-r3",
+       "n": 3,
+       "label": "Passage 3",
+       "title": "Is the era of artificial speech translation upon us?",
+       "q": [
+        27,
+        40
+       ],
+       "words": 956,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c19a-t3-w1",
+       "task": 1
+      },
+      {
+       "id": "c19a-t3-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "reading": [
+      {
+       "id": "c19a-t4-r1",
+       "n": 1,
+       "label": "Passage 1",
+       "title": "The impact of climate change on butterflies in Britain",
+       "q": [
+        1,
+        13
+       ],
+       "words": 834,
+       "hasAnswers": true
+      },
+      {
+       "id": "c19a-t4-r2",
+       "n": 2,
+       "label": "Passage 2",
+       "title": "Deep-sea mining",
+       "q": [
+        14,
+        26
+       ],
+       "words": 907,
+       "hasAnswers": true
+      },
+      {
+       "id": "c19a-t4-r3",
+       "n": 3,
+       "label": "Passage 3",
+       "title": "The Unselfish Gene",
+       "q": [
+        27,
+        40
+       ],
+       "words": 827,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c19a-t4-w1",
+       "task": 1
+      },
+      {
+       "id": "c19a-t4-w2",
+       "task": 2
+      }
+     ]
+    }
+   ],
+   "answerKeyPages": [
+    3,
+    8,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126
+   ]
+  },
+  {
+   "id": "c11g",
+   "title": "剑桥雅思 11 · G类",
+   "short": "剑11G",
+   "type": "G",
+   "tests": [
+    {
+     "n": 1,
+     "reading": [
+      {
+       "id": "c11g-t1-r1",
+       "n": 1,
+       "label": "Section 1",
+       "title": "Is Your Child at School Today?",
+       "q": [
+        1,
+        14
+       ],
+       "words": 671,
+       "hasAnswers": true
+      },
+      {
+       "id": "c11g-t1-r2",
+       "n": 2,
+       "label": "Section 2",
+       "title": "GZJ Travel - Recruitment Info",
+       "q": [
+        15,
+        27
+       ],
+       "words": 724,
+       "hasAnswers": true
+      },
+      {
+       "id": "c11g-t1-r3",
+       "n": 3,
+       "label": "Section 3",
+       "title": "The Zebras' long walk across Africa",
+       "q": [
+        28,
+        40
+       ],
+       "words": 850,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c11g-t1-w1",
+       "task": 1
+      },
+      {
+       "id": "c11g-t1-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "reading": [
+      {
+       "id": "c11g-t2-r1",
+       "n": 1,
+       "label": "Section 1",
+       "title": "Sustainable School Travel Strategy",
+       "q": [
+        1,
+        14
+       ],
+       "words": 670,
+       "hasAnswers": true
+      },
+      {
+       "id": "c11g-t2-r2",
+       "n": 2,
+       "label": "Section 2",
+       "title": "Tips for giving an effective business presentation",
+       "q": [
+        15,
+        27
+       ],
+       "words": 733,
+       "hasAnswers": true
+      },
+      {
+       "id": "c11g-t2-r3",
+       "n": 3,
+       "label": "Section 3",
+       "title": "What is it like to run a large supermarket?",
+       "q": [
+        28,
+        40
+       ],
+       "words": 913,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c11g-t2-w1",
+       "task": 1
+      },
+      {
+       "id": "c11g-t2-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "reading": [
+      {
+       "id": "c11g-t3-r1",
+       "n": 1,
+       "label": "Section 1",
+       "title": "Summer activities at London's Kew Gardens",
+       "q": [
+        1,
+        14
+       ],
+       "words": 627,
+       "hasAnswers": true
+      },
+      {
+       "id": "c11g-t3-r2",
+       "n": 2,
+       "label": "Section 2",
+       "title": "HOW TO ORGANISE A SUCCESSFUL",
+       "q": [
+        15,
+        27
+       ],
+       "words": 794,
+       "hasAnswers": true
+      },
+      {
+       "id": "c11g-t3-r3",
+       "n": 3,
+       "label": "Section 3",
+       "title": "Efforts to save a special bird - the spoon-billed sandpiper",
+       "q": [
+        28,
+        40
+       ],
+       "words": 914,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c11g-t3-w1",
+       "task": 1
+      },
+      {
+       "id": "c11g-t3-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "reading": [
+      {
+       "id": "c11g-t4-r1",
+       "n": 1,
+       "label": "Section 1",
+       "title": "Visitor attractions in southern England",
+       "q": [
+        1,
+        14
+       ],
+       "words": 683,
+       "hasAnswers": true
+      },
+      {
+       "id": "c11g-t4-r2",
+       "n": 2,
+       "label": "Section 2",
+       "title": "How to prepare for an interview",
+       "q": [
+        15,
+        27
+       ],
+       "words": 757,
+       "hasAnswers": true
+      },
+      {
+       "id": "c11g-t4-r3",
+       "n": 3,
+       "label": "Section 3",
+       "title": "Understanding hares",
+       "q": [
+        28,
+        40
+       ],
+       "words": 887,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c11g-t4-w1",
+       "task": 1
+      },
+      {
+       "id": "c11g-t4-w2",
+       "task": 2
+      }
+     ]
+    }
+   ],
+   "answerKeyPages": [
+    4,
+    10,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129
+   ]
+  },
+  {
+   "id": "c13g",
+   "title": "剑桥雅思 13 · G类",
+   "short": "剑13G",
+   "type": "G",
+   "tests": [
+    {
+     "n": 1,
+     "reading": [
+      {
+       "id": "c13g-t1-r1",
+       "n": 1,
+       "label": "Section 1",
+       "title": "THE BEST SUITCASES",
+       "q": [
+        1,
+        14
+       ],
+       "words": 642,
+       "hasAnswers": true
+      },
+      {
+       "id": "c13g-t1-r2",
+       "n": 2,
+       "label": "Section 2",
+       "title": "BORDER CROSSING FOR COMMERCIAL VEHICLES",
+       "q": [
+        15,
+        27
+       ],
+       "words": 656,
+       "hasAnswers": true
+      },
+      {
+       "id": "c13g-t1-r3",
+       "n": 3,
+       "label": "Section 3",
+       "title": "A visit to Oymyakon, the world's coldest town",
+       "q": [
+        28,
+        40
+       ],
+       "words": 855,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c13g-t1-w1",
+       "task": 1
+      },
+      {
+       "id": "c13g-t1-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "reading": [
+      {
+       "id": "c13g-t2-r1",
+       "n": 1,
+       "label": "Section 1",
+       "title": "Online roommate finder: Toronto",
+       "q": [
+        1,
+        14
+       ],
+       "words": 635,
+       "hasAnswers": true
+      },
+      {
+       "id": "c13g-t2-r2",
+       "n": 2,
+       "label": "Section 2",
+       "title": "Why you should delegate tasks to team members",
+       "q": [
+        15,
+        27
+       ],
+       "words": 758,
+       "hasAnswers": true
+      },
+      {
+       "id": "c13g-t2-r3",
+       "n": 3,
+       "label": "Section 3",
+       "title": "DINOSAURS AND THE SECRETS THEY STILL HOLD",
+       "q": [
+        28,
+        40
+       ],
+       "words": 939,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c13g-t2-w1",
+       "task": 1
+      },
+      {
+       "id": "c13g-t2-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "reading": [
+      {
+       "id": "c13g-t3-r1",
+       "n": 1,
+       "label": "Section 1",
+       "title": "New York Late-Starters String Orchestra",
+       "q": [
+        1,
+        14
+       ],
+       "words": 684,
+       "hasAnswers": true
+      },
+      {
+       "id": "c13g-t3-r2",
+       "n": 2,
+       "label": "Section 2",
+       "title": "Employees' health and safety responsibilities",
+       "q": [
+        15,
+        27
+       ],
+       "words": 789,
+       "hasAnswers": true
+      },
+      {
+       "id": "c13g-t3-r3",
+       "n": 3,
+       "label": "Section 3",
+       "title": "Vanilla - the most wonderful flavor in the world",
+       "q": [
+        28,
+        40
+       ],
+       "words": 906,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c13g-t3-w1",
+       "task": 1
+      },
+      {
+       "id": "c13g-t3-w2",
+       "task": 2
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "reading": [
+      {
+       "id": "c13g-t4-r1",
+       "n": 1,
+       "label": "Section 1",
+       "title": "The Guardian Newspaper's Travel",
+       "q": [
+        1,
+        14
+       ],
+       "words": 709,
+       "hasAnswers": true
+      },
+      {
+       "id": "c13g-t4-r2",
+       "n": 2,
+       "label": "Section 2",
+       "title": "A case study of a risk assessment",
+       "q": [
+        15,
+        27
+       ],
+       "words": 766,
+       "hasAnswers": true
+      },
+      {
+       "id": "c13g-t4-r3",
+       "n": 3,
+       "label": "Section 3",
+       "title": "Tuning up your leadership skills",
+       "q": [
+        28,
+        40
+       ],
+       "words": 786,
+       "hasAnswers": true
+      }
+     ],
+     "writing": [
+      {
+       "id": "c13g-t4-w1",
+       "task": 1
+      },
+      {
+       "id": "c13g-t4-w2",
+       "task": 2
+      }
+     ]
+    }
+   ],
+   "answerKeyPages": [
+    4,
+    10,
+    118,
+    119,
+    121,
+    123,
+    125
+   ]
+  }
+ ]
+}

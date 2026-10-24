@@ -1,0 +1,35 @@
+{
+ "id": "c19a-t4-w1",
+ "book": "c19a",
+ "test": 4,
+ "task": 1,
+ "kind": "writing",
+ "prompt": [
+  "The charts below give information on the location and types of dance classes young people in a town in Australia are currently attending.",
+  "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+  "Location of dance classes",
+  "Community halls & other",
+  "18%",
+  "Private",
+  "- studios",
+  "48%",
+  "School halls (after-school)",
+  "24%",
+  "College-based studios",
+  "10%",
+  "Types of dance classes (by age group)",
+  "■ Under 11",
+  "11-16",
+  "Ballet",
+  "Tap",
+  "Modern",
+  "Number of students",
+  "→ ° p. 136"
+ ],
+ "pages": [
+  95
+ ],
+ "samplePages": [
+  135
+ ]
+}
