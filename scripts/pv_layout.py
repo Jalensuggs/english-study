@@ -7,9 +7,14 @@ OCR 没有粗体信息，讲解里本单元的短语（来自 Mini dictionary）
   python3 scripts/pv_layout.py 12 > content-src/pv/12.md
 改好后运行 python3 scripts/build_pv.py，有 content-src/pv/NN.md 的单元优先用手工版。
 """
+import json
 import re
 import statistics
 import sys
+from pathlib import Path
+
+FIXES_FILE = Path(__file__).resolve().parent.parent / "content-src/pv/ocr-fixes.json"
+OCR_FIXES = json.loads(FIXES_FILE.read_text()) if FIXES_FILE.exists() else {}
 
 PARTICLES = {"about", "above", "across", "after", "against", "ahead", "along", "apart", "around", "aside", "at",
              "away", "back", "before", "behind", "below", "between", "beyond", "by", "down", "for", "forward",
@@ -64,15 +69,15 @@ def bolder(keys):
         parts = r"\s+".join(words[1:])
         # 动词 + 最多三个词（宾语）+ 小品词
         pats.append(re.compile(rf"\b({verb})\b((?:\s+[\w'’-]+){{0,3}}?)\s+({parts})\b", re.I))
+    def rep(m):
+        if m.group(2):
+            return f"**{m.group(1)}**{m.group(2)} **{m.group(3)}**"
+        return f"**{m.group(1)} {m.group(3)}**"
+
     def apply(s):
         for p in pats:
-            def rep(m):
-                if "**" in m.group(0):
-                    return m.group(0)
-                if m.group(2):
-                    return f"**{m.group(1)}**{m.group(2)} **{m.group(3)}**"
-                return f"**{m.group(1)} {m.group(3)}**"
-            s = p.sub(rep, s)
+            # 已经加粗的部分不再动（move in together 里面的 move in）
+            s = "".join(x if x.startswith("**") else p.sub(rep, x) for x in re.split(r"(\*\*.+?\*\*)", s))
         return s
     return apply
 
@@ -82,19 +87,23 @@ def bolder(keys):
 def tidy(t):
     t = t.replace("­", "").replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
     t = re.sub(r"(?<=[a-z,] )1(?= [a-z])", "I", t)  # OCR 把 I 认成 1
-    t = re.sub(r"\bjim\b", "Jim", t)
+    t = re.sub(r"\bjim\b", "Jim", t).replace("(поил)", "(noun)")
     return re.sub(r"\s+", " ", t).strip()
 
 
 def rows(page):
     """OCR 的行 -> 版面上的一行一行；每行是按 x 排好的若干段 {x, r, t}。"""
     lines = []
+    fixes = OCR_FIXES.get(str(page["page"]), [])
     for l in page["lines"]:
         t = l["t"].strip()
         if not t or l["x"] < 0.07 or l["x"] > 0.97:  # 对面页透过来的字
             continue
-        if re.fullmatch(r"\d{1,3}|English Phrasal Verbs in Use|Exercises", t) and (l["y"] < 0.07 or l["y"] > 0.93):
+        if re.fullmatch(r"\d{1,3}[|l]?|English Phrasal Verbs in Use|Exercises", t) and (l["y"] < 0.07 or l["y"] > 0.92):
             continue
+        for f in fixes:  # content-src/pv/ocr-fixes.json：手工补上 OCR 漏掉的题号、填空
+            if abs(l["y"] - f["y"]) < 0.004 and abs(l["x"] - f["x"]) < 0.006:
+                t = f.get("prefix", "") + t + f.get("suffix", "")
         if re.search(r"English Phrasal Verbs in Use", t) and l["y"] > 0.9:
             continue
         lines.append({"x": l["x"], "r": l["x"] + l["w"], "y": l["y"], "h": l["h"], "t": t})
@@ -127,6 +136,9 @@ def rows(page):
     return out
 
 
+NOTE = re.compile(r"^(['’*°®!\"•^&]|\d{1,2})\s+[a-z(]")  # 脚注：上标编号（OCR 常认成符号）+ 小写开头的释义
+NOTE_MARK = re.compile(r"^(['’*°®!\"•^&]|\d{1,2}|[Il])\s+(?=[a-z(])")
+HOROSCOPE = re.compile(r"^([A-Z][A-Z ]{2,})\s*\*{3,}\s*(.*)$")  # SCORPIO ********
 SPEAKER = re.compile(r"^(?:\d{1,2}\s+)?([A-Z][a-z]+(?: [A-Z][a-z]+)?|[A-Z]{1,2}):$")
 LETTER = re.compile(r"^([A-F])(?:\s+(.*))?$")
 EXHEAD = re.compile(r"^[\dIlSO]{1,2}\s?[.,·:]\s?[\dIlSOJ|!]{0,2}(?:\s+|$)")
@@ -153,12 +165,15 @@ def section_boxes(image):
     reg = a[:, int(w * 0.11):int(w * 0.20)]
     blue = ((reg[..., 2] - reg[..., 0]) > 25) & (reg[..., 2] < 235)
     frac = blue.mean(axis=1)
+    # 方块右边紧挨着的是黑色的小节标题；右边也是蓝色的，是彩色的标题条（比如星座），不是小节方块
+    side = a[:, int(w * 0.21):int(w * 0.30)]
+    side_blue = (((side[..., 2] - side[..., 0]) > 25) & (side[..., 2] < 235)).mean(axis=1)
     out, start = [], None
     for y, f in enumerate(list(frac) + [0]):
         if f > 0.35 and start is None:
             start = y
         elif f <= 0.35 and start is not None:
-            if y - start > 12 and start / h > 0.07:  # 最上面那个是单元号
+            if y - start > 12 and start / h > 0.07 and side_blue[start:y].mean() < 0.2:  # 最上面那个是单元号
                 out.append((start / h - 0.006, y / h + 0.006))
             start = None
     return out
@@ -173,12 +188,29 @@ def explanation(page, bold, image=None):
     bx, fr = body_x(rs), full_right(rs)
     out, para, table, dialog, colbox = [], None, None, None, None
     letters = iter("ABCDEFGH")
+    notes_n = {}  # 每个分栏块里脚注的编号
+    # 哪几栏是脚注：自己有 2 行以上像脚注的；或者同一块里已经有脚注栏、自己也有 1 行的
+    note_count = {}
+    for r in rs:
+        if r.get("col") and NOTE.match(r["segs"][0]["t"]):
+            note_count[r["col"]] = note_count.get(r["col"], 0) + 1
+    note_blocks = {c[0] for c, n in note_count.items() if n >= 2}
+    note_cols = {c for c, n in note_count.items() if n >= 2 or (n >= 1 and c[0] in note_blocks)}
+
+    def local_right(i):
+        """第 i 行所在的这段文字的右边线（附近几行、左边对齐的行里最靠右的）。
+        方框里、图片旁边的文字比整页窄，不能拿整页的右边线比。"""
+        x = rs[i]["x"]
+        near = [r["r"] for r in rs[max(0, i - 3):i + 4] if len(r["segs"]) == 1 and abs(r["x"] - x) < 0.03]
+        return min(max(near + [rs[i]["r"]]), fr) - 0.01  # 不比整页的右边线更严
 
     def end_para():
         nonlocal para
         if para:
             out.append(bold(para["t"]))
             out.append("")
+            for c in para.get("captions", []):  # 图片旁边的说明文字
+                out.extend([bold(c), ""])
         para = None
 
     def end_table():
@@ -198,29 +230,70 @@ def explanation(page, bold, image=None):
     def end_col():
         nonlocal colbox
         if colbox:
-            out.extend("> " + bold(l) for l in colbox["lines"])
-            out.append("")
+            # 一栏里上下隔开的几块（一段星座运势、一组脚注）各放一个方框
+            pieces, cur = [], []
+            for line in colbox["raw"]:
+                kind_changes = NOTE.match(line[0]) or HOROSCOPE.match(line[0]) or any(NOTE.match(c[0]) for c in cur)
+                if cur and line[3] - cur[-1][3] > 0.024 and kind_changes:
+                    pieces.append(cur)
+                    cur = []
+                cur.append(line)
+            pieces.append(cur)
+            for piece in pieces:
+                out.extend("> " + bold(l) for l in col_lines(colbox["col"], piece))
+                out.append("")
         colbox = None
+
+    def col_lines(col, raw):
+        if col not in note_cols or not any(NOTE.match(t) for t, *_ in raw):
+            # 成段的文字（信、星座运势）：Dear …, 和署名、标题另起一行，其余接着上一行
+            ls = []
+            for t, edge, *_ in raw:
+                head = HOROSCOPE.match(t)
+                if head:
+                    ls.append(f"**{head.group(1).strip()}**")
+                    t = head.group(2)
+                    if not t:
+                        continue
+                    ls.append(t)
+                elif not ls or ls[-1].endswith(",") or ls[-1].startswith("**") and ls[-1].endswith("**") \
+                        or (edge and len(t) < 25 and re.search(r"[.!?]$", ls[-1])):  # 署名
+                    ls.append(t)
+                else:
+                    ls[-1] = join_text(ls[-1], t)
+            return ls
+        # 脚注：顶着栏的左边线的、或者上一行没写满的，是新的一条；编号认不准，按顺序重新编
+        ls, right, prev_r = [], max(r for _, _, r, _ in raw), None
+        expect = notes_n.get(col[0], 0) + 1
+        for t, edge, r, _ in raw:
+            d = re.match(r"^(\d{1,2})\s", t)
+            if edge or not ls or prev_r < right - 0.075 or (d and int(d.group(1)) == expect + len(ls)):
+                ls.append(t)
+            else:
+                ls[-1] = join_text(ls[-1], t)
+            prev_r = r
+        out_ = []
+        for t in ls:
+            m = NOTE_MARK.match(t)
+            k = notes_n.get(col[0], 0) + 1
+            if m and m.group(1).isdigit() and int(m.group(1)) >= k:  # 认得出的编号就用书上的
+                k = int(m.group(1))
+            notes_n[col[0]] = k
+            out_.append(f"{k} {t[m.end():] if m else t}")
+        return out_
 
     def end_all():
         end_para(); end_table(); end_dialog(); end_col()
 
-    for row in rs:
+    for i, row in enumerate(rs):
         segs = row["segs"]
         first = segs[0]
         if row.get("col"):
             # 分栏（并排的信、旁边的注释）：每一栏一个方框，按行读
             if not colbox or colbox["col"] != row["col"]:
                 end_all()
-                colbox = {"col": row["col"], "lines": []}
-            t = " ".join(s["t"] for s in segs)
-            ls = colbox["lines"]
-            new_line = not ls or ls[-1].endswith(",") or re.match(r"^(['’*°®!]|\d{1,2})\s", t) or (
-                first["x"] - row["lx"] < 0.01 and len(t) < 25)
-            if new_line:
-                ls.append(t)
-            else:
-                ls[-1] = join_text(ls[-1], t)
+                colbox = {"col": row["col"], "raw": []}
+            colbox["raw"].append((" ".join(s["t"] for s in segs), first["x"] - row["lx"] < 0.012, segs[-1]["r"], row["cy"]))
             continue
         end_col()
         # 小节字母 A B C（在左边的页边）
@@ -245,6 +318,14 @@ def explanation(page, bold, image=None):
         if dialog and len(segs) == 1 and first["x"] > bx + 0.04:
             dialog[-1][1] += " " + first["t"]
             continue
+        lonely = not table and (i + 1 >= len(rs) or len(rs[i + 1]["segs"]) == 1)
+        if len(segs) > 1 and lonely and para and abs(first["x"] - para["x"]) < 0.03 and para["r"] > para["edge"] - 0.06 \
+                and segs[1]["x"] > para["edge"] - 0.03:
+            # 段落的最后一行，旁边是图片说明
+            para["t"] = join_text(para["t"], first["t"])
+            para["r"] = first["r"]
+            para.setdefault("captions", []).append(" ".join(s["t"] for s in segs[1:]))
+            continue
         if len(segs) > 1:
             end_para(); end_dialog()
             if table and row["cy"] - table["last"] > 0.06:
@@ -259,12 +340,14 @@ def explanation(page, bold, image=None):
             continue
         end_table(); end_dialog()
         t = first["t"]
-        if para and abs(first["x"] - para["x"]) < 0.03 and para["r"] > fr - 0.07 and not re.match(r"^\d\s|^[•-]", t):
+        if para and abs(first["x"] - para["x"]) < 0.03 and para["r"] > para["edge"] - 0.06 \
+                and not re.match(r"^\d\s|^[•-]", t) and not para.get("captions"):
             para["t"] = join_text(para["t"], t)
             para["r"] = first["r"]
+            para["edge"] = local_right(i)
         else:
             end_para()
-            para = {"t": t, "x": first["x"], "r": first["r"]}
+            para = {"t": t, "x": first["x"], "r": first["r"], "edge": local_right(i)}
     end_all()
     return out
 
@@ -319,9 +402,10 @@ DOTS = re.compile(r"(?:[.…·,](?:\s?)){2,}[.…·]")
 
 def blanks(t):
     t = re.sub(r"\(\s*\)", "({_})", t)
-    t = DOTS.sub(" {_} ", t)
+    t = re.sub(r"(?<=\b[a-z])" + DOTS.pattern, "\x00", t)  # b.... 这种给了首字母的空（字母紧挨着点）
+    t = DOTS.sub(" {_} ", t).replace("\x00", "{_} ")
     t = re.sub(r"\{_\}(?:\s*\{_\})+", "{_}", t)
-    t = re.sub(r"(?<=\b[a-z])\s+\{_\}", "{_}", t)  # b.... 这种给了首字母的空
+    t = re.sub(r"\{_\}\s*\.{1,2}(?=\s+[a-z])", "{_}", t)  # 空后面剩下的一两个点
     t = re.sub(r"\s+([?.,!;:])", r"\1", t.replace("{_} ", "{_} "))
     t = re.sub(r"\{_\}(?=[A-Za-z])", "{_} ", t)
     return re.sub(r"\s+", " ", t).strip()
@@ -349,6 +433,17 @@ def numbered_blanks(paras):
     return out
 
 
+def tick_split(segs):
+    """问卷的一行：右边（页面右半）从第几段开始是打勾的选项。没有选项返回 None。"""
+    for k in range(1, len(segs)):
+        rest = " ".join(s["t"] for s in segs[k:])
+        if segs[k]["x"] > 0.585 and ("•" in rest or re.match(r"^(yes|no)\b", rest)):
+            choices = [c for c in re.split(r"\s*(?:•|\b[LO]\b(?=\s))\s*", rest) if c.strip()]
+            if len(choices) >= 2 and all(len(c.split()) <= 4 for c in choices):  # 几个很短的选项才是打勾题
+                return k
+    return None
+
+
 def row_text(segs):
     """一行练习文字：段之间空得很开的地方是填空。"""
     t = ""
@@ -362,6 +457,46 @@ def row_text(segs):
 
 ITEM = re.compile(r"^([1-9]\d?|S)\s+(?=\S)")  # OCR 有时把 5 认成 S
 OPTION = re.compile(r"^([a-h])[).]\s*")
+
+
+def number_grid(run):
+    """小题排成几栏、题号单独占一行、文字在题号下面居中（气泡框）：
+    1    4
+      文字   文字
+    2    5 …    -> 先读左栏 1 2 3，再读右栏 4 5 6；题号接到它下面那一行的前面。"""
+    is_nums = [len(r["segs"]) >= 2 and all(re.fullmatch(r"[1-9]\d?", s["t"]) for s in r["segs"]) for r in run]
+    if sum(is_nums) < 2:
+        return None
+    start = is_nums.index(True)
+    xs = [s["x"] for s in run[start]["segs"]]
+    bounds = [x - 0.03 for x in xs] + [2]
+    block = []
+    for r in run[start:]:
+        if any(s["x"] < bounds[0] - 0.03 or (s["r"] > bounds[c + 1] + 0.02 if (c := max(
+                i for i, b in enumerate(bounds[:-1]) if s["x"] >= b or i == 0)) < len(xs) - 1 else False)
+               for s in r["segs"]):
+            break  # 跨栏的一整行：分栏结束
+        block.append(r)
+    if sum(1 for r in block if r in [run[i] for i, v in enumerate(is_nums) if v]) < 2:
+        return None
+    out = list(run[:start])
+    for c in range(len(xs)):
+        num = None
+        for r in block:
+            segs = [dict(s) for s in r["segs"] if bounds[c] <= s["x"] < bounds[c + 1] or (c == 0 and s["x"] < bounds[0])]
+            if not segs:
+                continue
+            if len(segs) == 1 and re.fullmatch(r"[1-9]\d?", segs[0]["t"]):
+                num = segs[0]
+                continue
+            segs[0]["gap"] = 0
+            x = segs[0]["x"]
+            if num:
+                segs[0]["t"] = num["t"] + " " + segs[0]["t"]
+                x = segs[0]["x"] = num["x"]
+                num = None
+            out.append({**r, "segs": segs, "x": x, "r": segs[-1]["r"], "col": (id(block), c), "lx": xs[c]})
+    return out + run[start + len(block):]
 
 
 def split_columns(rs, prose=False, breaks=lambda r: False):
@@ -404,6 +539,10 @@ def split_columns(rs, prose=False, breaks=lambda r: False):
 
     out = []
     for run in runs:
+        grid = number_grid(run)
+        if grid:
+            out += grid
+            continue
         anchors = anchors_of(run)
         blocks, cur = [], []
         for r in run:
@@ -474,6 +613,25 @@ def exercises(page, unit):
         if len(segs) == 1 and ex["words"] and len(t0.split()) <= 3 and not ITEM.match(t0) and not ex["items"]:
             ex["words"].append(t0)
             continue
+        k = tick_split(segs)
+        if k is not None or (ex.get("quiz_x") and abs(segs[0]["x"] - ex["quiz_x"]) < 0.02):
+            # 问卷：左边是问题，右边是打勾的选项（• yes • no）；问题可能占两行
+            qsegs = segs[:k] if k is not None else segs
+            if qsegs and re.fullmatch(r"[1-9]\d?", qsegs[0]["t"]):
+                qsegs = qsegs[1:]  # 页边的题号
+            qt = row_text(qsegs) if qsegs else ""
+            if ex.get("q_open"):
+                ex["items"][-1]["t"] = join_text(ex["items"][-1]["t"], qt)
+            else:
+                ex["items"].append({"t": qt, "x": segs[0]["x"], "n": len(ex["items"]) + 1})
+            ex["quiz_x"] = ex.get("quiz_x") or (qsegs or segs)[0]["x"]
+            if k is not None:
+                choices = [c.strip() for c in re.split(r"\s*(?:•|\b[LO]\b(?=\s))\s*", " ".join(s["t"] for s in segs[k:]))]
+                if "{_}" not in ex["items"][-1]["t"]:
+                    ex["items"][-1]["t"] += " {_}"  # 空的点没认出来
+                ex["items"][-1]["t"] += " (" + " / ".join(c for c in choices if c) + ")"
+            ex["q_open"] = k is None
+            continue
         text = row_text(segs)
         sp = SPEAKER.match(t0)
         if sp and len(segs) > 1 and col and not ex["items"]:
@@ -498,7 +656,14 @@ def exercises(page, unit):
             im = ITEM.match(text)
         om = OPTION.match(text)
         if om and segs[0]["x"] < lx + 0.1:
-            ex["opts"].append({"k": om.group(1), "t": text[om.end():], "after": len(ex["items"])})
+            ex["opts"].append({"k": om.group(1), "t": text[om.end():], "after": len(ex["items"]), "x": segs[0]["x"]})
+            continue
+        its = ex["items"]
+        if not im and len(its) >= 2 and text.startswith("{_}") and all(it["t"].startswith("{_}") for it in its) \
+                and re.search(r"[?.!]$", its[-1]["t"]):
+            # 每个小题都是 "1 ..... 句子"，这一行也是空开头、上一题已经说完：题号没认出来的下一题
+            its.append({"t": text, "x": segs[0]["x"], "n": its[-1]["n"] + 1})
+            ex.setdefault("item_cy", []).append(row["cy"])
             continue
         if im and segs[0]["x"] < lx + 0.03:
             n = 5 if im.group(1) == "S" else int(im.group(1))
@@ -517,6 +682,10 @@ def exercises(page, unit):
                 halves.append(text)
             else:
                 halves[-1] = join_text(halves[-1], text)
+        elif ex["opts"] and ex["opts"][-1]["after"] == len(ex["items"]) and not ex["items"] \
+                and segs[0]["x"] < ex["opts"][-1]["x"] + 0.01:
+            # 选项后面、小题前面不缩进的一行：小题的题干（Which notice would you respond to if …）
+            ex.setdefault("stem", []).append(re.sub(r"\s*\{_\}$", " …", text))  # 题干末尾的点是"接下面的小题"
         elif ex["opts"] and ex["opts"][-1]["after"] == len(ex["items"]):
             ex["opts"][-1]["t"] = join_text(ex["opts"][-1]["t"], text)
         elif ex["items"]:
@@ -554,6 +723,7 @@ def exercises(page, unit):
         matching = bool(ex["opts"]) and len(ex["items"]) > 1 and afters <= {0, len(ex["items"])}
         if matching and 0 in afters:
             out += [f"- {o['k']}) {o['t']}" for o in ex["opts"] if o["after"] == 0] + [""]
+        out += ex.get("stem", [])
         nums = [it["n"] for it in ex["items"]]
         if len(nums) < 2 or nums[0] < 3 or nums != list(range(nums[0], nums[0] + len(nums))):
             nums = list(range(1, len(ex["items"]) + 1))
