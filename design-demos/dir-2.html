@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>方向二 · 学习路径</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* 方向二 · 参照 Brilliant.org
+   色彩：浅暖灰底 + 白卡片；紫色是「当前在做的事」（选中、进度、按钮），
+   薄荷绿只给「对了 / 学完了」。两色相角拉开 >100°，一个管行动，一个管奖励。 */
+:root {
+  --bg: #f4f3f0; --card: #ffffff; --soft: #f7f6f3; --line: #e6e4de;
+  --ink: #1c1b1f; --ink-2: #45444b; --muted: #6e6d74;
+  --violet: #6a4ff0; --violet-soft: #ece8ff; --violet-ink: #4b33c9;
+  --mint: #1f9d74; --mint-soft: #d9f5ea; --mark: #c9f2e1;
+  --shadow: 0 1px 2px rgba(28,27,31,.05), 0 6px 20px rgba(28,27,31,.06);
+  --serif: "Newsreader", "Songti SC", Georgia, serif;
+  --sans: "Familjen Grotesk", -apple-system, "PingFang SC", sans-serif;
+}
+:root[data-theme="dark"] {
+  --bg: #161519; --card: #212026; --soft: #2a2930; --line: #34333b;
+  --ink: #f0eff3; --ink-2: #cfcdd6; --muted: #9a98a3;
+  --violet: #9884ff; --violet-soft: #2e2850; --violet-ink: #b9abff;
+  --mint: #4fd1a5; --mint-soft: #193a2f; --mark: rgba(79,209,165,.3);
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #161519; --card: #212026; --soft: #2a2930; --line: #34333b;
+  --ink: #f0eff3; --ink-2: #cfcdd6; --muted: #9a98a3;
+  --violet: #9884ff; --violet-soft: #2e2850; --violet-ink: #b9abff;
+  --mint: #4fd1a5; --mint-soft: #193a2f; --mark: rgba(79,209,165,.3);
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+} }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+svg.i { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* 顶部：悬浮胶囊导航（做题页不出现） */
+.top { position: sticky; top: 12px; z-index: 10; max-width: 1100px; margin: 12px auto 0; padding: 0 20px; }
+.topbar { display: flex; align-items: center; gap: 6px; height: 56px; padding: 0 8px 0 20px; background: color-mix(in srgb, var(--card) 88%, transparent); backdrop-filter: blur(16px); border-radius: 999px; box-shadow: var(--shadow); }
+.logo { font: 600 20px var(--serif); margin-right: 18px; }
+.tab { height: 40px; padding: 0 16px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); font-weight: 500; }
+.tab:hover { background: var(--soft); }
+.tab.on { background: var(--ink); color: var(--bg); }
+.tab .n { background: var(--violet); color: #fff; border-radius: 999px; font-size: 11px; padding: 0 7px; font-weight: 700; }
+.topbar .me { margin-left: auto; width: 40px; height: 40px; border-radius: 50%; background: var(--violet-soft); color: var(--violet-ink); display: grid; place-items: center; font-weight: 700; }
+.page { max-width: 1100px; margin: 0 auto; padding: 36px 20px 100px; }
+h1.big { font: 500 44px/1.1 var(--serif); letter-spacing: -.015em; margin: 0 0 6px; }
+.lead { color: var(--muted); margin: 0 0 30px; font-size: 16px; }
+
+/* 题库：每套题一张大卡片，带进度环 */
+.books { display: flex; gap: 8px; margin-bottom: 22px; }
+.chipbtn { height: 40px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); font-weight: 600; }
+.chipbtn.on { border-color: var(--ink); background: var(--ink); color: var(--bg); }
+.tests { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.tcard { background: var(--card); border-radius: 22px; padding: 22px 22px 12px; box-shadow: var(--shadow); }
+.tcard h3 { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; font: 600 22px var(--serif); }
+.ring { --p: 0; width: 38px; height: 38px; border-radius: 50%; background: conic-gradient(var(--violet) calc(var(--p) * 1%), var(--violet-soft) 0); display: grid; place-items: center; margin-left: auto; }
+.ring span { width: 30px; height: 30px; border-radius: 50%; background: var(--card); display: grid; place-items: center; font-size: 11px; font-weight: 700; color: var(--muted); }
+.prow { display: flex; align-items: center; gap: 12px; padding: 12px 12px; margin: 0 -8px; border-radius: 14px; }
+.prow:hover { background: var(--soft); }
+.prow .pn { width: 34px; height: 34px; border-radius: 10px; background: var(--soft); display: grid; place-items: center; font-weight: 700; font-size: 13px; color: var(--ink-2); flex: none; }
+.prow.done .pn { background: var(--mint-soft); color: var(--mint); }
+.prow .pt { flex: 1; min-width: 0; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prow .ps { font-size: 13px; font-weight: 700; color: var(--mint); } .prow .ps.no { color: var(--muted); font-weight: 500; }
+
+/* 做题页：大圆返回键 + 底部悬浮工具栏 */
+.pr-top { display: flex; align-items: center; gap: 14px; padding: 16px 24px; }
+.round { width: 48px; height: 48px; border-radius: 50%; background: var(--card); box-shadow: var(--shadow); display: grid; place-items: center; border: 0; flex: none; }
+.round:hover { background: var(--ink); color: var(--bg); }
+.round svg.i { width: 22px; height: 22px; stroke-width: 2.2; }
+.pr-title { min-width: 0; }
+.pr-title .k { font-size: 13px; color: var(--muted); font-weight: 500; }
+.pr-title .t { font: 600 20px var(--serif); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pr-top .right { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.timer { height: 44px; padding: 0 16px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow); display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-variant-numeric: tabular-nums; border: 0; }
+.submit { height: 48px; padding: 0 26px; border-radius: 999px; border: 0; background: var(--violet); color: #fff; font-weight: 700; font-size: 16px; box-shadow: 0 4px 0 var(--violet-ink); }
+.submit:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--violet-ink); }
+.pr-cols { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; padding: 0 24px 110px; height: calc(100vh - 80px); }
+.card { background: var(--card); border-radius: 24px; box-shadow: var(--shadow); overflow-y: auto; }
+.passage { padding: 36px 44px; }
+.passage h1 { font: 500 34px/1.15 var(--serif); margin: 0 0 10px; }
+.passage .sub { font: italic 18px/1.6 var(--serif); color: var(--muted); margin: 0 0 22px; }
+.passage p { font: 18.5px/1.75 var(--serif); margin: 0 0 18px; }
+mark { background: var(--mark); color: inherit; border-radius: 4px; padding: 0 2px; }
+.qcard { padding: 22px; }
+.qhd { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.qhd b { font: 600 18px var(--serif); }
+.qhd .prog { margin-left: auto; height: 8px; width: 120px; border-radius: 4px; background: var(--violet-soft); overflow: hidden; }
+.qhd .prog i { display: block; height: 100%; width: 15%; background: var(--violet); border-radius: 4px; }
+.ins { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+.qi { background: var(--soft); border-radius: 16px; padding: 14px 16px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; }
+.qi .n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--violet); color: #fff; font-size: 12px; font-weight: 700; margin-right: 8px; vertical-align: 1px; }
+.blank { width: 130px; height: 34px; border-radius: 10px; border: 2px solid var(--line); background: var(--card); padding: 0 10px; font: 600 15px var(--sans); color: var(--ink); vertical-align: middle; }
+.blank:focus { outline: 0; border-color: var(--violet); }
+.opts { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.opts button { height: 38px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--line); background: var(--card); font-weight: 700; font-size: 13px; letter-spacing: .02em; }
+.opts button.on { border-color: var(--violet); color: var(--violet); background: var(--violet-soft); }
+.dock { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; gap: 4px; padding: 6px; border-radius: 999px; background: var(--ink); box-shadow: 0 10px 30px rgba(0,0,0,.25); z-index: 20; }
+.dock button { height: 46px; padding: 0 18px; border-radius: 999px; border: 0; background: none; color: color-mix(in srgb, var(--bg) 70%, transparent); display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+.dock button.on { background: var(--bg); color: var(--ink); }
+.dock .sw { width: 12px; height: 12px; border-radius: 50%; background: #c9f2e1; }
+
+/* 短语：学习路径，上次学的放大 */
+.continue { display: flex; align-items: center; gap: 20px; background: var(--ink); color: var(--bg); border-radius: 26px; padding: 24px 28px; margin-bottom: 34px; }
+.continue .u { width: 72px; height: 72px; border-radius: 22px; background: var(--violet); color: #fff; display: grid; place-items: center; font: 600 32px var(--serif); flex: none; }
+.continue .l { font-size: 14px; opacity: .7; } .continue .t { font: 500 28px var(--serif); }
+.continue .go { margin-left: auto; height: 52px; padding: 0 26px; border-radius: 999px; background: var(--bg); color: var(--ink); display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+.ug h4 { font: 500 20px var(--serif); margin: 28px 0 12px; }
+.path { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.tile { background: var(--card); border-radius: 18px; padding: 14px; box-shadow: var(--shadow); min-height: 104px; display: flex; flex-direction: column; gap: 8px; border: 2px solid transparent; }
+.tile:hover { border-color: var(--line); }
+.tile .tn { width: 32px; height: 32px; border-radius: 10px; background: var(--soft); display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+.tile .tt { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.tile.done .tn { background: var(--mint-soft); color: var(--mint); }
+.tile.last { border-color: var(--violet); background: var(--violet-soft); grid-column: span 2; flex-direction: row; align-items: center; gap: 14px; }
+.tile.last .tn { width: 52px; height: 52px; font-size: 20px; background: var(--violet); color: #fff; border-radius: 16px; }
+.tile.last .tt { font: 500 22px var(--serif); }
+.tile.last .flag { font-size: 12px; font-weight: 700; color: var(--violet-ink); }
+
+/* 单元页 */
+.u-top { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.u-top .seg { margin-left: auto; display: flex; gap: 4px; background: var(--card); padding: 4px; border-radius: 999px; box-shadow: var(--shadow); }
+.u-top .seg button { height: 40px; padding: 0 16px; border-radius: 999px; border: 0; background: none; font-weight: 600; color: var(--muted); }
+.u-top .seg button.on { background: var(--ink); color: var(--bg); }
+.list { background: var(--card); border-radius: 24px; box-shadow: var(--shadow); padding: 8px 24px; }
+.ph { display: grid; grid-template-columns: 190px 1fr; gap: 2px 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.ph:last-child { border-bottom: 0; }
+.ph b { font: 600 19px var(--serif); } .ph .zh { font-weight: 600; } .ph .en { grid-column: 2; color: var(--muted); font-size: 14px; }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+.pager a { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: 22px; background: var(--card); box-shadow: var(--shadow); }
+.pager a:hover { outline: 2px solid var(--violet); }
+.pager .arr { width: 48px; height: 48px; border-radius: 50%; background: var(--soft); display: grid; place-items: center; flex: none; }
+.pager .arr svg.i { width: 22px; height: 22px; stroke-width: 2.2; }
+.pager .k { font-size: 13px; color: var(--muted); } .pager .t { font: 500 22px var(--serif); }
+.pager .next { justify-content: flex-end; text-align: right; } .pager .next .arr { background: var(--violet); color: #fff; }
+
+.demo { position: fixed; right: 14px; top: 14px; z-index: 50; display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: var(--card); box-shadow: var(--shadow); font-size: 12px; }
+.demo button { border: 0; background: none; padding: 5px 10px; border-radius: 999px; color: var(--muted); }
+.demo button.on { background: var(--violet); color: #fff; }
+
+@media (max-width: 820px) {
+  .top { top: auto; bottom: 10px; position: fixed; left: 0; right: 0; margin: 0; padding: 0 10px; }
+  .topbar { justify-content: space-between; padding: 0 6px; }
+  .logo, .topbar .me { display: none; }
+  .tab { padding: 0 12px; font-size: 13px; }
+  .page { padding: 24px 16px 110px; }
+  h1.big { font-size: 34px; }
+  .tests { grid-template-columns: 1fr; }
+  .pr-top { padding: 12px 14px; flex-wrap: wrap; }
+  .pr-top .right { gap: 6px; }
+  .timer { padding: 0 12px; }
+  .submit { padding: 0 18px; }
+  .pr-cols { grid-template-columns: 1fr; height: auto; padding: 0 12px 110px; }
+  .card { overflow: visible; }
+  .passage { padding: 22px 20px; }
+  .dock button span { display: none; }
+  .dock button { padding: 0 16px; }
+  .tile.last { grid-column: 1 / -1; }
+  .continue { flex-wrap: wrap; padding: 20px; }
+  .continue .go { margin: 0; width: 100%; justify-content: center; }
+  .ph { grid-template-columns: 1fr; } .ph .en { grid-column: 1; }
+  .pager .t { font-size: 18px; }
+  .demo { top: auto; bottom: 80px; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="demo">
+  <button data-s="library">题库</button><button data-s="practice">做题</button><button data-s="units">短语</button><button data-s="unit">单元页</button>
+  <button data-t="light">浅</button><button data-t="dark">深</button>
+</div>
+<script src="demo-data.js"></script>
+<script>
+const D = window.DEMO;
+const I = {
+  back: '<svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>',
+  next: '<svg class="i" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>',
+  cursor: '<svg class="i" viewBox="0 0 24 24"><path d="M6 4l12 7-5.5 1.5L15 18l-2.5 1.5-2.5-5.5L6 17z"/></svg>',
+  pen: '<svg class="i" viewBox="0 0 24 24"><path d="M5 19l1-4 9.5-9.5a2 2 0 0 1 3 3L9 18z"/></svg>',
+  marker: '<svg class="i" viewBox="0 0 24 24"><path d="M9 15l-3 3h4l1-1M9 15l8-9a2 2 0 0 1 3 3l-9 8z"/></svg>',
+  eraser: '<svg class="i" viewBox="0 0 24 24"><path d="M8 20h11M5.5 15.5l9-9a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8L12 19H8.5z"/></svg>',
+  clock: '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9.5V13l2.5 2"/></svg>',
+};
+const scores = { "剑18-1-0": "11/13", "剑18-1-1": "9/13", "剑18-2-0": "12/13" };
+function topnav(on) {
+  const t = (k, label, n) => `<a class="tab ${on === k ? "on" : ""}" href="#${k}">${label}${n ? `<span class="n">${n}</span>` : ""}</a>`;
+  return `<div class="top"><nav class="topbar"><span class="logo">英语学习</span>${t("library", "题库")}${t("units", "短语")}${t("vocab", "生词本")}${t("review", "复习", 12)}<span class="me">M</span></nav></div>`;
+}
+const screens = {
+  library() {
+    const b = D.books[0];
+    return topnav("library") + `<div class="page"><h1 class="big">今天读哪一篇？</h1><p class="lead">剑桥雅思阅读 · A 类 24 篇，已做 3 篇</p>
+      <div class="books">${D.books.map((x, i) => `<button class="chipbtn ${i === 0 ? "on" : ""}">${x.short}</button>`).join("")}<button class="chipbtn">剑11G</button><button class="chipbtn">剑13G</button></div>
+      <div class="tests">${b.tests.map((t, ti) => {
+        const done = t.filter((_, pi) => scores[`${b.short}-${ti + 1}-${pi}`]).length;
+        return `<section class="tcard"><h3>Test ${ti + 1}<span class="ring" style="--p:${done / 3 * 100}"><span>${done}/3</span></span></h3>
+          ${t.map((title, pi) => { const s = scores[`${b.short}-${ti + 1}-${pi}`];
+            return `<a class="prow ${s ? "done" : ""}" href="#practice"><span class="pn">P${pi + 1}</span><span class="pt">${title}</span><span class="ps ${s ? "" : "no"}">${s || "开始"}</span></a>`; }).join("")}</section>`; }).join("")}</div></div>`;
+  },
+  practice() {
+    const [p1, p2, p3] = D.passage.paras;
+    return `<header class="pr-top"><a class="round" href="#library" title="返回题库">${I.back}</a>
+        <div class="pr-title"><div class="k">剑18 · Test 1 · Passage 1</div><div class="t">${D.passage.title}</div></div>
+        <div class="right"><button class="timer">${I.clock}17:42</button><button class="submit">提交</button></div></header>
+      <div class="pr-cols">
+        <article class="card passage"><h1>${D.passage.title}</h1><p class="sub">${D.passage.sub}</p>
+          <p>${p1.replace("Strawberries that are small, intensely flavoured and resplendently red", "<mark>Strawberries that are small, intensely flavoured and resplendently red</mark>")}</p><p>${p2}</p><p>${p3}</p></article>
+        <section class="card qcard">
+          <div class="qhd"><b>Questions 1–3</b><span class="prog"><i></i></span></div>
+          <p class="ins">Choose <b>NO MORE THAN TWO WORDS AND/OR A NUMBER</b> from the passage.</p>
+          <div class="qi"><span class="n">1</span>Vertical tubes are used to grow strawberries, <input class="blank" value="lettuces"> and herbs.</div>
+          <div class="qi"><span class="n">2</span>There will eventually be a daily harvest of as much as <input class="blank"> in weight of fruit and vegetables.</div>
+          <div class="qhd" style="margin-top:22px"><b>Questions 8–13</b></div>
+          <p class="ins">Do the following statements agree with the information given in Reading Passage 1?</p>
+          ${["Urban farming can take place above or below ground.", "Some of the equipment used in aeroponic farming can be made by hand.", "Urban farming relies more on electricity than some other types of farming."].map((s, i) =>
+            `<div class="qi"><span class="n">${8 + i}</span>${s}<div class="opts"><button class="${i === 0 ? "on" : ""}">TRUE</button><button>FALSE</button><button>NOT GIVEN</button></div></div>`).join("")}
+        </section>
+      </div>
+      <nav class="dock"><button class="on">${I.cursor}<span>鼠标</span></button><button>${I.pen}<span>学习笔</span></button><button>${I.marker}<span>记号笔</span><i class="sw"></i></button><button>${I.eraser}<span>橡皮擦</span></button></nav>`;
+  },
+  units() {
+    const groups = [];
+    for (const u of D.units) { if (!groups.length || groups.at(-1).g !== u[2]) groups.push({ g: u[2], us: [] }); groups.at(-1).us.push(u); }
+    return topnav("units") + `<div class="page"><h1 class="big">短语动词</h1><p class="lead">English Phrasal Verbs in Use · 已学 7 / 70</p>
+      <a class="continue" href="#unit"><span class="u">8</span><div><div class="l">上次学到</div><div class="t">Unit 8 · Go</div></div><span class="go">继续学习 ${I.next}</span></a>
+      ${groups.map((g) => `<section class="ug"><h4>${g.g}</h4><div class="path">${g.us.map(([n, t]) => n === 8
+        ? `<a class="tile last" id="last" href="#unit"><span class="tn">${n}</span><div><div class="flag">上次学到这里</div><div class="tt">${t}</div></div></a>`
+        : `<a class="tile ${n < 8 ? "done" : ""}" href="#unit"><span class="tn">${n < 8 ? "✓" : n}</span><span class="tt">${t}</span></a>`).join("")}</div></section>`).join("")}
+    </div>`;
+  },
+  unit() {
+    return topnav("units") + `<div class="page">
+      <div class="u-top"><a class="round" href="#units" title="全部单元">${I.back}</a><div class="pr-title"><div class="k">Key verbs · Unit 8</div><div class="t" style="font-size:30px">Go</div></div>
+        <div class="seg"><button class="on">短语 10</button><button>讲解和练习</button><button>答案</button></div></div>
+      <div class="list">${D.unit8.phrases.map(([k, en, zh]) => `<div class="ph"><b>${k}</b><span class="zh">${zh}</span><span class="en">${en}</span></div>`).join("")}</div>
+      <nav class="pager"><a href="#unit"><span class="arr">${I.back}</span><div><div class="k">上一单元</div><div class="t">7 · Get</div></div></a>
+        <a class="next" href="#unit"><div><div class="k">下一单元</div><div class="t">9 · Look</div></div><span class="arr">${I.next}</span></a></nav>
+    </div>`;
+  },
+  vocab() { return screens.library(); }, review() { return screens.library(); },
+};
+function render() {
+  const s = location.hash.slice(1) || "library";
+  document.getElementById("app").innerHTML = (screens[s] || screens.library)();
+  document.querySelectorAll(".demo [data-s]").forEach((b) => b.classList.toggle("on", b.dataset.s === s));
+  window.scrollTo(0, 0);
+  if (s === "units") document.getElementById("last")?.scrollIntoView({ block: "center" });
+}
+document.querySelector(".demo").onclick = (e) => {
+  const s = e.target.dataset.s, t = e.target.dataset.t;
+  if (s) location.hash = s;
+  if (t) { document.documentElement.dataset.theme = t; document.querySelectorAll(".demo [data-t]").forEach((b) => b.classList.toggle("on", b.dataset.t === t)); }
+};
+addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>

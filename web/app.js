@@ -9,6 +9,33 @@ import { renderPV, gradeKey, checkAnswer } from "./pv.js";
 const app = document.getElementById("app");
 initLookup(app);
 
+const ICON = {
+  back: `<svg viewBox="0 0 24 24"><path d="M15 5.5 8.5 12l6.5 6.5"/></svg>`,
+  next: `<svg viewBox="0 0 24 24"><path d="M9 5.5 15.5 12 9 18.5"/></svg>`,
+  check: `<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`,
+};
+// 专注页左上角的返回键（Esc 也会点它）
+const backBtn = (href, label) => `<a class="back" href="${href}" id="back">${ICON.back}<span>${esc(label)}</span><kbd>Esc</kbd></a>`;
+
+// 用 capture 先于查词卡片收到 Esc：卡片、弹窗开着时让它们先关，没开时才返回
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape" || e.metaKey || e.ctrlKey || e.altKey) return;
+  const el = document.activeElement;
+  if (el && el.matches("input, textarea, select")) { el.blur(); return; }
+  const open = ["#lookup", "#palette", "#timer-pop"].some((s) => { const x = document.querySelector(s); return x && !x.hidden; });
+  if (open) return;
+  const back = document.getElementById("back");
+  if (back) { e.preventDefault(); location.hash = back.getAttribute("href"); }
+}, true);
+
+// 返回列表时把上次点的那一行标出来并滚到屏幕中间
+function revealLast(sel) {
+  const el = app.querySelector(sel);
+  if (!el) return;
+  el.classList.add("last", "flash-in");
+  requestAnimationFrame(() => el.scrollIntoView({ block: "center" }));
+}
+
 // ================================================================ 路由
 
 const routes = [
@@ -32,7 +59,7 @@ async function route() {
   delete document.body.dataset.tool;
   window.scrollTo(0, 0);
   const nav = path.split("/")[1] || "home";
-  const navKey = { read: "library", write: "library", records: "home" }[nav] || nav;
+  const navKey = { read: "library", write: "library" }[nav] || nav;
   document.querySelectorAll("[data-nav]").forEach((a) => a.classList.toggle("active", a.dataset.nav === navKey));
   for (const [re, fn] of routes) {
     const m = path.match(re);
@@ -112,8 +139,8 @@ async function homeView() {
   app.innerHTML = `<div class="page">
     <div class="page-head"><div><h1>${hi}</h1><p class="muted">今天也读一点、记一点。</p></div></div>
     <div class="hero">
-      <a class="card review-cta" href="#/review">
-        <div><div class="small" style="opacity:.85">今天要复习的生词</div><div class="num">${stats.due}</div></div>
+      <a class="card review-cta ${stats.due ? "has-due" : ""}" href="#/review">
+        <div><div class="small">今天要复习的生词</div><div class="num">${stats.due}</div></div>
         <span class="btn">${stats.due ? "开始复习" : "暂时没有，去生词本看看"}</span>
       </a>
       <div class="stats-col">
@@ -132,9 +159,9 @@ async function homeView() {
         <h3 style="margin-top:6px">English Phrasal Verbs in Use</h3><div class="muted small" style="margin-top:4px">70 个单元 · 近 800 个短语动词</div></a>
     </div>
     <div class="section">
-      <div class="row" style="margin-bottom:8px"><h2>最近做题</h2><span class="spacer"></span>${items.length ? '<a href="#/records" class="small">全部记录 →</a>' : ""}</div>
+      <div class="row" style="margin-bottom:8px"><h2>最近做题</h2><span class="spacer"></span>${items.length ? '<a href="#/records" class="home-link">全部记录</a>' : ""}</div>
       ${items.length ? `<div class="card" style="padding:4px 14px"><div class="list">${items.slice(0, 6).map((a) => attemptRow(a, idx)).join("")}</div></div>`
-        : `<div class="card empty" style="padding:30px">还没有做题记录。<br><a href="#/library">去题库挑一篇 →</a></div>`}
+        : `<div class="card empty" style="padding:30px">还没有做题记录。<br><a href="#/library">去题库挑一篇</a></div>`}
     </div>
   </div>`;
 }
@@ -156,7 +183,7 @@ async function libraryView() {
   const books = lib.books.filter((b) => filter === "all" || b.type === filter);
   app.innerHTML = `<div class="page">
     <div class="page-head">
-      <div><h1>题库</h1><p class="muted">文章可以点词查询；题目是原书页面；答题卡自动判分。</p></div>
+      <div><h1>题库</h1><p class="muted">点任意一篇开始。学习笔点词查询，提交后自动判分。</p></div>
       <div class="seg" id="lib-filter">
         <button data-f="A" class="${filter === "A" ? "on" : ""}">A 类</button>
         <button data-f="G" class="${filter === "G" ? "on" : ""}">G 类</button>
@@ -172,23 +199,27 @@ async function libraryView() {
     const f = e.target.dataset.f;
     if (f) { local.set("lib-filter", f); libraryView(); }
   };
+  const last = local.get("last-unit");
+  if (last) revealLast(`.unit-link[data-id="${last}"]`);
 }
 
 function testCard(b, t, latest) {
   const scores = t.reading.map((r) => latest[r.id]);
   const all = scores.every(Boolean);
   const raw = all ? scores.reduce((s, a) => s + a.score, 0) : 0;
+  const done = scores.filter(Boolean).length;
   return `<div class="card test-card">
-    <h3>Test ${t.n} ${all ? `<span class="chip ok" title="三篇最近一次成绩相加">${raw}/40 · 约 ${band(raw, b.type)} 分</span>` : ""}</h3>
+    <h3>Test ${t.n} ${all ? `<span class="chip ok" title="三篇最近一次成绩相加">${raw}/40 · 约 ${band(raw, b.type)} 分</span>` : ""}
+      <span class="bar"><i style="width:${(done / t.reading.length) * 100}%"></i></span><span class="pct">${done}/${t.reading.length}</span></h3>
     ${t.reading.map((r) => {
       const a = latest[r.id];
-      return `<a class="unit-link" href="#/read/${r.id}">
+      return `<a class="unit-link" href="#/read/${r.id}" data-id="${r.id}">
         <span class="unit-no">${b.type === "A" ? "P" : "S"}${r.n}</span>
         <span class="unit-title">${esc(r.title)}</span>
-        ${a ? `<span class="score-pill ${scoreClass(a.score, a.total)}">${a.score}/${a.total}</span>` : `<span class="muted small">${r.q[0]}–${r.q[1]}</span>`}
+        ${a ? `<span class="score-pill ${scoreClass(a.score, a.total)}">${a.score}/${a.total}</span>` : `<span class="muted small mono">Q${r.q[0]}–${r.q[1]}</span>`}
       </a>`;
     }).join("")}
-    ${t.writing.map((w) => `<a class="unit-link" href="#/write/${w.id}"><span class="unit-no">W${w.task}</span><span class="unit-title">Writing Task ${w.task}</span><span class="muted small">写作</span></a>`).join("")}
+    ${t.writing.map((w) => `<a class="unit-link" href="#/write/${w.id}" data-id="${w.id}"><span class="unit-no">W${w.task}</span><span class="unit-title">Writing Task ${w.task}</span><span class="muted small">写作</span></a>`).join("")}
   </div>`;
 }
 
@@ -276,8 +307,8 @@ async function practiceView(id) {
 
   app.innerHTML = `
     <div class="practice-bar">
-      <a class="btn ghost small" href="#/library" aria-label="返回">←</a>
-      <span class="title">${esc(meta.book.short)} T${meta.test} ${esc(meta.label)}<span class="muted title-sub" style="font-weight:400"> · ${esc(unit.title)}</span></span>
+      ${backBtn("#/library", "题库")}
+      <span class="title">${esc(meta.book.short)} / Test ${meta.test} / <b>${esc(meta.label)} · ${esc(unit.title)}</b></span>
       <span class="spacer"></span>
       ${toolbarHtml()}
       ${timerHtml()}
@@ -464,8 +495,10 @@ async function writingView(id) {
   local.set("last-unit", id);
   const saved = (await api.get(`/api/kv?key=${encodeURIComponent("write:" + id)}`)).value || { text: "" };
   const minWords = unit.task === 1 ? 150 : 250;
+  document.body.className = "immersive";
   app.innerHTML = `<div class="page" style="max-width:1200px">
-    <div class="page-head"><div><a href="#/library" class="small">← 题库</a><h1 style="margin-top:6px">${esc(unitName(meta))}</h1>
+    <div class="unit-top">${backBtn("#/library", "题库")}</div>
+    <div class="page-head"><div><h1>${esc(unitName(meta))}</h1>
       <p class="muted">建议用时 ${unit.task === 1 ? "20" : "40"} 分钟，至少 ${minWords} 词。写的内容会自动保存。</p></div></div>
     <div class="write-wrap">
       <div>
@@ -624,7 +657,7 @@ async function reviewView() {
   }
   function render() {
     if (!queue.length) {
-      box.innerHTML = `<div class="card flash-card"><div class="big" style="font-size:44px">🎉</div>
+      box.innerHTML = `<div class="flash-top">${backBtn("#/vocab", "生词本")}</div><div class="card flash-card"><div class="big" style="font-size:44px">🎉</div>
         <h2>${done ? `复习完了 ${done} 个` : "现在没有要复习的词"}</h2>
         <p class="muted">${done ? "明天再来。" : "去文章里多查查词，加进生词本吧。"}</p>
         <div class="row" style="justify-content:center"><a class="btn" href="#/vocab">生词本</a><a class="btn primary" href="#/library">去做题</a></div></div>`;
@@ -632,8 +665,8 @@ async function reviewView() {
       return;
     }
     const c = queue[0];
-    box.innerHTML = `<div class="progress"><div style="width:${(done / (done + queue.length)) * 100}%"></div></div>
-      <div class="row muted small" style="margin-bottom:8px"><span>还剩 ${queue.length} 个</span><span class="spacer"></span><a href="#/vocab">退出</a></div>
+    box.innerHTML = `<div class="flash-top">${backBtn("#/vocab", "生词本")}<div class="progress"><div style="width:${(done / (done + queue.length)) * 100}%"></div></div>
+      <span class="muted small mono">还剩 ${queue.length}</span></div>
       <div class="card flash-card">
         <div class="flash-word">${esc(c.word)}</div>
         <div class="row muted small" style="justify-content:center">${c.phonetic ? "/" + esc(c.phonetic) + "/" : ""}
@@ -680,20 +713,28 @@ async function reviewView() {
 async function phrasesView() {
   const pv = await getPV();
   const doneSet = new Set((await api.get("/api/kv?key=pv-done")).value || []);
+  const lastN = local.get("pv-last");
+  const lastU = lastN && pv.units[lastN - 1];
   const groups = [];
   for (const u of pv.units) {
     if (!groups.length || groups[groups.length - 1].name !== u.group) groups.push({ name: u.group, units: [] });
     groups[groups.length - 1].units.push(u);
   }
+  const pad = (n) => String(n).padStart(2, "0");
   app.innerHTML = `<div class="page">
-    <div class="page-head"><div><h1>短语学习</h1><p class="muted">English Phrasal Verbs in Use · 已学 ${doneSet.size}/70 单元</p></div></div>
+    <div class="page-head"><div><h1>短语</h1><p class="muted">English Phrasal Verbs in Use · 已学 <span class="mono">${doneSet.size}/70</span> 单元</p></div></div>
+    ${lastU ? `<a class="resume" href="#/phrases/${lastN}"><span class="big">${pad(lastN)}</span>
+      <div><div class="lbl">上次学到</div><div class="ttl">Unit ${lastN} · ${esc(lastU.title)}</div></div>
+      <span class="cta">继续学习${ICON.next}</span></a>` : ""}
     <input class="text" id="pq" placeholder="搜索短语动词，例如 give up、look after" style="max-width:420px;margin-bottom:14px">
     <div class="pv-results" id="pres"></div>
     <div id="units">${groups.map((g) => `<div class="unit-sec">${esc(g.name || "")}</div>
-      <div class="units">${g.units.map((u) => `<a class="unit-card ${doneSet.has(u.n) ? "done" : ""}" href="#/phrases/${u.n}">
-        <span class="unit-no">${doneSet.has(u.n) ? "✓" : u.n}</span><span class="unit-title">${esc(u.title)}</span>
-        <span class="muted small">${u.phrases.length}</span></a>`).join("")}</div>`).join("")}</div>
+      <div class="ulist">${g.units.map((u) => `<a class="urow ${doneSet.has(u.n) ? "done" : ""}" href="#/phrases/${u.n}" data-n="${u.n}">
+        <span class="num">${pad(u.n)}</span><span class="t">${esc(u.title)}</span>
+        ${u.n === lastN ? '<span class="last-tag">上次学到这里</span>' : ""}
+        ${doneSet.has(u.n) ? `<span class="ok" title="已学完">${ICON.check}</span>` : `<span class="cnt">${u.phrases.length}</span>`}</a>`).join("")}</div>`).join("")}</div>
   </div>`;
+  if (lastU) revealLast(`.urow[data-n="${lastN}"]`);
   const res = app.querySelector("#pres");
   const keys = Object.keys(pv.entries);
   app.querySelector("#pq").oninput = async (e) => {
@@ -714,6 +755,8 @@ async function phraseUnitView(n) {
   const pv = await getPV();
   const u = pv.units[n - 1];
   if (!u) throw new Error("没有这个单元");
+  local.set("pv-last", n);
+  document.body.className = "immersive";
   const doneList = (await api.get("/api/kv?key=pv-done")).value || [];
   const vocab = await vocabCache();
   const savedMap = new Map(vocab.map((v) => [v.word.toLowerCase(), v.id]));
@@ -721,21 +764,36 @@ async function phraseUnitView(n) {
   let tab = local.get("pv-tab", "list");
   if (tab === "book" && u.text) tab = "list"; // 讲解和练习是单独的页面
   const doc = u.text || u.hasKey ? await getJSON(`/content/pv/${String(n).padStart(2, "0")}.json`) : null;
+  const prev = pv.units[n - 2], next = pv.units[n];
+  const pad = (x) => String(x).padStart(2, "0");
   app.innerHTML = `<div class="page">
-    <div class="row small" style="margin-bottom:10px"><a href="#/phrases">← 全部单元</a><span class="spacer"></span>
-      ${n > 1 ? `<a href="#/phrases/${n - 1}">← 第 ${n - 1} 单元</a>` : ""}${n < 70 ? `<a href="#/phrases/${n + 1}" style="margin-left:14px">第 ${n + 1} 单元 →</a>` : ""}</div>
-    <div class="page-head"><div><div class="muted small">${esc(u.group || "")} · Unit ${n}</div><h1 style="margin-top:4px">${esc(u.title)}</h1></div>
+    <div class="unit-top">${backBtn("#/phrases", "全部单元")}<span class="spacer"></span>
+      <a class="icon-btn ${prev ? "" : "disabled"}" href="#/phrases/${n - 1}" title="上一单元（K 或 ←）">${ICON.back}</a>
+      <a class="icon-btn ${next ? "" : "disabled"}" href="#/phrases/${n + 1}" title="下一单元（J 或 →）">${ICON.next}</a></div>
+    <div class="unit-h"><div><div class="no">UNIT ${pad(n)} · ${esc(u.group || "")}</div><h1>${esc(u.title)}</h1></div>
       <button class="btn ${doneList.includes(n) ? "" : "primary"}" id="done">${doneList.includes(n) ? "✓ 已学完" : "标记为学完"}</button></div>
     <div class="seg" id="ptab" style="margin-bottom:16px">
-      <button data-t="list">本单元短语 ${u.phrases.length}</button><button data-t="book">讲解和练习</button><button data-t="key">练习答案</button>
+      <button data-t="list">本单元短语 <span class="mono">${u.phrases.length}</span></button><button data-t="book">讲解和练习</button><button data-t="key">练习答案</button>
     </div>
     <div id="pbody"></div>
+    <nav class="pager">
+      ${prev ? `<a href="#/phrases/${n - 1}">${ICON.back}<div><div class="dir">上一单元 <kbd>K</kbd></div><div class="nm"><span class="mono">${pad(n - 1)}</span>${esc(prev.title)}</div></div></a>` : '<span class="ph-empty"></span>'}
+      ${next ? `<a class="next" href="#/phrases/${n + 1}"><div><div class="dir">下一单元 <kbd>J</kbd></div><div class="nm"><span class="mono">${pad(n + 1)}</span>${esc(next.title)}</div></div>${ICON.next}</a>` : '<span class="ph-empty"></span>'}
+    </nav>
   </div>`;
+  // J/K 或左右方向键翻单元（打字时不算）
+  const onKey = (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey || document.activeElement?.matches("input, textarea, select")) return;
+    const k = e.key.toLowerCase();
+    if ((k === "j" || k === "arrowright") && next) location.hash = `#/phrases/${n + 1}`;
+    if ((k === "k" || k === "arrowleft") && prev) location.hash = `#/phrases/${n - 1}`;
+  };
+  document.addEventListener("keydown", onKey);
   const pbody = app.querySelector("#pbody");
   function render() {
     app.querySelectorAll("#ptab button").forEach((b) => b.classList.toggle("on", b.dataset.t === tab));
     if (tab === "list") {
-      pbody.innerHTML = u.phrases.length ? `<div class="card" style="padding:0" data-source="短语书 Unit ${n} ${esc(u.title)}" data-link="#/phrases/${n}">
+      pbody.innerHTML = u.phrases.length ? `<div class="card phr-list" style="padding:0" data-source="短语书 Unit ${n} ${esc(u.title)}" data-link="#/phrases/${n}">
         ${u.phrases.map((p) => {
           const saved = savedMap.get(p.key.toLowerCase());
           const zh = (tr[p.key] || "").split("\n").slice(0, 2).join("；");
@@ -745,7 +803,7 @@ async function phraseUnitView(n) {
               <span class="muted small" style="font-family:var(--sans);font-weight:400">${esc(p.phrase !== p.key ? p.phrase : "")}</span></div>
             <div class="vocab-mean">${zh ? esc(zh) : '<span class="muted">（词典里没有中文释义）</span>'}</div>
             <div class="vocab-actions"><button class="btn small add-btn ${saved ? "saved" : ""}" data-key="${esc(p.key)}" data-saved="${saved || ""}">${saved ? "✓ 已加入" : "＋ 生词本"}</button></div>
-            <div class="vocab-sent text-sel" style="border-left-color:var(--accent-soft);font-size:14.5px">${esc(p.def)}</div>
+            <div class="vocab-sent text-sel" style="font-size:14.5px">${esc(p.def)}</div>
           </div>`;
         }).join("")}</div>
         <p class="muted small" style="margin-top:10px">短语清单来自书后的 Mini dictionary；英文释义里的词也可以点击查询。</p>`
@@ -798,6 +856,7 @@ async function phraseUnitView(n) {
     b.textContent = b.dataset.saved ? "✓ 已加入" : "＋ 生词本";
     await refreshVocab(); refreshBadge();
   });
+  return () => document.removeEventListener("keydown", onKey);
 }
 
 // 原书讲解（左）+ 练习（右），和题库一样可以点词、标记，练习直接作答
@@ -809,6 +868,7 @@ async function phraseBookView(n) {
   if (!u.text) { location.replace(`#/phrases/${n}`); return; }
   const doc = await getJSON(`/content/pv/${String(n).padStart(2, "0")}.json`);
   document.body.className = "practice immersive";
+  local.set("pv-last", n);
   const draftKey = `pv-draft:${n}`;
   const saveKey = `pv-ex:${n}`;
   let answers = local.get(draftKey, {});
@@ -820,8 +880,8 @@ async function phraseBookView(n) {
 
   app.innerHTML = `
     <div class="practice-bar">
-      <a class="btn ghost small" href="#/phrases/${n}" aria-label="返回">←</a>
-      <span class="title">Unit ${n}<span class="muted title-sub" style="font-weight:400"> · ${esc(u.title)}</span></span>
+      ${backBtn(`#/phrases/${n}`, `Unit ${n}`)}
+      <span class="title">短语 / Unit ${n} / <b>${esc(u.title)} · 讲解和练习</b></span>
       <span class="spacer"></span>
       ${toolbarHtml()}
       <button class="btn primary small" id="submit">对答案</button>

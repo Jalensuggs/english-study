@@ -175,8 +175,17 @@ def pv_entries():
     return json.loads(p.read_text(encoding="utf-8")).get("entries", {})
 
 
+@lru_cache(maxsize=1)
+def pv_zh():
+    """短语书里词典没收录的短语，手写的中文释义（content-src/pv_zh.json）。"""
+    p = ROOT / "content-src/pv_zh.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
 def phrase_translation(key):
-    """短语的中文释义：先查原样，再查去掉 sb/sth 的版本。"""
+    """短语的中文释义：先查手写的，再查词典原样，再查去掉 sb/sth 的版本。"""
+    if key in pv_zh():
+        return pv_zh()[key]
     e = entry(key)
     if e and e["translation"]:
         return e["translation"]

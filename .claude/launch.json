@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["server.py"],
       "port": 8848
+    },
+    {
+      "name": "design-demos",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8850", "--directory", "design-demos"],
+      "port": 8850
     }
   ]
 }

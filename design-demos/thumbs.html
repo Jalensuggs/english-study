@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>六个候选 · 缩略图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Schibsted+Grotesk:wght@400;500;700&family=Geist:wght@400;500;600;800&family=Geist+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=LXGW+WenKai+TC&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 32px; background: #e9e9ec; font: 13px/1.5 -apple-system, "PingFang SC", sans-serif; color: #222; }
+  h1 { font-size: 18px; margin: 0 0 20px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 480px); gap: 28px 24px; }
+  .cap { margin-top: 8px; font-size: 13px; color: #444; }
+  .cap b { color: #000; }
+  .cell { width: 480px; height: 300px; overflow: hidden; position: relative; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+  .p { font-size: 9.5px; line-height: 1.6; margin: 0 0 7px; }
+
+  /* ① iA 排版即界面 */
+  .ia { background: #fbfbfa; color: #1d1d1f; font-family: "Schibsted Grotesk", sans-serif; }
+  .ia .bar { height: 34px; display: flex; align-items: center; gap: 10px; padding: 0 14px; border-bottom: 1px solid #e6e6e3; font-size: 10px; }
+  .ia .back { font-weight: 700; font-size: 11px; padding: 5px 10px 5px 8px; border-radius: 6px; background: #1d1d1f; color: #fff; }
+  .ia .tools { margin-left: auto; display: flex; gap: 2px; background: #f0f0ee; border-radius: 6px; padding: 2px; }
+  .ia .tools span { padding: 3px 7px; border-radius: 4px; color: #6e6e73; }
+  .ia .tools .on { background: #fff; color: #1d1d1f; box-shadow: 0 1px 2px rgba(0,0,0,.1); }
+  .ia .cols { display: grid; grid-template-columns: 1fr 1fr; height: 266px; }
+  .ia .read { padding: 16px 22px; font-family: "Source Serif 4", serif; border-right: 1px solid #e6e6e3; }
+  .ia .read h2 { font-size: 17px; margin: 0 0 8px; font-weight: 600; }
+  .ia .dim { color: #b8b8b4; }
+  .ia mark { background: #ffe9a6; color: inherit; }
+  .ia .qs { padding: 16px 20px; font-size: 9.5px; }
+  .ia .qh { font-size: 10px; font-weight: 700; margin-bottom: 8px; }
+  .ia .q { display: flex; gap: 8px; margin-bottom: 9px; line-height: 1.5; }
+  .ia .q b { font-weight: 500; color: #8e8e93; width: 12px; }
+  .ia .blank { display: inline-block; width: 54px; border-bottom: 1.5px solid #1d1d1f; height: 11px; vertical-align: -2px; }
+  .ia .tf span { display: inline-block; font-size: 8px; border: 1px solid #d2d2cf; border-radius: 4px; padding: 1px 5px; margin: 3px 3px 0 0; }
+
+  /* ② Linear 深色侧栏 */
+  .ln { background: #0f1012; color: #e6e6e8; font-family: "Geist", sans-serif; display: grid; grid-template-columns: 112px 1fr; }
+  .ln aside { background: #141517; border-right: 1px solid #222326; padding: 12px 10px; font-size: 9.5px; }
+  .ln aside .t { font-weight: 600; margin-bottom: 12px; display: flex; gap: 6px; align-items: center; }
+  .ln aside .t i { width: 12px; height: 12px; border-radius: 3px; background: #e8b44a; }
+  .ln aside div { padding: 4px 6px; border-radius: 4px; color: #9a9ba0; margin-bottom: 1px; }
+  .ln aside .on { background: #222326; color: #fff; }
+  .ln aside .k { color: #5c5d62; font-size: 8.5px; margin-top: 10px; }
+  .ln main { padding: 0; }
+  .ln .bar { height: 34px; display: flex; align-items: center; gap: 8px; padding: 0 12px; border-bottom: 1px solid #222326; font-size: 10px; }
+  .ln .esc { font-family: "Geist Mono", monospace; font-size: 8.5px; border: 1px solid #333438; border-radius: 4px; padding: 1px 4px; color: #9a9ba0; }
+  .ln .crumb { color: #9a9ba0; } .ln .crumb b { color: #fff; font-weight: 500; }
+  .ln .timer { margin-left: auto; font-family: "Geist Mono", monospace; color: #e8b44a; font-size: 10px; }
+  .ln .cols { display: grid; grid-template-columns: 1.1fr 1fr; height: 266px; }
+  .ln .read { padding: 14px 16px; border-right: 1px solid #222326; color: #c9c9cd; }
+  .ln .read h2 { font-size: 15px; margin: 0 0 8px; color: #fff; font-weight: 600; }
+  .ln mark { background: rgba(232,180,74,.25); color: #fff; }
+  .ln .qs { padding: 14px 14px; font-size: 9.5px; }
+  .ln .q { display: flex; gap: 7px; padding: 7px 0; border-bottom: 1px solid #1d1e21; }
+  .ln .id { font-family: "Geist Mono", monospace; font-size: 8.5px; color: #9a9ba0; border: 1px solid #333438; border-radius: 4px; padding: 0 4px; height: 13px; line-height: 13px; }
+  .ln .blank { display: inline-block; width: 52px; height: 12px; border: 1px solid #3a3b40; border-radius: 4px; vertical-align: -3px; background: #17181a; }
+
+  /* ③ Brilliant 卡片 */
+  .br { background: #f3f2ef; color: #1b1b1b; font-family: -apple-system, "PingFang SC", sans-serif; padding: 12px; }
+  .br .bar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .br .back { width: 30px; height: 30px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: 15px; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+  .br .ttl { font-family: "Newsreader", serif; font-size: 15px; font-weight: 600; }
+  .br .pill { margin-left: auto; background: #1b1b1b; color: #fff; border-radius: 999px; padding: 5px 12px; font-size: 10px; font-weight: 600; }
+  .br .ring { width: 26px; height: 26px; border-radius: 50%; background: conic-gradient(#7b5cf5 0 38%, #e4e0f7 0); display: grid; place-items: center; }
+  .br .ring::after { content: ""; width: 18px; height: 18px; border-radius: 50%; background: #f3f2ef; }
+  .br .cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; height: 238px; }
+  .br .card { background: #fff; border-radius: 16px; padding: 14px 16px; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+  .br .card h2 { font-family: "Newsreader", serif; font-size: 18px; margin: 0 0 6px; font-weight: 600; }
+  .br mark { background: #c9f3e3; }
+  .br .q { background: #f7f6f3; border-radius: 10px; padding: 7px 9px; margin-bottom: 6px; font-size: 9.5px; }
+  .br .q .n { display: inline-grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: #7b5cf5; color: #fff; font-size: 8px; font-weight: 700; margin-right: 5px; }
+  .br .opts span { display: inline-block; border-radius: 999px; border: 1.5px solid #e2e0da; padding: 2px 7px; font-size: 8px; font-weight: 600; margin: 4px 3px 0 0; background: #fff; }
+  .br .opts .on { border-color: #7b5cf5; color: #7b5cf5; }
+
+  /* ④ Readwise 深色高亮 */
+  .rw { background: #121316; color: #d4d4d8; font-family: "Geist", sans-serif; display: grid; grid-template-columns: 1fr 120px; }
+  .rw .main { padding: 14px 22px; }
+  .rw .bar { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 10px; }
+  .rw .back { background: #26272c; padding: 4px 10px; border-radius: 999px; color: #fff; }
+  .rw .pill { margin-left: auto; background: #e3a08a; color: #1b1110; border-radius: 999px; padding: 4px 11px; font-weight: 600; }
+  .rw h2 { font-family: "Newsreader", serif; font-size: 20px; color: #fff; margin: 0 0 8px; font-weight: 400; }
+  .rw .h1 { background: rgba(227,160,138,.3); color: #fff; } .rw .h2 { background: rgba(140,180,255,.25); color: #fff; }
+  .rw aside { background: #17181c; border-left: 1px solid #25262b; padding: 12px 10px; font-size: 8.5px; }
+  .rw aside .t { color: #fff; font-weight: 600; margin-bottom: 8px; font-size: 9.5px; }
+  .rw aside div.n { border-left: 2px solid #e3a08a; padding-left: 6px; margin-bottom: 8px; color: #a1a1aa; }
+  .rw aside div.n.b { border-color: #8cb4ff; }
+
+  /* ⑤ Swiss 黑白 */
+  .sw { background: #fff; color: #000; font-family: "Geist", sans-serif; }
+  .sw .bar { height: 34px; display: flex; align-items: stretch; border-bottom: 1px solid #000; font-size: 10px; }
+  .sw .back { display: flex; align-items: center; padding: 0 14px; background: #000; color: #fff; font-weight: 600; }
+  .sw .crumb { display: flex; align-items: center; padding: 0 12px; font-family: "Geist Mono", monospace; font-size: 9px; }
+  .sw .sub { margin-left: auto; display: flex; align-items: center; padding: 0 14px; border-left: 1px solid #000; font-weight: 600; }
+  .sw .cols { display: grid; grid-template-columns: 1fr 1fr; height: 266px; }
+  .sw .read { padding: 14px 16px; border-right: 1px solid #000; }
+  .sw .read h2 { font-size: 26px; line-height: .95; letter-spacing: -.03em; margin: 0 0 10px; font-weight: 800; }
+  .sw .qs { font-size: 9.5px; }
+  .sw .q { display: grid; grid-template-columns: 26px 1fr; border-bottom: 1px solid #000; }
+  .sw .q b { border-right: 1px solid #000; display: grid; place-items: center; font-family: "Geist Mono", monospace; font-weight: 500; }
+  .sw .q span { padding: 7px 9px; }
+  .sw .blank { display: inline-block; width: 50px; border-bottom: 1px solid #000; height: 10px; }
+  .sw .score { position: absolute; right: 12px; bottom: 6px; font-size: 64px; font-weight: 800; letter-spacing: -.05em; line-height: 1; }
+
+  /* ⑥ 民国书衣 */
+  .mg { background: #d9cfae; color: #1c1a17; font-family: "Noto Serif SC", serif; padding: 16px; display: flex; gap: 14px; }
+  .mg .book { width: 120px; border: 1px solid #1c1a17; outline: 1px solid #1c1a17; outline-offset: 3px; position: relative; padding: 10px; background: #d2c6a0; }
+  .mg .tag { position: absolute; top: 14px; right: 14px; width: 26px; background: #f1ead6; border: 1px solid #1c1a17; writing-mode: vertical-rl; font-family: "LXGW WenKai TC", serif; font-size: 16px; padding: 6px 0; text-align: center; }
+  .mg .sun { position: absolute; bottom: 22px; right: 16px; width: 26px; height: 26px; border-radius: 50%; background: #b22e1f; }
+  .mg .mt { position: absolute; bottom: 12px; left: 10px; width: 0; height: 0; border-left: 34px solid transparent; border-right: 34px solid transparent; border-bottom: 40px solid #1c1a17; }
+  .mg .list { flex: 1; font-size: 11px; }
+  .mg .list h2 { font-family: "LXGW WenKai TC", serif; font-size: 22px; margin: 0 0 10px; font-weight: 400; }
+  .mg .row { border-top: 1px solid #1c1a17; padding: 6px 0; display: flex; justify-content: space-between; }
+  .mg .row .r { color: #b22e1f; }
+</style>
+</head>
+<body>
+<h1>六个候选 · 做题页缩略图（剑18 Test 1 Passage 1）</h1>
+<div class="grid">
+
+<div>
+<div class="cell ia">
+  <div class="bar"><span class="back">← 题库</span><span style="color:#8e8e93">剑18 · Test 1 · Passage 1</span>
+    <div class="tools"><span class="on">鼠标</span><span>学习笔</span><span>记号笔</span><span>橡皮擦</span></div><span style="color:#8e8e93">计时</span></div>
+  <div class="cols">
+    <div class="read"><h2>Urban farming</h2>
+      <p class="p dim">In Paris, urban farmers are trying a soil-free approach to agriculture that uses less space and fewer resources.</p>
+      <p class="p">On top of a striking new exhibition hall in southern Paris, the world's largest urban rooftop farm has started to bear fruit. <mark>Strawberries that are small, intensely flavoured</mark> and resplendently red sprout abundantly from large plastic tubes.</p>
+      <p class="p dim">Pascal Hardy, an engineer and sustainable development consultant, began experimenting with vertical farming and aeroponic growing towers…</p></div>
+    <div class="qs"><div class="qh">Questions 1–3 · Complete the sentences</div>
+      <div class="q"><b>1</b><span>Vertical tubes are used to grow strawberries, <i class="blank"></i> and herbs.</span></div>
+      <div class="q"><b>2</b><span>There will eventually be a daily harvest of as much as <i class="blank"></i> in weight.</span></div>
+      <div class="qh" style="margin-top:12px">Questions 8–13</div>
+      <div class="q"><b>8</b><span>Urban farming can take place above or below ground.<div class="tf"><span>TRUE</span><span>FALSE</span><span>NOT GIVEN</span></div></span></div></div>
+  </div>
+</div>
+<div class="cap"><b>① 最佳设计师 · iA</b>　排版即界面，专注模式</div>
+</div>
+
+<div>
+<div class="cell ln">
+  <aside><div class="t"><i></i>英语学习</div><div>题库</div><div class="on">剑18 · Test 1</div><div>短语</div><div>生词本</div><div>复习 <span style="float:right">12</span></div><div class="k">⌘K 搜索</div></aside>
+  <main>
+    <div class="bar"><span class="esc">Esc</span><span class="crumb">剑18 / Test 1 / <b>Passage 1</b></span><span class="timer">17:42</span></div>
+    <div class="cols">
+      <div class="read"><h2>Urban farming</h2><p class="p">On top of a striking new exhibition hall in southern Paris, the world's largest urban rooftop farm has started to bear fruit. <mark>Strawberries that are small, intensely flavoured</mark> and resplendently red sprout abundantly from large plastic tubes.</p><p class="p">Pascal Hardy, an engineer and sustainable development consultant, began experimenting with vertical farming…</p></div>
+      <div class="qs">
+        <div class="q"><span class="id">Q1</span><span>Vertical tubes are used to grow strawberries, <i class="blank"></i> and herbs.</span></div>
+        <div class="q"><span class="id">Q2</span><span>A daily harvest of as much as <i class="blank"></i> in weight.</span></div>
+        <div class="q"><span class="id">Q8</span><span>Urban farming can take place above or below ground.</span></div>
+        <div class="q"><span class="id">Q9</span><span>Some equipment can be made by hand.</span></div>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="cap"><b>② 最佳设计师 · Linear</b>　侧栏 + 键盘优先，深色优先</div>
+</div>
+
+<div>
+<div class="cell br">
+  <div class="bar"><span class="back">←</span><span class="ttl">Urban farming</span><span class="ring"></span><span class="pill">提交</span></div>
+  <div class="cols">
+    <div class="card"><h2>Urban farming</h2><p class="p">On top of a striking new exhibition hall in southern Paris, the world's largest urban rooftop farm has started to bear fruit. <mark>Strawberries that are small, intensely flavoured</mark> and resplendently red sprout abundantly from large plastic tubes.</p><p class="p">Pascal Hardy, an engineer…</p></div>
+    <div class="card" style="padding:10px">
+      <div class="q"><span class="n">1</span>Vertical tubes are used to grow strawberries, ____ and herbs.</div>
+      <div class="q"><span class="n">8</span>Urban farming can take place above or below ground.<div class="opts"><span class="on">TRUE</span><span>FALSE</span><span>NOT GIVEN</span></div></div>
+      <div class="q"><span class="n">9</span>Some equipment can be made by hand.<div class="opts"><span>TRUE</span><span>FALSE</span><span>NOT GIVEN</span></div></div>
+    </div>
+  </div>
+</div>
+<div class="cap"><b>③ 现实参照 · Brilliant</b>　白卡片、进度环、紫 + 薄荷</div>
+</div>
+
+<div>
+<div class="cell rw">
+  <div class="main"><div class="bar"><span class="back">← 题库</span><span style="color:#71717a">剑18 · Test 1</span><span class="pill">提交</span></div>
+    <h2>Urban farming</h2>
+    <p class="p">On top of a striking new exhibition hall in southern Paris, the world's largest urban rooftop farm has started to bear fruit. <span class="h1">Strawberries that are small, intensely flavoured</span> and resplendently red sprout abundantly from large plastic tubes. Peer inside and you see <span class="h2">the tubes are completely hollow</span>.</p>
+    <p class="p">Pascal Hardy, an engineer and sustainable development consultant, began experimenting with vertical farming…</p></div>
+  <aside><div class="t">我的标记 2</div><div class="n">Strawberries that are small, intensely flavoured</div><div class="n b">the tubes are completely hollow</div></aside>
+</div>
+<div class="cap"><b>④ 现实参照 · Readwise Reader</b>　高亮汇总侧栏（未亲见 App 界面）</div>
+</div>
+
+<div>
+<div class="cell sw">
+  <div class="bar"><span class="back">← 题库</span><span class="crumb">C18 / T1 / P1</span><span class="sub">提交</span></div>
+  <div class="cols">
+    <div class="read"><h2>Urban<br>farming</h2><p class="p">On top of a striking new exhibition hall in southern Paris, the world's largest urban rooftop farm has started to bear fruit. Strawberries that are small, intensely flavoured and resplendently red sprout abundantly…</p></div>
+    <div class="qs">
+      <div class="q"><b>1</b><span>Vertical tubes are used to grow strawberries, <i class="blank"></i> and herbs.</span></div>
+      <div class="q"><b>2</b><span>A daily harvest of as much as <i class="blank"></i>.</span></div>
+      <div class="q"><b>8</b><span>Urban farming can take place above or below ground.</span></div>
+    </div>
+  </div>
+  <div class="score">11/13</div>
+</div>
+<div class="cap"><b>⑤ 轮盘 · Swiss 极致黑白</b>　直角网格、巨号分数</div>
+</div>
+
+<div>
+<div class="cell mg">
+  <div class="book"><span class="tag">剑桥十八</span><span class="mt"></span><span class="sun"></span></div>
+  <div class="list"><h2>剑桥雅思 十八</h2>
+    <div class="row"><span>第一套 · 都市农场</span><span class="r">十一 / 十三</span></div>
+    <div class="row"><span>第一套 · 宾州林业</span><span>未做</span></div>
+    <div class="row"><span>第一套 · 太空垃圾</span><span>未做</span></div>
+    <div class="row"><span>第二套 · 巨石阵</span><span>未做</span></div></div>
+</div>
+<div class="cap"><b>⑥ 轮盘 · 民国书衣</b>　书封题库（预判用力过头）</div>
+</div>
+
+</div>
+</body>
+</html>

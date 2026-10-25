@@ -16,7 +16,11 @@ export function createTimer(root, { key, defaultMin = 20 }) {
   const text = root.querySelector("#timer-text");
   const pop = root.querySelector("#timer-pop");
   const wrap = root.querySelector("#timer-wrap");
-  let st = local.get(key, null) || { mode: "off", limit: 0, elapsed: 0, running: false };
+  // 旧版计时器在这个键里存的是一个数字，格式不对就当成"没开计时"
+  const saved = local.get(key, null);
+  const valid = saved && typeof saved === "object" && ["off", "down", "up"].includes(saved.mode)
+    && Number.isFinite(saved.elapsed) && Number.isFinite(saved.limit);
+  let st = valid ? saved : { mode: "off", limit: 0, elapsed: 0, running: false };
   let frozen = false;
   let rang = st.mode === "down" && st.elapsed >= st.limit;
 
