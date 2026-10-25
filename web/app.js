@@ -876,6 +876,18 @@ async function phraseBookView(n) {
     save();
   });
 
+  // 一个小题的几个空，和答案的哪种读法对得上（见 pv.js 的 gradeKey）
+  function multiBlanks(sec, q, els, alts) {
+    const inQ = [...sec.querySelectorAll(`.pv-q[data-q="${q}"] [data-b]`)];
+    for (const parts of [alts.parts, alts.partsAlt]) {
+      if (!parts) continue;
+      for (const list of [[...els], inQ]) {
+        if (list.length === parts.length) return [list, parts];
+      }
+    }
+    return null;
+  }
+
   // ---- 对答案：能自动判的标对错，每道练习下面显示原书答案
   function showResult() {
     let ok = 0, graded = 0;
@@ -889,18 +901,21 @@ async function phraseBookView(n) {
         for (const [q, alts] of Object.entries(key)) {
           const els = sec.querySelectorAll(`[data-b][data-n="${q}"]`);
           const radios = sec.querySelectorAll(`.radio[data-n="${q}"]`);
-          if (els.length === 1 && !radios.length) {
+          if (alts.parts && !multiBlanks(sec, q, els, alts)) {
+            continue;  // 这一题该有几个空，页面上对不上（OCR 少认了一个空）：不判分，看下面的答案
+          } else if (els.length === 1 && !radios.length) {
             const good = checkAnswer(answers[els[0].dataset.b], alts);
             graded++; if (good) ok++;
             els[0].classList.add(good ? "right" : "wrong");
             if (!good) els[0].insertAdjacentHTML("afterend", `<span class="ans-chip">${esc(alts.join(" / "))}</span>`);
-          } else if (!els.length && alts.parts && sec.querySelectorAll(`.pv-q[data-q="${q}"] [data-b]`).length === alts.parts.length) {
-            // 一个小题几个空：按顺序对答案里用逗号分开的几个
-            sec.querySelectorAll(`.pv-q[data-q="${q}"] [data-b]`).forEach((el, i) => {
-              const good = checkAnswer(answers[el.dataset.b], alts.parts[i]);
+          } else if (alts.parts && multiBlanks(sec, q, els, alts)) {
+            // 一个小题几个空：按顺序一个空对一个
+            const [multi, parts] = multiBlanks(sec, q, els, alts);
+            multi.forEach((el, i) => {
+              const good = checkAnswer(answers[el.dataset.b], parts[i]);
               graded++; if (good) ok++;
               el.classList.add(good ? "right" : "wrong");
-              if (!good) el.insertAdjacentHTML("afterend", `<span class="ans-chip">${esc(alts.parts[i].join(" / "))}</span>`);
+              if (!good) el.insertAdjacentHTML("afterend", `<span class="ans-chip">${esc(parts[i].join(" / "))}</span>`);
             });
           } else if (radios.length) {
             const good = checkAnswer(answers[choiceKey(ex, q)], alts);

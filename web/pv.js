@@ -16,7 +16,7 @@
 //
 // 判分（gradeKey）：key.md 里这道题的答案是 "1 apart · 2 around/round" 这种短答案时自动判对错。
 // 填空对应第几小题：小题里只有一个空 → 小题号；空后面紧跟 (3) → 第 3 小题。
-// 一个小题有几个空、答案用逗号分开几个（clock, clock）→ 按顺序一个空对一个。其他题只显示答案对照。
+// 一个小题有几个空、答案用逗号或分号分开几个（clock, clock）→ 按顺序一个空对一个。其他题只显示答案对照。
 
 import { esc } from "./util.js";
 
@@ -130,11 +130,12 @@ export function renderPV(src, { prefix = "m", unit = 0 } = {}) {
   const closeSection = () => { if (inSection) { put("</section>"); inSection = false; } };
   for (const raw of src.split("\n")) {
     const t = raw.trim();
+    // 练习从这里开始（# Exercises 或 ## Exercises）
+    if (/^#+\s*exercises\s*$/i.test(t)) { flushRun(); closeSection(); inEx = true; continue; }
     if (/^# /.test(t)) continue; // 单元标题，页面上已经有了
     let m;
     if ((m = t.match(/^## (.*)$/))) {
       flushRun(); closeSection();
-      if (/^exercises$/i.test(m[1].trim())) { inEx = true; continue; }
       const s = m[1].match(/^([A-H])\s+(.*)$/);
       put(`<section class="pv-sec"><h2 class="pv-sec-title">${s ? `<span class="pv-letter">${s[1]}</span>${text(s[2])}` : text(m[1])}</h2>`);
       inSection = true;
@@ -168,10 +169,22 @@ export function gradeKey(md) {
       const m = part.match(/^(\d+)\.?\s+(.+)$/);
       if (!m) return null;
       const ans = m[2].replace(/\([^)]*\)/g, " ").replace(/\*/g, "").trim();
-      const alts = ans.split(/\s*\/\s*|\s+or\s+/).map(norm).filter(Boolean);
+      let alts = ans.split(/\s*\/\s*|\s+or\s+/).map(norm).filter(Boolean);
+      // "e, h, i" 这种全是单个字母的，是几个都算对，不是几个空
+      const letters = /^[a-j](\s*,\s*[a-j])+$/.test(ans);
+      if (letters) alts = ans.split(/\s*,\s*/).map(norm);
       if (!alts.length || alts.some((a) => a.split(" ").length > 4)) return null;
-      // 一题两个空的答案写成 "clock, clock" 或 "ordering, about or around"：按逗号分开，第几个空对第几个
-      if (ans.includes(",")) alts.parts = ans.split(/\s*,\s*/).map((p) => p.split(/\s*\/\s*|\s+or\s+/).map(norm).filter(Boolean));
+      // 一题几个空：答案写成 "clock, clock"、"ordering, about or around"，或者整句两种说法
+      // "bring; around/round or talk; around/round"。两种读法都算出来，判分时用空的个数对得上的那种。
+      if (/[,;]/.test(ans) && !letters) {
+        const split = (a) => a.split(/\s*[,;]\s*/).map((p) => p.split(/\s*\/\s*|\s+or\s+/).map(norm).filter(Boolean));
+        alts.parts = split(ans);
+        const ways = ans.split(/\s+or\s+/).map(split);
+        if (ways.length > 1 && ways.every((w) => w.length === ways[0].length) && ways[0].length > 1) {
+          // 每种说法的空一样多：第几个空收下每种说法里的第几个
+          alts.partsAlt = ways[0].map((_, i) => [...new Set(ways.flatMap((w) => w[i]))]);
+        }
+      }
       out[m[1]] = alts;
     }
   }
